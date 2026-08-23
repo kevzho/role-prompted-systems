@@ -1,0 +1,9 @@
+# Pinned to the versions this repository was developed and tested against.
+# Section 4 of RESEARCH_SPECIFICATION.md requires an exact execution manifest;
+# utils.build_manifest records the resolved versions at run time as well.
+torch>=2.4,<3.0
+numpy>=1.26,<3.0
+pytest>=8.0
+openai>=1.0,<3.0
+anthropic>=0.125,<1.0
+matplotlib>=3.8,<4.0

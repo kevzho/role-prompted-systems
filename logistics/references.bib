@@ -1,0 +1,687 @@
+% Corrected bibliography for the CCA manuscript.
+% Generated 2026-07-28 by applying REFERENCE_CORRECTIONS.md and NOVELTY_SEARCH.md.
+%
+% VERIFICATION STATUS is recorded per entry in a `note` field of the form
+%   verified: <how>
+% Three levels are used, and they are not interchangeable:
+%
+%   verified-human   record checked by a person against the official listing
+%                    during the 2026-07-26 review (REFERENCE_CORRECTIONS.md)
+%   verified-search  arXiv identifier / DOI observed in a 2026-07-28 search
+%                    result; identifier and title seen, full record NOT opened
+%   verified-full    abstract / publisher record opened on the date given;
+%                    author list copied verbatim, year, title, and venue
+%                    confirmed against that record
+%   verified-failed  record opened but the entry could not be confirmed; the
+%                    note states what was actually found
+%   UNVERIFIED       reconstructed from the manuscript or from background
+%                    knowledge; author list, year, venue, and page numbers must
+%                    be checked against the publisher record before submission
+%
+% Do not submit with any UNVERIFIED entry still marked as such. Those are listed
+% in BIBLIOGRAPHY.md section 3 as an explicit human task.
+%
+% 2026-08-02: all 22 outstanding entries (4 UNVERIFIED + 18 verified-search)
+% were opened against arXiv / publisher records and are now verified-full.
+
+
+% ===========================================================================
+% Corrections to records that were wrong or incomplete in the PDF
+% ===========================================================================
+
+% [9] -- was listed as NeurIPS 2024. It is a 2025 NeurIPS *workshop* paper.
+% The 95.6% GPI reduction is specific to its corporate-decision simulation and
+% must NOT be restated as a general result about group polarization.
+@inproceedings{yu2025personality,
+  author    = {Yu, Hengbin and Lin, Jingzhe and Xu, Shuhang and Cui, Xuefeng
+               and Zhu, Song-Chun and Zhong, Fangwei},
+  title     = {Enhancing Collective {AI} Decision Robustness through
+               Personality Diversity},
+  booktitle = {First Workshop on LLM Persona Modeling, NeurIPS},
+  year      = {2025},
+  url       = {https://nips.cc/virtual/2025/loc/mexico-city/129942},
+  annote      = {verified-human. Scope: the reported 95.6\% GPI reduction is the
+               OCEAN condition of one corporate-decision simulation.}
+}
+
+% [10] -- full record supplied. This is the head-to-head comparator: it reports
+% on HaluEval and TruthfulQA, the same two benchmarks this study pre-registers.
+@article{wu2026council,
+  author  = {Wu, Shuai and Li, Xue and Feng, Yanna and Li, Yufang and
+             Wang, Zhijun},
+  title   = {Council Mode: A Heterogeneous Multi-Agent Consensus Framework for
+             Reducing {LLM} Hallucination and Bias},
+  journal = {arXiv preprint arXiv:2604.02923},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2604.02923},
+  annote    = {verified-human. Uses heterogeneous frontier models, triage, and a
+             dedicated consensus model; comparisons must control for both model
+             heterogeneity and synthesis strength.}
+}
+
+% [11] -- full record supplied.
+@article{bause2026mixtures,
+  author  = {Bause, Franka and Niederle, Jonas and Pawelczyk, Martin and
+             Burkholz, Rebekka},
+  title   = {Multi-Agent Systems are Mixtures of Experts: Who Becomes an
+             Influencer?},
+  journal = {arXiv preprint arXiv:2605.25929},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2605.25929},
+  annote    = {verified-human. Analyses input-dependent influence via
+             Friedkin--Johnsen opinion dynamics; does not validate CCA's
+             confidence weighting.}
+}
+
+% [12] -- full record supplied. Cite BOTH the benefit and the trade-off.
+@article{huang2025valuediversity,
+  author  = {Huang, Muhua and Zhao, Qinlin and Yi, Xiaoyuan and Xie, Xing},
+  title   = {On the Dynamics of Multi-Agent {LLM} Communities Driven by Value
+             Diversity},
+  journal = {arXiv preprint},
+  year    = {2025},
+  month   = dec,
+  url     = {https://www.microsoft.com/en-us/research/publication/on-the-dynamics-of-multi-agent-llm-communities-driven-by-value-diversity/},
+  annote    = {verified-human. Reports benefits with diminishing returns and
+             instability under extreme heterogeneity.}
+}
+
+% [14] -- MISATTRIBUTED in the PDF to "M. Jepma et al."; corrected here.
+% 26 adults with ADHD vs 23 controls, six-armed bandit. Supports a narrow
+% empirical association, NOT a universal shifted explore/exploit ratio.
+% No ADHD-derived role appears in the six-agent council: either remove the
+% introductory mapping or explain the exclusion.
+@article{addicott2021adhd,
+  author  = {Addicott, Merideth A. and Pearson, John M. and
+             Schechter, Julia C. and Sapyta, Jeffrey J. and
+             Weiss, Margaret D. and Kollins, Scott H.},
+  title   = {Attention-deficit/hyperactivity disorder and the explore/exploit
+             trade-off},
+  journal = {Neuropsychopharmacology},
+  volume  = {46},
+  number  = {3},
+  pages   = {614--621},
+  year    = {2021},
+  doi     = {10.1038/s41386-020-00881-8},
+  url     = {https://pubmed.ncbi.nlm.nih.gov/33040092/},
+  annote    = {verified-human. Online 2020.}
+}
+
+% [18] -- REPLACEMENT. Dunning's Dunning--Kruger review does not establish
+% impostor phenomenon, and the two must not be equated. Prefer the term
+% "impostor phenomenon" over "impostor syndrome".
+@article{clance1978impostor,
+  author  = {Clance, Pauline Rose and Imes, Suzanne Ament},
+  title   = {The Impostor Phenomenon in High Achieving Women: Dynamics and
+             Therapeutic Intervention},
+  journal = {Psychotherapy: Theory, Research and Practice},
+  volume  = {15},
+  number  = {3},
+  pages   = {241--247},
+  year    = {1978},
+  doi     = {10.1037/h0086006},
+  annote    = {verified-human. Does not validate subtracting a constant from an
+             LLM's confidence; that remains an engineering hypothesis.}
+}
+
+% [20] -- use the source's ACTUAL title. Describing it only as "synthetic
+% psychopathology" loses scope and caveats.
+@article{lee2025psychopathological,
+  author  = {Lee, Soo Yong and Hwang, Hyunjin and Kim, Taekwan and
+             Kim, Yuyeong and Park, Kyuri and Yoo, Jaemin and
+             Borsboom, Denny and Shin, Kijung},
+  title   = {Emergence of psychopathological computations in large language
+             models},
+  journal = {arXiv preprint arXiv:2504.08016},
+  year    = {2025},
+  url     = {https://arxiv.org/abs/2504.08016},
+  annote    = {verified-human.}
+}
+
+
+% ===========================================================================
+% Clinical / human-construct sources: inspiration only
+% Each of these motivates a construct. NONE validates the corresponding LLM
+% operation. See BIBLIOGRAPHY.md section 2.
+% ===========================================================================
+
+% [13] Computational psychiatry as a modelling field. Cannot establish that OCD
+% is equivalent to a fixed k-pass verification loop.
+@article{adams2016computational,
+  author  = {Adams, Rick A. and Huys, Quentin J. M. and Roiser, Jonathan P.},
+  title   = {Computational Psychiatry: towards a mathematically informed
+             understanding of mental illness},
+  journal = {Journal of Neurology, Neurosurgery and Psychiatry},
+  volume  = {87},
+  number  = {1},
+  pages   = {53--63},
+  year    = {2016},
+  doi     = {10.1136/jnnp-2015-310737},
+  url     = {https://pmc.ncbi.nlm.nih.gov/articles/PMC4717449/},
+  annote    = {verified-full 2026-08-02 against the JNNP record (PMC4717449):
+             authors, volume 87(1), pages 53--63, and DOI confirmed.}
+}
+
+% [15] Weak central coherence in autism research. Cannot establish an
+% equivalence among autism, savant syndrome, context segmentation, and
+% narrative-error detection.
+@book{frith2003autism,
+  author    = {Frith, Uta},
+  title     = {Autism: Explaining the Enigma},
+  edition   = {2},
+  publisher = {Blackwell Publishing},
+  address   = {Oxford},
+  year      = {2003},
+  isbn      = {978-0-631-22901-8},
+  annote      = {verified-full 2026-08-02 against the publisher listing (Wiley/
+               Blackwell, 2nd edition, 2003, ISBN 0-631-22901-9). First edition
+               was Basil Blackwell 1989. The manuscript must not cite a
+               monograph as establishing an LLM mechanism.}
+}
+
+% [16] Positive emotion and reward disturbance in bipolar disorder. Cannot
+% establish a two-temperature generation/pruning algorithm.
+@article{gruber2011bipolar,
+  author  = {Gruber, June},
+  title   = {A review and synthesis of positive emotion and reward disturbance
+             in bipolar disorder},
+  journal = {Clinical Psychology and Psychotherapy},
+  volume  = {18},
+  number  = {5},
+  pages   = {356--365},
+  year    = {2011},
+  doi     = {10.1002/cpp.776},
+  url     = {https://onlinelibrary.wiley.com/doi/abs/10.1002/cpp.776},
+  annote    = {verified-full 2026-08-02 against the Wiley record: sole author
+             June Gruber, volume 18(5), pages 356--365, DOI confirmed.}
+}
+
+% [17] Aberrant salience as an account of psychosis. Cannot establish
+% low-frequency token upweighting or improved rare-answer accuracy.
+@article{kapur2003psychosis,
+  author  = {Kapur, Shitij},
+  title   = {Psychosis as a state of aberrant salience: a framework linking
+             biology, phenomenology, and pharmacology in schizophrenia},
+  journal = {American Journal of Psychiatry},
+  volume  = {160},
+  number  = {1},
+  pages   = {13--23},
+  year    = {2003},
+  doi     = {10.1176/appi.ajp.160.1.13},
+  url     = {https://pubmed.ncbi.nlm.nih.gov/12505794/},
+  annote    = {verified-full 2026-08-02 against the AJP record (PMID 12505794):
+             sole author Shitij Kapur, volume 160(1), pages 13--23, DOI
+             confirmed.}
+}
+
+
+% ===========================================================================
+% AI/ML sources that motivate the IMPLEMENTED operations
+% One per role, per REFERENCE_CORRECTIONS.md's two-citation requirement.
+% ===========================================================================
+
+% Motivates the counter-evidence checker and the council premise generally:
+% models catch errors in others' output that they miss in their own.
+@article{selfcorrection2026illusion,
+  author  = {Chen, Kuan-Yen and Su, Fang-Yi and Chiang, Jung-Hsien},
+  title   = {The Self-Correction Illusion: {LLM}s Correct Others but Not
+             Themselves},
+  journal = {arXiv preprint arXiv:2606.05976},
+  year    = {2026},
+  doi     = {10.48550/arXiv.2606.05976},
+  url     = {https://arxiv.org/abs/2606.05976},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             submitted 4 June 2026, cs.AI/cs.CL, three authors, title exact.
+             No peer-reviewed venue listed.}
+}
+
+% Motivates the consistency checker: self-critique fails without a sound
+% external verifier; stacked errors make the loop worse than one-shot.
+@article{stechly2024selfverification,
+  author  = {Stechly, Kaya and Valmeekam, Karthik and Kambhampati, Subbarao},
+  title   = {On the Self-Verification Limitations of Large Language Models on
+             Reasoning and Planning Tasks},
+  journal = {arXiv preprint arXiv:2402.08115},
+  year    = {2024},
+  url     = {https://arxiv.org/abs/2402.08115},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             v1 12 Feb 2024, v2 3 Aug 2024; author list and title as recorded.
+             No peer-reviewed venue listed.}
+}
+
+% Peer-reviewed venue cited in preference to the preprint (ICLR 2024).
+@inproceedings{huang2024selfcorrect,
+  author    = {Huang, Jie and Chen, Xinyun and Mishra, Swaroop and
+               Zheng, Huaixiu Steven and Yu, Adams Wei and Song, Xinying and
+               Zhou, Denny},
+  title     = {Large Language Models Cannot Self-Correct Reasoning Yet},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2310.01798},
+  annote      = {verified-full 2026-08-02 against the arXiv abstract page
+               (arXiv:2310.01798, v1 3 Oct 2023, v2 14 Mar 2024): author list
+               confirmed verbatim; comments field states ICLR 2024, so the
+               venue is cited rather than the preprint.}
+}
+
+% Motivates the local-claim checker AND the AdvConsistency phenomenon:
+% error propagation between agents.
+@article{cascade2026hallucination,
+  author  = {Jamshidi, Saeid and Moradi Dakhel, Arghavan and
+             Nafi, Kawser Wazed and Khomh, Foutse},
+  title   = {Hallucination Cascade: Analyzing Error Propagation in Multi-Agent
+             {LLM} Systems},
+  journal = {arXiv preprint arXiv:2606.07937},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2606.07937},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             submitted 6 June 2026, primary category cs.CR, four authors,
+             title exact. No peer-reviewed venue listed.}
+}
+
+% Motivates the rare-hypothesis checker's risk side: minority agents conform to
+% a confidently wrong majority.
+@article{deliberative2026illusion,
+  author  = {Wan, Herun and Wu, Jiaying and Luo, Minnan and Li, Fanxiao and
+             Wang, Ningnan and Chen, Nancy F. and Kan, Min-Yen},
+  title   = {The Deliberative Illusion: Diagnosing Factual Attrition and Stance
+             Homogenization in Multi-Agent {LLM} Deliberation},
+  journal = {arXiv preprint arXiv:2606.03032},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2606.03032},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             submitted 2 June 2026, cs.CL, seven authors, title exact.
+             No peer-reviewed venue listed.}
+}
+
+% Motivates the confidence calibrator, and supplies the both-directions
+% sycophancy taxonomy the pre-registration requires
+% (robust-correct / sycophantic-agreement / reinforced-error / stubborn-error).
+@article{parrot2025,
+  author  = {{\c{C}}elebi, Yusuf and Ezerceli, {\"O}zay and
+             El Hussieni, Mahmoud},
+  title   = {{PARROT}: Persuasion and Agreement Robustness Rating of Output
+             Truth --- A Sycophancy Robustness Benchmark for {LLM}s},
+  journal = {arXiv preprint arXiv:2511.17220},
+  year    = {2025},
+  doi     = {10.48550/arXiv.2511.17220},
+  url     = {https://arxiv.org/abs/2511.17220},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             v1 21 Nov 2025, v2 1 Dec 2025, cs.CL, three authors. Title
+             corrected: the record carries the subtitle ``A Sycophancy
+             Robustness Benchmark for LLMs'', which was missing. Adopt this
+             taxonomy in the sycophancy adapter rather than inventing one.}
+}
+
+% Peer-reviewed venue cited in preference to the preprint (AIES 2025).
+@inproceedings{syceval2025,
+  author    = {Fanous, Aaron and Goldberg, Jacob and Agarwal, Ank A. and
+               Lin, Joanna and Zhou, Anson and Daneshjou, Roxana and
+               Koyejo, Sanmi},
+  title     = {{SycEval}: Evaluating {LLM} Sycophancy},
+  booktitle = {Proceedings of the AAAI/ACM Conference on AI, Ethics, and
+               Society (AIES)},
+  year      = {2025},
+  url       = {https://arxiv.org/abs/2502.08177},
+  annote      = {verified-full 2026-08-02 against the arXiv abstract page
+               (arXiv:2502.08177, submitted 12 Feb 2025): seven authors, all
+               Stanford; comments field states AIES 2025, so the venue is
+               cited rather than the preprint.}
+}
+
+% Motivates the explore-then-prune role's evaluation, and the calibrated
+% synthesiser: cross-model disagreement as an epistemic uncertainty signal.
+@article{crossmodel2026disagreement,
+  author  = {Hamidieh, Kimia and Thost, Veronika and Gerych, Walter and
+             Yurochkin, Mikhail and Ghassemi, Marzyeh},
+  title   = {Complementing Self-Consistency with Cross-Model Disagreement for
+             Uncertainty Quantification},
+  journal = {arXiv preprint arXiv:2604.17112},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2604.17112},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             submitted 18 April 2026, cs.AI, five authors, title exact.
+             No peer-reviewed venue listed.}
+}
+
+
+% ===========================================================================
+% Required by the novelty search (NOVELTY_SEARCH.md). These are not optional
+% additions: each removes a specific overclaim.
+% ===========================================================================
+
+% Nearest architectural predecessor: functionally constrained specialised
+% agents + central hub, from Global Workspace Theory. Refutes "CCA is the first".
+@article{theaterofmind2026,
+  author  = {Shang, Wenlong},
+  title   = {``{T}heater of {M}ind'' for {LLM}s: A Cognitive Architecture Based on
+             Global Workspace Theory},
+  journal = {arXiv preprint arXiv:2604.08206},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2604.08206},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             submitted 9 April 2026, cs.MA, SINGLE author Wenlong Shang, no
+             peer-reviewed venue. Title carries quotation marks around
+             ``Theater of Mind'' in the record. Cite in related work as the
+             nearest predecessor, noting it is an unrefereed single-author
+             preprint.}
+}
+
+% Sets the empirical ceiling on ANY combination method. Belongs in the
+% introduction, tied to the measured pairwise error correlation (L7).
+@article{cofailure2026ceiling,
+  author  = {Chen, Josef},
+  title   = {When Does Combining Language Models Help? {A} Co-Failure Ceiling on
+             Routing, Voting, and Mixture-of-Agents Across 67 Frontier Models},
+  journal = {arXiv preprint arXiv:2606.27288},
+  year    = {2026},
+  doi     = {10.48550/arXiv.2606.27288},
+  url     = {https://arxiv.org/abs/2606.27288},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             submitted 25 June 2026, cs.AI/cs.LG, SINGLE author Josef Chen, no
+             peer-reviewed venue. The co-failure ceiling is therefore an
+             unrefereed preprint result and must be cited as such.}
+}
+
+% Establishes the PRIOR for H3: persona labels do not carry performance.
+% Peer-reviewed venue cited in preference to the preprint (Findings of EMNLP
+% 2024). Key retains the 2023 preprint year for continuity with earlier drafts.
+@inproceedings{zheng2023helpfulassistant,
+  author    = {Zheng, Mingqian and Pei, Jiaxin and Logeswaran, Lajanugen and
+               Lee, Moontae and Jurgens, David},
+  title     = {When ``{A} {H}elpful {A}ssistant'' Is Not Really Helpful: Personas in
+               System Prompts Do Not Improve Performances of Large Language
+               Models},
+  booktitle = {Findings of the Association for Computational Linguistics:
+               EMNLP 2024},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2311.10054},
+  annote      = {verified-full 2026-08-02 against the arXiv abstract page
+               (arXiv:2311.10054, submitted 16 Nov 2023): five authors;
+               comments field states Findings of EMNLP 2024, so the venue is
+               cited. Claim re-checked: 162 roles across 6 interpersonal
+               relationship types and 8 expertise domains; no improvement over
+               a no-persona control. Oracle per-question best-persona
+               aggregation does help, but automatic persona selection is no
+               better than random -- cite both halves.}
+}
+
+@article{expertpersonas2026,
+  author  = {Hu, Zizhao and Rostami, Mohammad and Thomason, Jesse},
+  title   = {Expert Personas Improve {LLM} Alignment but Damage Accuracy:
+             Bootstrapping Intent-Based Persona Routing with {PRISM}},
+  journal = {arXiv preprint arXiv:2603.18507},
+  year    = {2026},
+  doi     = {10.48550/arXiv.2603.18507},
+  url     = {https://arxiv.org/abs/2603.18507},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             submitted 19 March 2026, cs.AI, three authors, no peer-reviewed
+             venue. Claim re-checked in the full text (Figure 1b): ``all
+             expert persona variants damage accuracy, with the minimum persona
+             suffering the least (overall: 68.0\% vs. 71.6\% baseline)'' --
+             68.0\% is the BEST persona variant, not a typical one.}
+}
+
+% TITLE CORRECTED: the recorded title was the withdrawn v1 title. The current
+% record (v2, 19 Oct 2024) is titled "... Mitigating the Negative Impact of
+% Role-playing Prompts in Zero-shot Reasoning Tasks" -- a framing change from
+% "enhancing by ensembling" to "mitigating a negative impact". Any sentence
+% citing this as evidence that role-play ensembling IMPROVES reasoning must be
+% re-read against v2.
+@article{persona2024doubleedged,
+  author  = {Kim, Junseok and Yang, Nakyeong and Jung, Kyomin},
+  title   = {Persona is a Double-edged Sword: Mitigating the Negative Impact of
+             Role-playing Prompts in Zero-shot Reasoning Tasks},
+  journal = {arXiv preprint arXiv:2408.08631},
+  year    = {2024},
+  url     = {https://arxiv.org/abs/2408.08631},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             v1 16 Aug 2024, v2 19 Oct 2024, cs.CL, three authors. Title
+             updated from the v1 wording recorded on 2026-07-28. No
+             peer-reviewed venue listed.}
+}
+
+% Cognitive-architecture framework the work sits inside.
+% Peer-reviewed venue cited in preference to the preprint (TMLR).
+@article{sumers2024coala,
+  author  = {Sumers, Theodore R. and Yao, Shunyu and Narasimhan, Karthik and
+             Griffiths, Thomas L.},
+  title   = {Cognitive Architectures for Language Agents},
+  journal = {Transactions on Machine Learning Research},
+  year    = {2024},
+  url     = {https://arxiv.org/abs/2309.02427},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page
+             (arXiv:2309.02427, v1 5 Sep 2023): four authors; v3 is marked
+             ``TMLR camera ready version'', so TMLR 2024 is cited rather than
+             the 2023 preprint. First two authors contributed equally.}
+}
+
+% Clinical theory already generating a multi-agent role decomposition.
+@article{wisemind2026,
+  author  = {Wu, Yuqi and Wan, Guangya and Li, Jingjing and Zhao, Shengming
+             and Ma, Lingfeng and Ye, Tianyi and Zhang, Mike and Pop, Ion and
+             Zhang, Yanbo and Chen, Jie},
+  title   = {{WiseMind}: a knowledge-guided multi-agent framework for accurate
+             and empathetic psychiatric diagnosis},
+  journal = {npj Digital Medicine},
+  volume  = {9},
+  number  = {575},
+  year    = {2026},
+  doi     = {10.1038/s41746-026-02559-9},
+  url     = {https://www.nature.com/articles/s41746-026-02559-9},
+  annote    = {verified-full 2026-08-02 against the npj Digital Medicine article
+             page: ten authors, volume 9, article number 575, published
+             25 March 2026, DOI confirmed. Related arXiv preprint
+             arXiv:2502.20689 carries a different title and is NOT this
+             record.}
+}
+
+% Cost baseline the budget-matched arms must beat.
+% Peer-reviewed venue cited in preference to the preprint (ICLR 2025). Note the
+% published title reads "from Preference Data"; the arXiv preprint reads
+% "with Preference Data".
+@inproceedings{ong2024routellm,
+  author    = {Ong, Isaac and Almahairi, Amjad and Wu, Vincent and
+               Chiang, Wei-Lin and Wu, Tianhao and Gonzalez, Joseph E. and
+               Kadous, M. Waleed and Stoica, Ion},
+  title     = {{RouteLLM}: Learning to Route {LLM}s from Preference Data},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2025},
+  url       = {https://arxiv.org/abs/2406.18665},
+  annote      = {verified-full 2026-08-02: author list taken verbatim from the
+               arXiv abstract page (arXiv:2406.18665, submitted 26 June 2024);
+               ICLR 2025 publication and the ``from Preference Data'' title
+               confirmed via DBLP (conf/iclr/OngAWC0GKS25). Year corrected
+               2024 -> 2025; the key retains 2024.}
+}
+
+% Grounds the decision to scope to portable V1 (L4): the steering literature
+% has moved toward negative results on reliability.
+@article{steering2025whatcanwesteer,
+  author  = {Bas, Tetiana and Novak, Krystian},
+  title   = {What Can We Actually Steer? {A} Multi-Behavior Study of Activation
+             Control},
+  journal = {arXiv preprint arXiv:2511.18284},
+  year    = {2025},
+  url     = {https://arxiv.org/abs/2511.18284},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             v1 23 Nov 2025, v2 11 Jan 2026, cs.AI, two authors. Scope: 50
+             behaviors across personas, traits, misalignment patterns, style,
+             and public-figure impersonation. No peer-reviewed venue listed.}
+}
+
+@article{steering2026unreliability,
+  author  = {Braun, Joschka},
+  title   = {Understanding Unreliability of Steering Vectors in Language
+             Models: Geometric Predictors and the Limits of Linear
+             Approximations},
+  journal = {arXiv preprint arXiv:2602.17881},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2602.17881},
+  annote    = {verified-full 2026-08-02 against the arXiv abstract page:
+             submitted 19 Feb 2026, SINGLE author Joschka Braun. The record
+             states this is a Master's thesis (University of T{\"u}bingen,
+             89 pages); portions were published at the ICLR 2025 Workshop on
+             Foundation Models in the Wild (arXiv:2505.22637). Cite as an
+             unrefereed thesis, or cite the workshop paper for the parts it
+             covers.}
+}
+
+% ---------------------------------------------------------------------------
+% Added 2026-08-15 while drafting section 2.  Sources: NOVELTY_SEARCH_QUANT.md
+% sections 5-6.  Author lists and titles verified against the live arXiv API
+% on 2026-08-15 (export.arxiv.org), except cui2026empathy -- see its note.
+% ---------------------------------------------------------------------------
+
+@article{dietrich2026rolesfail,
+  author  = {Dietrich, Juergen},
+  title   = {When Roles Fail: Epistemic Constraints on Advocate Role Fidelity
+             in {LLM}-Based Political Statement Analysis},
+  journal = {arXiv preprint arXiv:2604.27228},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2604.27228},
+  annote    = {verified-api 2026-08-15. NEAREST PREDECESSOR (NOVELTY_SEARCH_QUANT
+             section 5). Single-author preprint, no venue: weight claim language
+             accordingly -- "a preprint reports", not "it is established".}
+}
+
+@inproceedings{cui2026empathy,
+  author    = {Bieberstein, Arndt and Schnitzer, Benjamin Lukas and
+               Gampe, Stefano and Korn, Oliver},
+  title     = {Do Prompt-Level Empathy Instructions Influence User Experience?
+               {E}vidence From A Controlled Chatbot Study},
+  booktitle = {Proceedings of the 8th ACM Conference on Conversational User
+               Interfaces (CUI)},
+  year      = {2026},
+  doi       = {10.1145/3816046.3816221},
+  annote    = {verified-api 2026-08-19 via Crossref (api.crossref.org/works/
+               10.1145/3816046.3816221), the DOI registry of record; ACM DL
+               itself still returns 403 to automated retrieval. Author list,
+               title, venue and year all confirmed against that record.}
+}
+
+@inproceedings{wang2024incharacter,
+  author    = {Wang, Xintao and Xiao, Yunze and Huang, Jen-tse and Yuan, Siyu
+               and Xu, Rui and Guo, Haoran and Tu, Quan and Fei, Yaying and
+               Leng, Ziang and Wang, Wei and Chen, Jiangjie and Li, Cheng and
+               Xiao, Yanghua},
+  title     = {{InCharacter}: Evaluating Personality Fidelity in Role-Playing
+               Agents through Psychological Interviews},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for
+               Computational Linguistics (ACL)},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2310.17976},
+  annote      = {verified-api 2026-08-15. Borderline predecessor; second screener
+               must adjudicate (NOVELTY_SEARCH_QUANT section 5).}
+}
+
+@inproceedings{cemri2025mast,
+  author    = {Cemri, Mert and Pan, Melissa Z. and Yang, Shuyi and
+               Agrawal, Lakshya A. and Chopra, Bhavya and Tiwari, Rishabh and
+               Keutzer, Kurt and Parameswaran, Aditya and Klein, Dan and
+               Ramchandran, Kannan and Zaharia, Matei and Gonzalez, Joseph E.
+               and Stoica, Ion},
+  title     = {Why Do Multi-Agent {LLM} Systems Fail?},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2025},
+  url       = {https://arxiv.org/abs/2503.13657},
+  annote      = {verified-api 2026-08-15. The MAST taxonomy; "disobey role
+               specification" is a post-hoc trace-annotation failure mode.}
+}
+
+@article{rosati2026rpacheck,
+  author  = {Rosati, Riccardo and Colucci, Edoardo and Bolognini, Massimiliano
+             and Mancini, Adriano and Sernani, Paolo},
+  title   = {{RPA-Check}: A Multi-Stage Automated Framework for Evaluating
+             Dynamic {LLM}-based Role-Playing Agents},
+  journal = {arXiv preprint arXiv:2604.11655},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2604.11655},
+  annote    = {verified-api 2026-08-15. Boolean per-role checklist via LLM-judge;
+             fidelity is the task metric, not a gate.}
+}
+
+@inproceedings{shin2025outofcharacter,
+  author    = {Shin, Jisu and Oh, Juhyun and Kim, Eunsu and Song, Hoyun and
+               Oh, Alice},
+  title     = {Spotting Out-of-Character Behavior: Atomic-Level Evaluation of
+               Persona Fidelity in Open-Ended Generation},
+  booktitle = {Findings of the Association for Computational Linguistics (ACL)},
+  year      = {2025},
+  url       = {https://arxiv.org/abs/2506.19352},
+  annote      = {verified-api 2026-08-15. Anthology 2025.findings-acl.1349.}
+}
+
+@inproceedings{hu2024personaeffect,
+  author    = {Hu, Tiancheng and Collier, Nigel},
+  title     = {Quantifying the Persona Effect in {LLM} Simulations},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for
+               Computational Linguistics (ACL)},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2402.10811},
+  annote      = {verified-api 2026-08-15. Anthology 2024.acl-long.554.}
+}
+
+% ---------------------------------------------------------------------------
+% Benchmark sources, added 2026-08-16 while drafting section 4. Author lists and
+% venues transcribed from the `provenance` field of each DatasetPin in
+% benchmarks/materialize.py, which BIBLIOGRAPHY.md records as human-verified.
+% ---------------------------------------------------------------------------
+
+@inproceedings{halueval2023,
+  author    = {Li, Junyi and Cheng, Xiaoxue and Zhao, Wayne Xin and
+               Nie, Jian-Yun and Wen, Ji-Rong},
+  title     = {{HaluEval}: A Large-Scale Hallucination Evaluation Benchmark for
+               Large Language Models},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in
+               Natural Language Processing (EMNLP)},
+  year      = {2023},
+  url       = {https://arxiv.org/abs/2305.11747},
+  annote      = {QA split, 10{,}000 items. Pinned revision
+               207f479c555a68b8d2431631a95083b84b2accbe; MIT licence.}
+}
+
+@inproceedings{truthfulqa2022,
+  author    = {Lin, Stephanie and Hilton, Jacob and Evans, Owain},
+  title     = {{TruthfulQA}: Measuring How Models Mimic Human Falsehoods},
+  booktitle = {Proceedings of the 60th Annual Meeting of the Association for
+               Computational Linguistics (ACL)},
+  year      = {2022},
+  url       = {https://arxiv.org/abs/2109.07958},
+  annote      = {Generation split, 817 questions. Pinned revision
+               741b8276f2d1982aa3d5b832d3ee81ed3b896490; Apache-2.0 licence.}
+}
+
+% ---------------------------------------------------------------------------
+% Manipulation-check methodology, added 2026-08-16. Both records verified
+% against Crossref on that date (api.crossref.org). Note both are CRITICAL of
+% manipulation-check practice; section 3 cites them as such, not as endorsement.
+% ---------------------------------------------------------------------------
+
+@article{hauser2018manipulation,
+  author  = {Hauser, David J. and Ellsworth, Phoebe C. and Gonzalez, Richard},
+  title   = {Are Manipulation Checks Necessary?},
+  journal = {Frontiers in Psychology},
+  volume  = {9},
+  pages   = {998},
+  year    = {2018},
+  doi     = {10.3389/fpsyg.2018.00998},
+  annote    = {verified-crossref 2026-08-16. Argues an administered check can act
+             as an intervention rather than a measure. Our checks are computed
+             post hoc from records already produced, so this critique does not
+             transfer -- state that explicitly rather than citing uncritically.}
+}
+
+@article{ejelov2020manipulation,
+  author  = {Ejel\"{o}v, Emma and Luke, Timothy J.},
+  title   = {``{R}arely safe to assume'': Evaluating the use and interpretation of
+             manipulation checks in experimental social psychology},
+  journal = {Journal of Experimental Social Psychology},
+  volume  = {87},
+  pages   = {103937},
+  year    = {2020},
+  doi     = {10.1016/j.jesp.2019.103937},
+  annote    = {verified-crossref 2026-08-16. Empirical review of 207 experiments;
+             supports "widespread practice" as a documented fact rather than an
+             assertion.}
+}

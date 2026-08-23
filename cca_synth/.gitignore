@@ -1,0 +1,17 @@
+# Release-bundle ignores. NOTE: unlike the development repository, runs/ and
+# *.jsonl are TRACKED here -- the collected records are the artifact.
+__pycache__/
+*.pyc
+.pytest_cache/
+.pytest-scratch/
+.venv/
+venv/
+.DS_Store
+# assistant tooling and local machine config
+.claude/
+CLAUDE.md
+.mcp.json
+# model weights: not needed by any analysis in the paper
+*.pt
+*.pth
+*.ckpt

@@ -1,0 +1,66 @@
+{
+ "artifact": "replication",
+ "n_items": 200,
+ "n_passed_primary": 1,
+ "n_passed_replication": 2,
+ "n_replicating": 4,
+ "n_roles": 6,
+ "n_sign_flips": 2,
+ "per_role": [
+  {
+   "d_primary": 1.0275357387084618,
+   "d_replication": 0.522350534877226,
+   "diff_primary": 0.675,
+   "diff_replication": 0.395,
+   "role": "counter_evidence_checker"
+  },
+  {
+   "d_primary": 0.04993730405057525,
+   "d_replication": 0.07071067811865474,
+   "diff_primary": 0.01,
+   "diff_replication": 0.005,
+   "role": "consistency_checker"
+  },
+  {
+   "d_primary": -0.18211717839530317,
+   "d_replication": 0.6940758958243661,
+   "diff_primary": -0.4,
+   "diff_replication": 1.89,
+   "role": "local_claim_checker"
+  },
+  {
+   "d_primary": -0.9511661426912795,
+   "d_replication": -1.6607238790001693,
+   "diff_primary": -0.855,
+   "diff_replication": -1.35,
+   "role": "explore_then_prune"
+  },
+  {
+   "d_primary": 0.030594609059125352,
+   "d_replication": -1.2503294162104863,
+   "diff_primary": 0.025,
+   "diff_replication": -1.04,
+   "role": "rare_hypothesis_checker"
+  },
+  {
+   "d_primary": -0.06296467421597145,
+   "d_replication": 0.07359201518590912,
+   "diff_primary": -0.0141,
+   "diff_replication": 0.006000000000000003,
+   "role": "confidence_calibrator"
+  }
+ ],
+ "primary_family": "gpt-5.6-terra",
+ "provenance": "real",
+ "regenerate_with": "python3 analysis_cross_family.py",
+ "replication_family": "grok-4.3",
+ "sign_flip_rule": "Same six checks, same 200 development items, two pretraining lineages. A sign flip is counted only where at least one family exceeds |d| = 0.20; two nulls of opposite sign are noise, not disagreement. The aggregate claim (most roles fail their own check) and the per-role verdicts are reported separately because they replicate differently.",
+ "source_files": {
+  "runs/checks-grok/check_records.jsonl": "aa264ab87ccfb92fec48f8aa373fa64bd494b24bf7ca48f8f369b99a142f78c4",
+  "runs/checks-grok/manipulation_report.json": "fe8cf09076556fe6904e95e5b2b5c55067eb435a61690d719a025fbe1e317699",
+  "runs/checks/check_records.jsonl": "df76176594b42d8b321ecbb8e42e6bbf53b17227715a8fe366b0796965250d06",
+  "runs/checks/manipulation_report.json": "e837ee9ff58dd71dacf60880b82d4c209fa147ef57ea4a08eacd96a491310ecc",
+  "runs/cross_family.json": "920a9cbedc32a434a37916dead5091e07883b911f871d97577b1396b85de2716"
+ },
+ "what": "Independent re-run of all six executable manipulation checks on a second pretraining lineage, using the same 200 development items and the same check functions. This is the replication referenced by the release checklist."
+}

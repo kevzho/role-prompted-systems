@@ -1,0 +1,550 @@
+{
+  "arms": {
+    "cca_synthesizer": {
+      "abstention_rate": 0.06666666666666667,
+      "accuracy": 0.782608695652174,
+      "accuracy_on_answered": 0.782608695652174,
+      "agent_confidence_ece": 0.3506129856238852,
+      "aurc": 0.11029725592384175,
+      "brier": 0.424227483420761,
+      "coverage": 0.9333333333333333,
+      "ece": 0.2605942286874937,
+      "loss": 1.401931275261773,
+      "mean_agent_dominance": 0.17301546037197113,
+      "mean_confidence": 0.4715033769607544,
+      "n_items": 270.0,
+      "selective_accuracy": 0.782608695652174
+    },
+    "cca_synthesizer_no_selective_abstention": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.782608695652174,
+      "accuracy_on_answered": 0.782608695652174,
+      "agent_confidence_ece": 0.3506129856238852,
+      "aurc": 0.11029725592384175,
+      "brier": 0.4242274831510827,
+      "coverage": 1.0,
+      "ece": 0.26059422868749366,
+      "loss": 1.4075936538201792,
+      "mean_agent_dominance": 0.17301546037197113,
+      "mean_confidence": 0.4715033769607544,
+      "n_items": 270.0,
+      "selective_accuracy": 0.782608695652174
+    },
+    "confidence_weighted_vote": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7934782608695652,
+      "accuracy_on_answered": 0.7934782608695652,
+      "agent_confidence_ece": 0.6115357887421821,
+      "aurc": 0.10732418565394136,
+      "brier": 0.38345146570257405,
+      "coverage": 1.0,
+      "ece": 0.1874629686708035,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.7924319505691528,
+      "n_items": 270.0,
+      "selective_accuracy": 0.7934782608695652
+    },
+    "direct_answer_base": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.8043478260869565,
+      "accuracy_on_answered": 0.8043478260869565,
+      "agent_confidence_ece": 0.6115357887421821,
+      "aurc": 0.28778555749587953,
+      "brier": 0.32548744648671724,
+      "coverage": 1.0,
+      "ece": 0.16123287217772525,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.5904910564422607,
+      "n_items": 270.0,
+      "selective_accuracy": 0.8043478260869565
+    },
+    "majority_vote": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.782608695652174,
+      "accuracy_on_answered": 0.782608695652174,
+      "agent_confidence_ece": 0.6115357887421821,
+      "aurc": 0.16691879625684508,
+      "brier": 0.38458681602012773,
+      "coverage": 1.0,
+      "ece": 0.19771464298600733,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.7953474521636963,
+      "n_items": 270.0,
+      "selective_accuracy": 0.782608695652174
+    },
+    "oracle_upper_bound_not_deployable": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.8695652173913043,
+      "accuracy_on_answered": 0.8695652173913043,
+      "agent_confidence_ece": 0.6115357887421821,
+      "aurc": 0.3906987978294497,
+      "brier": 0.3853715280422508,
+      "coverage": 1.0,
+      "ece": 0.3639743898225868,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.6498235464096069,
+      "n_items": 270.0,
+      "selective_accuracy": 0.8695652173913043
+    },
+    "single_agent::confidence_calibrator": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.8043478260869565,
+      "accuracy_on_answered": 0.8043478260869565,
+      "agent_confidence_ece": 0.6115357887421821,
+      "aurc": 0.28854074311406097,
+      "brier": 0.32548744648671724,
+      "coverage": 1.0,
+      "ece": 0.15283392466928647,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.6303583979606628,
+      "n_items": 270.0,
+      "selective_accuracy": 0.8043478260869565
+    },
+    "single_agent::consistency_checker": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.8043478260869565,
+      "accuracy_on_answered": 0.8043478260869565,
+      "agent_confidence_ece": 0.6115357887421821,
+      "aurc": 0.30103551124968186,
+      "brier": 0.32548744648671724,
+      "coverage": 1.0,
+      "ece": 0.15530454237823899,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.6113015413284302,
+      "n_items": 270.0,
+      "selective_accuracy": 0.8043478260869565
+    },
+    "single_agent::counter_evidence_checker": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7717391304347826,
+      "accuracy_on_answered": 0.7717391304347826,
+      "agent_confidence_ece": 0.6115357887421821,
+      "aurc": 0.3317160092102481,
+      "brier": 0.35562552301146844,
+      "coverage": 1.0,
+      "ece": 0.14789268795562827,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.6244323253631592,
+      "n_items": 270.0,
+      "selective_accuracy": 0.7717391304347826
+    },
+    "single_agent::explore_then_prune": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7989130434782609,
+      "accuracy_on_answered": 0.7989130434782609,
+      "agent_confidence_ece": 0.6115357887421821,
+      "aurc": 0.3008795602494315,
+      "brier": 0.3305104586171031,
+      "coverage": 1.0,
+      "ece": 0.15826870112315466,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.6292954087257385,
+      "n_items": 270.0,
+      "selective_accuracy": 0.7989130434782609
+    },
+    "single_agent::local_claim_checker": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7934782608695652,
+      "accuracy_on_answered": 0.7934782608695652,
+      "agent_confidence_ece": 0.6115357887421821,
+      "aurc": 0.2841363285021192,
+      "brier": 0.33553346850202737,
+      "coverage": 1.0,
+      "ece": 0.14789268860350488,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.6134398579597473,
+      "n_items": 270.0,
+      "selective_accuracy": 0.7934782608695652
+    },
+    "single_agent::rare_hypothesis_checker": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.8097826086956522,
+      "accuracy_on_answered": 0.8097826086956522,
+      "agent_confidence_ece": 0.6115357887421821,
+      "aurc": 0.2994566416939041,
+      "brier": 0.32046443510481853,
+      "coverage": 1.0,
+      "ece": 0.15826870630616724,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.6271162629127502,
+      "n_items": 270.0,
+      "selective_accuracy": 0.8097826086956522
+    }
+  },
+  "audit_records": {
+    "enabled": true,
+    "path": "<BUNDLE>/cca_synth/runs/arms-cca_council/audit_records.jsonl",
+    "written": 270
+  },
+  "calibration": {
+    "abstention_threshold": 0.09955012798309326,
+    "fitted_on": "calibration split only",
+    "target_coverage": 0.9,
+    "temperature": 0.5147038102149963
+  },
+  "config_hash": "541a000237a68c9cfc718abf9a8f6f1e647e16718e6fcd1f64f29b40da812b20",
+  "cost": {
+    "cost_usd_per_item": 0.026688881894504583,
+    "council_calls_per_item": 6.0,
+    "exclusions": {
+      "absent_agent_rate": 0.021604938271604937,
+      "absent_agent_records": {
+        "confidence_calibrator": 0,
+        "consistency_checker": 8,
+        "counter_evidence_checker": 8,
+        "explore_then_prune": 3,
+        "local_claim_checker": 6,
+        "rare_hypothesis_checker": 10
+      },
+      "retries_per_item": 0.0,
+      "total_retries": {
+        "confidence_calibrator": 0,
+        "consistency_checker": 0,
+        "counter_evidence_checker": 0,
+        "explore_then_prune": 0,
+        "local_claim_checker": 0,
+        "rare_hypothesis_checker": 0
+      }
+    },
+    "input_tokens_per_item": 575.3962962962963,
+    "mean_latency_ms_per_agent": {
+      "confidence_calibrator": 3331.884331597222,
+      "consistency_checker": 3492.5714988425925,
+      "counter_evidence_checker": 3619.712789351852,
+      "explore_then_prune": 3631.426417824074,
+      "local_claim_checker": 3728.1245949074073,
+      "rare_hypothesis_checker": 4500.590133101852
+    },
+    "n_items": 270,
+    "note": "Budget-matched comparison requires holding these quantities equal across arms; the unconstrained numbers above are the quality-cost frontier point, not a matched comparison.",
+    "output_tokens_per_item": 1659.4333432798032,
+    "per_agent_output_token_share": {
+      "confidence_calibrator": 0.15420926729977832,
+      "consistency_checker": 0.16327305122504043,
+      "counter_evidence_checker": 0.16408769953254856,
+      "explore_then_prune": 0.16674143460888716,
+      "local_claim_checker": 0.1814921180686695,
+      "rare_hypothesis_checker": 0.170196429265076
+    },
+    "per_agent_output_tokens_per_item": {
+      "confidence_calibrator": 255.9,
+      "consistency_checker": 270.9407452618634,
+      "counter_evidence_checker": 272.2925998263889,
+      "explore_then_prune": 276.6962962962963,
+      "local_claim_checker": 301.174072265625,
+      "rare_hypothesis_checker": 282.42962962962963
+    }
+  },
+  "data": {
+    "absent_agent_rate": 0.020666666666666667,
+    "absent_agent_records": 186,
+    "exclusion_ledger": {
+      "abstentions_by_role": {
+        "confidence_calibrator": 143,
+        "consistency_checker": 179,
+        "counter_evidence_checker": 86,
+        "explore_then_prune": 67,
+        "local_claim_checker": 207,
+        "rare_hypothesis_checker": 42
+      },
+      "flags_on_present_records": {
+        "calculation_error": 3,
+        "contradiction": 463,
+        "format_invalid": 0,
+        "injection_suspected": 1643,
+        "privacy_sensitive": 1,
+        "refusal": 1,
+        "truncated_output": 0,
+        "unsupported_claim": 921
+      },
+      "missing_outputs": {
+        "by_failure_flag": {
+          "calculation_error": 0,
+          "contradiction": 0,
+          "format_invalid": 2,
+          "injection_suspected": 0,
+          "privacy_sensitive": 0,
+          "refusal": 184,
+          "truncated_output": 0,
+          "unsupported_claim": 0
+        },
+        "by_role": {
+          "confidence_calibrator": 10,
+          "consistency_checker": 43,
+          "counter_evidence_checker": 31,
+          "explore_then_prune": 22,
+          "local_claim_checker": 38,
+          "rare_hypothesis_checker": 42
+        },
+        "rate": 0.020666666666666667,
+        "total": 186,
+        "unexplained": 0
+      },
+      "n_expected_calls": 9000,
+      "n_items": 1500,
+      "note": "Published per specification section 8. 'unexplained' counts absent records carrying no failure_flag; a non-zero value means the orchestrator dropped a call without recording why.",
+      "retries": {
+        "by_role": {
+          "confidence_calibrator": 0,
+          "consistency_checker": 0,
+          "counter_evidence_checker": 0,
+          "explore_then_prune": 0,
+          "local_claim_checker": 0,
+          "rare_hypothesis_checker": 0
+        },
+        "calls_with_at_least_one_retry": 0,
+        "per_item": 0.0,
+        "total": 0
+      },
+      "source_lines": 1500,
+      "unparsable_lines": 0
+    },
+    "n_parsed": 1500,
+    "n_raw": 1500,
+    "parse_failures": 0,
+    "provenance": "real",
+    "records_path": "runs/arms/records.cca_council.jsonl",
+    "split_fractions": [
+      0.5,
+      0.15,
+      0.15,
+      0.2
+    ],
+    "split_salt": "cca-synth-v1",
+    "split_sizes": {
+      "calibration": 229,
+      "test": 270,
+      "train": 526,
+      "validation": 219
+    },
+    "unlabelled_train_items_dropped": 256
+  },
+  "disclaimer": "These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.",
+  "error_correlation": {
+    "interpretation": "High off-diagonal correlation means the council supplies less independent evidence than its agent count implies (limitation L7). It does not by itself invalidate a measured gain, but it bounds how much of that gain can be attributed to diversity.",
+    "matrix": [
+      [
+        1.0,
+        0.841576800457577,
+        0.746144032089019,
+        0.8255707129382661,
+        0.8581767029610222,
+        0.8089355417551751
+      ],
+      [
+        0.8415768004575771,
+        0.9999999999999999,
+        0.7298293579318369,
+        0.9488755389384196,
+        0.8430722329465138,
+        0.8618618618618616
+      ],
+      [
+        0.7461440320890189,
+        0.7298293579318369,
+        1.0,
+        0.7489219022833657,
+        0.6763434868418703,
+        0.7636722515456117
+      ],
+      [
+        0.8255707129382661,
+        0.9488755389384196,
+        0.7489219022833657,
+        1.0,
+        0.7933047003454098,
+        0.9146952141215304
+      ],
+      [
+        0.8581767029610221,
+        0.8430722329465137,
+        0.6763434868418703,
+        0.7933047003454098,
+        1.0,
+        0.7034455084981263
+      ],
+      [
+        0.8089355417551751,
+        0.8618618618618616,
+        0.7636722515456116,
+        0.9146952141215305,
+        0.7034455084981261,
+        0.9999999999999999
+      ]
+    ],
+    "max_off_diagonal": 0.9488755389384196,
+    "mean_off_diagonal": 0.804295056367707,
+    "n_items_all_agents_answered": 184,
+    "roles": [
+      "counter_evidence_checker",
+      "consistency_checker",
+      "local_claim_checker",
+      "explore_then_prune",
+      "rare_hypothesis_checker",
+      "confidence_calibrator"
+    ],
+    "solo_accuracy": {
+      "confidence_calibrator": 0.804347813129425,
+      "consistency_checker": 0.804347813129425,
+      "counter_evidence_checker": 0.77173912525177,
+      "explore_then_prune": 0.7989130616188049,
+      "local_claim_checker": 0.79347825050354,
+      "rare_hypothesis_checker": 0.8097826242446899
+    }
+  },
+  "paired_contrasts_vs_synthesizer": [
+    {
+      "comparator": "direct_answer_base",
+      "deployable_comparator": true,
+      "diff": -0.021739130434782594,
+      "hi": 0.01630434782608703,
+      "lo": -0.05978260869565222,
+      "n": 184.0,
+      "p_superior": 0.122,
+      "p_two_sided": 0.3455
+    },
+    {
+      "comparator": "majority_vote",
+      "deployable_comparator": true,
+      "diff": 0.0,
+      "hi": 0.03260869565217395,
+      "lo": -0.03260869565217395,
+      "n": 184.0,
+      "p_superior": 0.447,
+      "p_two_sided": 1.0
+    },
+    {
+      "comparator": "confidence_weighted_vote",
+      "deployable_comparator": true,
+      "diff": -0.010869565217391242,
+      "hi": 0.02717391304347827,
+      "lo": -0.048913043478260865,
+      "n": 184.0,
+      "p_superior": 0.2285,
+      "p_two_sided": 0.662
+    },
+    {
+      "comparator": "oracle_upper_bound_not_deployable",
+      "deployable_comparator": false,
+      "diff": -0.08695652173913038,
+      "hi": -0.048913043478260865,
+      "lo": -0.13043478260869568,
+      "n": 184.0,
+      "p_superior": 0.0,
+      "p_two_sided": 0.0
+    },
+    {
+      "comparator": "single_agent::counter_evidence_checker",
+      "deployable_comparator": true,
+      "diff": 0.010869565217391353,
+      "hi": 0.048913043478260865,
+      "lo": -0.02717391304347827,
+      "n": 184.0,
+      "p_superior": 0.661,
+      "p_two_sided": 0.5835
+    },
+    {
+      "comparator": "single_agent::consistency_checker",
+      "deployable_comparator": true,
+      "diff": -0.021739130434782594,
+      "hi": 0.01630434782608703,
+      "lo": -0.05978260869565222,
+      "n": 184.0,
+      "p_superior": 0.1115,
+      "p_two_sided": 0.3545
+    },
+    {
+      "comparator": "single_agent::local_claim_checker",
+      "deployable_comparator": true,
+      "diff": -0.010869565217391242,
+      "hi": 0.016304347826086918,
+      "lo": -0.03804347826086962,
+      "n": 184.0,
+      "p_superior": 0.148,
+      "p_two_sided": 0.532
+    },
+    {
+      "comparator": "single_agent::explore_then_prune",
+      "deployable_comparator": true,
+      "diff": -0.016304347826086918,
+      "hi": 0.021739130434782594,
+      "lo": -0.05434782608695654,
+      "n": 184.0,
+      "p_superior": 0.1545,
+      "p_two_sided": 0.4785
+    },
+    {
+      "comparator": "single_agent::rare_hypothesis_checker",
+      "deployable_comparator": true,
+      "diff": -0.02717391304347827,
+      "hi": 0.016304347826086918,
+      "lo": -0.07065217391304346,
+      "n": 184.0,
+      "p_superior": 0.0835,
+      "p_two_sided": 0.2495
+    },
+    {
+      "comparator": "single_agent::confidence_calibrator",
+      "deployable_comparator": true,
+      "diff": -0.021739130434782594,
+      "hi": 0.021739130434782594,
+      "lo": -0.06521739130434778,
+      "n": 184.0,
+      "p_superior": 0.124,
+      "p_two_sided": 0.375
+    }
+  ],
+  "provenance": "real",
+  "robustness": {
+    "clean_accuracy": 0.782608687877655,
+    "confidently_wrong_majority": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.489130437374115,
+      "base_fallback_rate": 0.6630434989929199,
+      "degradation": 0.29347825050354004
+    },
+    "evidence_free_agreement": {
+      "abstention_rate": 0.005434782709926367,
+      "accuracy": 0.0,
+      "base_fallback_rate": 0.19565217196941376,
+      "degradation": 0.782608687877655
+    },
+    "option_permutation_equivariance": {
+      "agreement": 0.996875,
+      "max_abs_logit_deviation": 0.0,
+      "note": "Nothing in the option scorer embeds the option index, so relabelling answer options must carry each score with it. max_abs_logit_deviation is the exact test; argmax agreement below 1.0 with a tiny deviation means near-ties flipping under float non-associativity, not position bias."
+    },
+    "permutation_invariance": {
+      "max_abs_logit_deviation": 1.1920928955078125e-07,
+      "note": "The set encoder has no positional encoding over the agent axis and role identity enters only as content, so invariance is a structural guarantee; a failure here indicates a bug.",
+      "passed": true,
+      "tolerance": 0.0001
+    },
+    "prompt_injection_via_agent_output": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.6739130616188049,
+      "base_fallback_rate": 0.8260869383811951,
+      "degradation": 0.1086956262588501
+    },
+    "role_label_permutation": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7771739363670349,
+      "base_fallback_rate": 0.9402173757553101,
+      "degradation": 0.005434751510620117,
+      "note": "Under model.use_role_embeddings=False this degradation must be exactly zero. A large value in the role-aware configuration means the model relies on role labels rather than on the operations they stand for (RQ3).",
+      "role_blind_model": false
+    },
+    "split": "test"
+  },
+  "run_id": "arms-cca_council"
+}

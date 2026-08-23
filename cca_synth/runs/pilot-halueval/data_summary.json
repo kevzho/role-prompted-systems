@@ -1,0 +1,66 @@
+{
+  "calibration": {
+    "by_benchmark": {
+      "advconsistency": 0,
+      "creative_divergence": 0,
+      "halueval": 26,
+      "math_aime": 0,
+      "sycophancy": 0,
+      "temporal_qa": 0,
+      "truthfulqa": 0
+    },
+    "labelled_fraction": 1.0,
+    "mean_claims_per_item": 14.26923076923077,
+    "mean_options": 2.0,
+    "n_items": 26,
+    "provenance": "real"
+  },
+  "test": {
+    "by_benchmark": {
+      "advconsistency": 0,
+      "creative_divergence": 0,
+      "halueval": 47,
+      "math_aime": 0,
+      "sycophancy": 0,
+      "temporal_qa": 0,
+      "truthfulqa": 0
+    },
+    "labelled_fraction": 1.0,
+    "mean_claims_per_item": 14.25531914893617,
+    "mean_options": 2.0,
+    "n_items": 47,
+    "provenance": "real"
+  },
+  "train": {
+    "by_benchmark": {
+      "advconsistency": 0,
+      "creative_divergence": 0,
+      "halueval": 98,
+      "math_aime": 0,
+      "sycophancy": 0,
+      "temporal_qa": 0,
+      "truthfulqa": 0
+    },
+    "labelled_fraction": 1.0,
+    "mean_claims_per_item": 14.438775510204081,
+    "mean_options": 2.0,
+    "n_items": 98,
+    "provenance": "real"
+  },
+  "validation": {
+    "by_benchmark": {
+      "advconsistency": 0,
+      "creative_divergence": 0,
+      "halueval": 29,
+      "math_aime": 0,
+      "sycophancy": 0,
+      "temporal_qa": 0,
+      "truthfulqa": 0
+    },
+    "labelled_fraction": 1.0,
+    "mean_claims_per_item": 12.724137931034482,
+    "mean_options": 2.0,
+    "n_items": 29,
+    "provenance": "real"
+  }
+}

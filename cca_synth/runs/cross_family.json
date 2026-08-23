@@ -1,0 +1,123 @@
+{
+  "n_passed_primary": 1,
+  "n_passed_replication": 2,
+  "n_replicating": 4,
+  "n_roles": 6,
+  "n_sign_flips": 2,
+  "negligible_d_threshold": 0.2,
+  "note": "Same six checks, same 200 development items, two pretraining lineages. A sign flip is counted only where at least one family exceeds |d| = 0.20; two nulls of opposite sign are noise, not disagreement. The aggregate claim (most roles fail their own check) and the per-role verdicts are reported separately because they replicate differently.",
+  "roles": [
+    {
+      "agreement": "replicates",
+      "d_primary": 1.0275357387084618,
+      "d_replication": 0.522350534877226,
+      "diff_primary": 0.675,
+      "diff_replication": 0.395,
+      "hi_primary": 0.765,
+      "hi_replication": 0.495,
+      "lo_primary": 0.585,
+      "lo_replication": 0.29,
+      "passed_primary": true,
+      "passed_replication": true,
+      "q_primary": 0.0015,
+      "q_replication": 0.00075,
+      "role": "counter_evidence_checker"
+    },
+    {
+      "agreement": "null_on_both",
+      "d_primary": 0.04993730405057525,
+      "d_replication": 0.07071067811865474,
+      "diff_primary": 0.01,
+      "diff_replication": 0.005,
+      "hi_primary": 0.04,
+      "hi_replication": 0.015,
+      "lo_primary": -0.015,
+      "lo_replication": 0.0,
+      "passed_primary": false,
+      "passed_replication": false,
+      "q_primary": 0.6863999999999999,
+      "q_replication": 0.729,
+      "role": "consistency_checker"
+    },
+    {
+      "agreement": "sign_flip",
+      "d_primary": -0.18211717839530317,
+      "d_replication": 0.6940758958243661,
+      "diff_primary": -0.4,
+      "diff_replication": 1.89,
+      "hi_primary": -0.1,
+      "hi_replication": 2.295124999999999,
+      "lo_primary": -0.7002499999999999,
+      "lo_replication": 1.515,
+      "passed_primary": false,
+      "passed_replication": true,
+      "q_primary": 0.016,
+      "q_replication": 0.00075,
+      "role": "local_claim_checker"
+    },
+    {
+      "agreement": "replicates",
+      "d_primary": -0.9511661426912795,
+      "d_replication": -1.6607238790001693,
+      "diff_primary": -0.855,
+      "diff_replication": -1.35,
+      "hi_primary": -0.73,
+      "hi_replication": -1.245,
+      "lo_primary": -0.985,
+      "lo_replication": -1.46,
+      "passed_primary": false,
+      "passed_replication": false,
+      "q_primary": 0.0015,
+      "q_replication": 0.00075,
+      "role": "explore_then_prune"
+    },
+    {
+      "agreement": "sign_flip",
+      "d_primary": 0.030594609059125352,
+      "d_replication": -1.2503294162104863,
+      "diff_primary": 0.025,
+      "diff_replication": -1.04,
+      "hi_primary": 0.14,
+      "hi_replication": -0.925,
+      "lo_primary": -0.08512499999999999,
+      "lo_replication": -1.155,
+      "passed_primary": false,
+      "passed_replication": false,
+      "q_primary": 0.707,
+      "q_replication": 0.00075,
+      "role": "rare_hypothesis_checker"
+    },
+    {
+      "agreement": "null_on_both",
+      "d_primary": -0.06296467421597145,
+      "d_replication": 0.07359201518590912,
+      "diff_primary": -0.0141,
+      "diff_replication": 0.006000000000000003,
+      "hi_primary": 0.016404999999999975,
+      "hi_replication": 0.01875,
+      "lo_primary": -0.044452500000000006,
+      "lo_replication": -0.004749999999999993,
+      "passed_primary": false,
+      "passed_replication": false,
+      "q_primary": 0.546,
+      "q_replication": 0.3336,
+      "role": "confidence_calibrator"
+    }
+  ],
+  "verbalised_confidence": {
+    "primary": {
+      "mean": 0.9828000000000001,
+      "n": 3600,
+      "n_distinct_values": 21,
+      "sd": 0.02405997136785956,
+      "share_at_or_above_0.95": 0.9333333333333333
+    },
+    "replication": {
+      "mean": 0.8686527777777778,
+      "n": 3600,
+      "n_distinct_values": 8,
+      "sd": 0.06725772564509311,
+      "share_at_or_above_0.95": 0.15361111111111111
+    }
+  }
+}

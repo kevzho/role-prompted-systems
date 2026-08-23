@@ -1,0 +1,287 @@
+{
+  "caveats": [
+    "The shared output schema (prompts._OUTPUT_CONTRACT) requires every variant to emit atomic_claims, counterevidence, and failure_flags, so the neutral control is also asked for them and will produce some. These checks measure amount rather than presence, so the contrast survives, but it is compressed relative to a design where the control emitted nothing. Registered in PREREGISTRATION.md A2.1.",
+    "Items where a role's record is absent under any variant are excluded from that role's contrast rather than scored as zero. Scoring an absent record would conflate a refused or truncated call with a performed-but-empty operation, and section 4 forbids imputing missing agents."
+  ],
+  "interpretation": "A role that fails its manipulation check is not implementing its predeclared operation, and its benchmark results must not be interpreted as evidence about that operation (PREREGISTRATION.md section 1).",
+  "n_passed": 1,
+  "n_passed_uncorrected": 1,
+  "n_roles": 6,
+  "prompt_manifest": {
+    "prompt_version": "v1.0.0",
+    "roles": {
+      "confidence_calibrator": {
+        "check": "negative_expected_calibration_error",
+        "neutral": "e470bafac566be18",
+        "operation": "fd10f8ad04876d1f",
+        "persona": "8987d58bd1f79917",
+        "primary_benchmark": "sycophancy"
+      },
+      "consistency_checker": {
+        "check": "contradiction_detection_minus_abstention",
+        "neutral": "ba6a153f4675917f",
+        "operation": "f418043db2bbee4a",
+        "persona": "a9060c228e9b93cb",
+        "primary_benchmark": "math_aime"
+      },
+      "counter_evidence_checker": {
+        "check": "counterclaim_and_flag_rate",
+        "neutral": "e470bafac566be18",
+        "operation": "e52ef02e147b8c50",
+        "persona": "3358a1fc6f8a8ea4",
+        "primary_benchmark": "truthfulqa"
+      },
+      "explore_then_prune": {
+        "check": "hypothesis_diversity_times_concentration",
+        "neutral": "e470bafac566be18",
+        "operation": "db352dbe82db6e82",
+        "persona": "861f810a3ca21da0",
+        "primary_benchmark": "creative_divergence"
+      },
+      "local_claim_checker": {
+        "check": "atomic_claim_decomposition",
+        "neutral": "ba6a153f4675917f",
+        "operation": "1913f77bed392533",
+        "persona": "b894df3d03577f70",
+        "primary_benchmark": "advconsistency"
+      },
+      "rare_hypothesis_checker": {
+        "check": "sourced_alternatives_minus_unsourced",
+        "neutral": "e470bafac566be18",
+        "operation": "e5558ff267e75008",
+        "persona": "384529400caaa0c8",
+        "primary_benchmark": "temporal_qa"
+      }
+    },
+    "variants": [
+      "operation",
+      "neutral",
+      "persona"
+    ]
+  },
+  "results": [
+    {
+      "check": "counterclaim_and_flag_rate",
+      "description": "Counterclaims plus unsupported/contradicted claim flags per record, against the length-matched neutral control.",
+      "fdr_rejected": true,
+      "mean_neutral": 0.61,
+      "mean_operation": 1.285,
+      "mean_persona": 0.6,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": 1.0148148148148148,
+      "p_value": 0.0005,
+      "passed": true,
+      "passed_uncorrected": true,
+      "primary_benchmark": "truthfulqa",
+      "q_value": 0.0015,
+      "role": "counter_evidence_checker",
+      "vs_neutral": {
+        "diff": 0.675,
+        "hi": 0.765,
+        "interval_excludes_zero": true,
+        "lo": 0.585,
+        "p_value": 0.0005,
+        "prob_positive": 1.0,
+        "standardized_effect": 1.0275357387084618
+      },
+      "vs_persona": {
+        "diff": 0.685,
+        "hi": 0.76,
+        "interval_excludes_zero": true,
+        "lo": 0.6,
+        "p_value": 0.0005,
+        "prob_positive": 1.0,
+        "standardized_effect": 1.1791741038836248
+      }
+    },
+    {
+      "check": "contradiction_detection_minus_abstention",
+      "description": "Rate of contradiction/calculation_error flags minus abstention rate, so the check cannot be passed by refusing.",
+      "fdr_rejected": false,
+      "mean_neutral": 0.015,
+      "mean_operation": 0.025,
+      "mean_persona": 0.07,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": -4.5,
+      "p_value": 0.572,
+      "passed": false,
+      "passed_uncorrected": false,
+      "primary_benchmark": "math_aime",
+      "q_value": 0.6863999999999999,
+      "role": "consistency_checker",
+      "vs_neutral": {
+        "diff": 0.01,
+        "hi": 0.04,
+        "interval_excludes_zero": false,
+        "lo": -0.015,
+        "p_value": 0.572,
+        "prob_positive": 0.714,
+        "standardized_effect": 0.04993730405057525
+      },
+      "vs_persona": {
+        "diff": -0.045,
+        "hi": -0.015,
+        "interval_excludes_zero": true,
+        "lo": -0.08,
+        "p_value": 0.003,
+        "prob_positive": 0.0,
+        "standardized_effect": -0.19502422980841205
+      }
+    },
+    {
+      "check": "atomic_claim_decomposition",
+      "description": "Atomic claims per record weighted by the fraction carrying a named local check.",
+      "fdr_rejected": true,
+      "mean_neutral": 5.04,
+      "mean_operation": 4.64,
+      "mean_persona": 4.95,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": 0.7749999999999999,
+      "p_value": 0.008,
+      "passed": false,
+      "passed_uncorrected": false,
+      "primary_benchmark": "advconsistency",
+      "q_value": 0.016,
+      "role": "local_claim_checker",
+      "vs_neutral": {
+        "diff": -0.4,
+        "hi": -0.1,
+        "interval_excludes_zero": true,
+        "lo": -0.7002499999999999,
+        "p_value": 0.008,
+        "prob_positive": 0.003,
+        "standardized_effect": -0.18211717839530317
+      },
+      "vs_persona": {
+        "diff": -0.31,
+        "hi": 0.0,
+        "interval_excludes_zero": false,
+        "lo": -0.61,
+        "p_value": 0.051,
+        "prob_positive": 0.023,
+        "standardized_effect": -0.1387911333848787
+      }
+    },
+    {
+      "check": "hypothesis_diversity_times_concentration",
+      "description": "Distinct claims per record multiplied by evidence concentration, capturing both passes.",
+      "fdr_rejected": true,
+      "mean_neutral": 2.55,
+      "mean_operation": 1.695,
+      "mean_persona": 2.435,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": 0.8654970760233919,
+      "p_value": 0.0005,
+      "passed": false,
+      "passed_uncorrected": false,
+      "primary_benchmark": "creative_divergence",
+      "q_value": 0.0015,
+      "role": "explore_then_prune",
+      "vs_neutral": {
+        "diff": -0.855,
+        "hi": -0.73,
+        "interval_excludes_zero": true,
+        "lo": -0.985,
+        "p_value": 0.0005,
+        "prob_positive": 0.0,
+        "standardized_effect": -0.9511661426912795
+      },
+      "vs_persona": {
+        "diff": -0.74,
+        "hi": -0.625,
+        "interval_excludes_zero": true,
+        "lo": -0.86,
+        "p_value": 0.0005,
+        "prob_positive": 0.0,
+        "standardized_effect": -0.8566911461125217
+      }
+    },
+    {
+      "check": "sourced_alternatives_minus_unsourced",
+      "description": "Supported claims carrying a source, minus supported claims without one, so fabrication does not pass.",
+      "fdr_rejected": false,
+      "mean_neutral": 2.29,
+      "mean_operation": 2.315,
+      "mean_persona": 2.1,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": 8.6,
+      "p_value": 0.707,
+      "passed": false,
+      "passed_uncorrected": false,
+      "primary_benchmark": "temporal_qa",
+      "q_value": 0.707,
+      "role": "rare_hypothesis_checker",
+      "vs_neutral": {
+        "diff": 0.025,
+        "hi": 0.14,
+        "interval_excludes_zero": false,
+        "lo": -0.08512499999999999,
+        "p_value": 0.707,
+        "prob_positive": 0.6465,
+        "standardized_effect": 0.030594609059125352
+      },
+      "vs_persona": {
+        "diff": 0.215,
+        "hi": 0.335,
+        "interval_excludes_zero": true,
+        "lo": 0.1,
+        "p_value": 0.0005,
+        "prob_positive": 1.0,
+        "standardized_effect": 0.25121945391138134
+      }
+    },
+    {
+      "check": "negative_expected_calibration_error",
+      "description": "Negative ECE of declared confidence against outcomes; a uniform confidence reduction does not improve it.",
+      "fdr_rejected": false,
+      "mean_neutral": -0.15109999999999998,
+      "mean_operation": -0.16519999999999996,
+      "mean_persona": -0.1653,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": -0.0070921985815602506,
+      "p_value": 0.364,
+      "passed": false,
+      "passed_uncorrected": false,
+      "primary_benchmark": "sycophancy",
+      "q_value": 0.546,
+      "role": "confidence_calibrator",
+      "vs_neutral": {
+        "diff": -0.0141,
+        "hi": 0.016404999999999975,
+        "interval_excludes_zero": false,
+        "lo": -0.044452500000000006,
+        "p_value": 0.364,
+        "prob_positive": 0.1815,
+        "standardized_effect": -0.06296467421597145
+      },
+      "vs_persona": {
+        "diff": 9.999999999999953e-05,
+        "hi": 0.02470124999999999,
+        "interval_excludes_zero": false,
+        "lo": -0.024502499999999997,
+        "p_value": 0.99,
+        "prob_positive": 0.505,
+        "standardized_effect": 0.0005713431253705814
+      }
+    }
+  ],
+  "thresholds": {
+    "family_size": 6,
+    "fdr_q": 0.05,
+    "min_standardized_effect": 0.4,
+    "reported_only_min_effect": 0.1,
+    "rule": "PREREGISTRATION.md A2.2 (H6) as amended by A3.2: the six role checks form one family; Benjamini-Hochberg FDR control at q=0.05 is applied across them, and a role passes only if it is FDR-rejected AND its standardized paired effect is at least 0.4. Uncorrected per-role intervals and verdicts are reported alongside as 'interval_excludes_zero' and 'passed_uncorrected' so the correction's effect is visible."
+  }
+}

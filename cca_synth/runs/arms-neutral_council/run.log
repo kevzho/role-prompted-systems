@@ -1,0 +1,574 @@
+2026-08-16 11:15:07,031 | INFO    | ==============================================================================
+2026-08-16 11:15:07,031 | INFO    | CCA calibrated synthesizer | run_id=arms-neutral_council
+2026-08-16 11:15:07,031 | INFO    | config_hash=a905600db20304a2
+2026-08-16 11:15:07,031 | INFO    | DISCLAIMER: These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.
+2026-08-16 11:15:07,031 | INFO    | DATA PROVENANCE: REAL (runs/arms/records.neutral_council.jsonl)
+2026-08-16 11:15:07,031 | INFO    | ==============================================================================
+2026-08-16 11:15:07,031 | INFO    | device=mps world_size=1 amp=True
+2026-08-16 11:15:07,270 | INFO    | model parameters: 2,454,540 | splits: {'train': 257, 'calibration': 154, 'validation': 151, 'test': 182}
+2026-08-16 11:15:12,392 | INFO    | epoch 0 | train loss 1.2750 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 1.8s
+2026-08-16 11:15:16,174 | INFO    | epoch 1 | train loss 1.0060 | val selective_accuracy 0.8378 | best 0.8378 (epoch 1) | 0.3s
+2026-08-16 11:15:18,570 | INFO    | epoch 2 | train loss 0.9453 | val selective_accuracy 0.8378 | best 0.8378 (epoch 1) | 0.3s
+2026-08-16 11:15:20,951 | INFO    | epoch 3 | train loss 0.8605 | val selective_accuracy 0.8378 | best 0.8378 (epoch 1) | 0.3s
+2026-08-16 11:15:22,833 | INFO    | epoch 4 | train loss 0.8305 | val selective_accuracy 0.7432 | best 0.8378 (epoch 1) | 0.3s
+2026-08-16 11:15:25,580 | INFO    | epoch 5 | train loss 0.7559 | val selective_accuracy 0.8378 | best 0.8378 (epoch 1) | 0.4s
+2026-08-16 11:15:27,987 | INFO    | epoch 6 | train loss 0.7149 | val selective_accuracy 0.7973 | best 0.8378 (epoch 1) | 0.3s
+2026-08-16 11:15:30,742 | INFO    | epoch 7 | train loss 0.6733 | val selective_accuracy 0.8378 | best 0.8378 (epoch 1) | 0.3s
+2026-08-16 11:15:33,121 | INFO    | epoch 8 | train loss 0.7100 | val selective_accuracy 0.8243 | best 0.8378 (epoch 1) | 0.3s
+2026-08-16 11:15:34,984 | INFO    | epoch 9 step 50 | loss 3.5891 | answer 1.7858 | calib 2.3394 | lr 2.41e-04
+2026-08-16 11:15:35,073 | INFO    | epoch 9 | train loss 0.6679 | val selective_accuracy 0.7297 | best 0.8378 (epoch 1) | 0.3s
+2026-08-16 11:15:35,073 | INFO    | early stopping at epoch 9 after 8 rounds without improvement
+2026-08-16 11:15:36,550 | INFO    | training complete in 29.2s | best selective_accuracy=0.8378 at epoch 1
+2026-08-16 11:15:36,554 | INFO    | ==============================================================================
+2026-08-16 11:15:36,554 | INFO    | CCA calibrated synthesizer | run_id=arms-neutral_council
+2026-08-16 11:15:36,554 | INFO    | config_hash=a905600db20304a2
+2026-08-16 11:15:36,554 | INFO    | DISCLAIMER: These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.
+2026-08-16 11:15:36,554 | INFO    | DATA PROVENANCE: REAL (runs/arms/records.neutral_council.jsonl)
+2026-08-16 11:15:36,554 | INFO    | ==============================================================================
+2026-08-16 11:15:36,554 | INFO    | device=mps world_size=1 amp=True
+2026-08-16 11:15:36,649 | INFO    | model parameters: 2,454,540 | splits: {'train': 257, 'calibration': 154, 'validation': 151, 'test': 182}
+2026-08-16 11:15:37,747 | INFO    | fitted temperature: 0.5642
+2026-08-16 11:15:37,847 | INFO    | selective threshold 0.1090 at target coverage 0.90
+2026-08-16 11:15:39,573 | INFO    | 
+arm                                      accuracy  selective_accuracy  coverage  ece     brier   aurc  
+---------------------------------------  --------  ------------------  --------  ------  ------  ------
+cca_synthesizer                          0.8021    0.8021              0.9451    0.2735  0.4242  0.0964
+cca_synthesizer_no_selective_abstention  0.8021    0.8021              0.9945    0.2735  0.4242  0.0964
+direct_answer_base                       0.3854    0.3854              1.0000    0.1667  0.5000  0.6641
+majority_vote                            0.8125    0.8125              1.0000    0.1740  0.3685  0.1539
+confidence_weighted_vote                 0.8125    0.8125              1.0000    0.1723  0.3643  0.1091
+oracle_upper_bound_not_deployable        0.8646    0.8646              1.0000    0.3468  0.3946  0.3958
+single_agent::counter_evidence_checker   0.8021    0.8021              1.0000    0.1890  0.3276  0.2862
+single_agent::consistency_checker        0.8021    0.8021              1.0000    0.1890  0.3276  0.3145
+single_agent::local_claim_checker        0.8125    0.8125              1.0000    0.1994  0.3180  0.2999
+single_agent::explore_then_prune         0.7917    0.7917              1.0000    0.1866  0.3372  0.3218
+single_agent::rare_hypothesis_checker    0.8021    0.8021              1.0000    0.1762  0.3276  0.3070
+single_agent::confidence_calibrator      0.8229    0.8229              1.0000    0.1762  0.3083  0.2874
+2026-08-16 11:15:39,641 | INFO    | ==============================================================================
+2026-08-16 11:15:39,641 | INFO    | CCA calibrated synthesizer | run_id=arms-neutral_council
+2026-08-16 11:15:39,641 | INFO    | config_hash=a905600db20304a2
+2026-08-16 11:15:39,641 | INFO    | DISCLAIMER: These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.
+2026-08-16 11:15:39,641 | INFO    | DATA PROVENANCE: REAL (runs/arms/records.neutral_council.jsonl)
+2026-08-16 11:15:39,641 | INFO    | ==============================================================================
+2026-08-16 11:15:39,641 | INFO    | device=mps world_size=1 amp=True
+2026-08-16 11:15:39,737 | INFO    | model parameters: 2,454,540 | splits: {'train': 257, 'calibration': 154, 'validation': 151, 'test': 182}
+2026-08-16 11:15:40,913 | INFO    | retraining coalition 1/7: (1, 1, 1, 1, 1, 1)
+2026-08-16 11:15:45,716 | INFO    | epoch 0 | train loss 1.2574 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 1.3s
+2026-08-16 11:15:46,231 | INFO    | epoch 1 | train loss 1.0128 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:15:46,591 | INFO    | epoch 2 | train loss 0.9135 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:15:46,948 | INFO    | epoch 3 | train loss 0.8182 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:15:47,307 | INFO    | epoch 4 | train loss 0.7857 | val selective_accuracy 0.7838 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:15:47,656 | INFO    | epoch 5 | train loss 0.7088 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:15:48,022 | INFO    | epoch 6 | train loss 0.6710 | val selective_accuracy 0.8108 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:15:48,384 | INFO    | epoch 7 | train loss 0.6574 | val selective_accuracy 0.7703 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:15:48,721 | INFO    | epoch 8 | train loss 0.7781 | val selective_accuracy 0.7027 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:15:48,721 | INFO    | early stopping at epoch 8 after 8 rounds without improvement
+2026-08-16 11:15:50,969 | INFO    | retraining coalition 2/7: (0, 1, 1, 1, 1, 1)
+2026-08-16 11:17:16,142 | INFO    | epoch 0 | train loss 1.2600 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 1.5s
+2026-08-16 11:17:16,610 | INFO    | epoch 1 | train loss 1.0161 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:17:16,972 | INFO    | epoch 2 | train loss 0.9179 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:17:17,324 | INFO    | epoch 3 | train loss 0.8240 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:17:17,689 | INFO    | epoch 4 | train loss 0.7877 | val selective_accuracy 0.7838 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:17:18,044 | INFO    | epoch 5 | train loss 0.7128 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:17:18,406 | INFO    | epoch 6 | train loss 0.6772 | val selective_accuracy 0.8108 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:17:18,763 | INFO    | epoch 7 | train loss 0.6654 | val selective_accuracy 0.7297 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:17:19,132 | INFO    | epoch 8 | train loss 0.7312 | val selective_accuracy 0.7703 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:17:19,132 | INFO    | early stopping at epoch 8 after 8 rounds without improvement
+2026-08-16 11:17:21,560 | INFO    | retraining coalition 3/7: (1, 0, 1, 1, 1, 1)
+2026-08-16 11:17:26,099 | INFO    | epoch 0 | train loss 1.2537 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 1.3s
+2026-08-16 11:17:26,485 | INFO    | epoch 1 | train loss 1.0100 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:17:28,774 | INFO    | epoch 2 | train loss 0.9092 | val selective_accuracy 0.8378 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:29,241 | INFO    | epoch 3 | train loss 0.8112 | val selective_accuracy 0.8243 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:29,598 | INFO    | epoch 4 | train loss 0.7858 | val selective_accuracy 0.7838 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:29,956 | INFO    | epoch 5 | train loss 0.7098 | val selective_accuracy 0.7973 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:30,308 | INFO    | epoch 6 | train loss 0.6713 | val selective_accuracy 0.7838 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:30,665 | INFO    | epoch 7 | train loss 0.6613 | val selective_accuracy 0.7568 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:31,025 | INFO    | epoch 8 | train loss 0.7970 | val selective_accuracy 0.7027 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:31,305 | INFO    | epoch 9 step 50 | loss 4.6121 | answer 2.6622 | calib 2.4627 | lr 2.41e-04
+2026-08-16 11:17:31,395 | INFO    | epoch 9 | train loss 0.6384 | val selective_accuracy 0.8243 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:31,755 | INFO    | epoch 10 | train loss 0.6147 | val selective_accuracy 0.8108 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:31,755 | INFO    | early stopping at epoch 10 after 8 rounds without improvement
+2026-08-16 11:17:33,978 | INFO    | retraining coalition 4/7: (1, 1, 0, 1, 1, 1)
+2026-08-16 11:17:38,420 | INFO    | epoch 0 | train loss 1.2530 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 1.3s
+2026-08-16 11:17:38,885 | INFO    | epoch 1 | train loss 1.0188 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:17:40,678 | INFO    | epoch 2 | train loss 0.9197 | val selective_accuracy 0.8378 | best 0.8378 (epoch 2) | 0.4s
+2026-08-16 11:17:41,139 | INFO    | epoch 3 | train loss 0.8276 | val selective_accuracy 0.8378 | best 0.8378 (epoch 2) | 0.4s
+2026-08-16 11:17:41,527 | INFO    | epoch 4 | train loss 0.7717 | val selective_accuracy 0.7432 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:41,876 | INFO    | epoch 5 | train loss 0.7192 | val selective_accuracy 0.8108 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:42,229 | INFO    | epoch 6 | train loss 0.6821 | val selective_accuracy 0.8108 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:42,612 | INFO    | epoch 7 | train loss 0.6431 | val selective_accuracy 0.7838 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:42,963 | INFO    | epoch 8 | train loss 0.6471 | val selective_accuracy 0.7838 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:43,255 | INFO    | epoch 9 step 50 | loss 4.7468 | answer 2.8646 | calib 2.3054 | lr 2.41e-04
+2026-08-16 11:17:43,345 | INFO    | epoch 9 | train loss 0.6100 | val selective_accuracy 0.7838 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:43,690 | INFO    | epoch 10 | train loss 0.6035 | val selective_accuracy 0.7838 | best 0.8378 (epoch 2) | 0.3s
+2026-08-16 11:17:43,690 | INFO    | early stopping at epoch 10 after 8 rounds without improvement
+2026-08-16 11:17:45,936 | INFO    | retraining coalition 5/7: (1, 1, 1, 0, 1, 1)
+2026-08-16 11:23:12,172 | INFO    | epoch 0 | train loss 1.2574 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 1.3s
+2026-08-16 11:23:12,748 | INFO    | epoch 1 | train loss 1.0134 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:13,113 | INFO    | epoch 2 | train loss 0.9158 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:13,489 | INFO    | epoch 3 | train loss 0.8208 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:13,859 | INFO    | epoch 4 | train loss 0.7821 | val selective_accuracy 0.7838 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:14,229 | INFO    | epoch 5 | train loss 0.7083 | val selective_accuracy 0.7973 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:14,593 | INFO    | epoch 6 | train loss 0.6752 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:14,956 | INFO    | epoch 7 | train loss 0.6832 | val selective_accuracy 0.7973 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:15,322 | INFO    | epoch 8 | train loss 0.7405 | val selective_accuracy 0.7838 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:15,322 | INFO    | early stopping at epoch 8 after 8 rounds without improvement
+2026-08-16 11:23:17,794 | INFO    | retraining coalition 6/7: (1, 1, 1, 1, 0, 1)
+2026-08-16 11:23:23,300 | INFO    | epoch 0 | train loss 1.2601 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 1.4s
+2026-08-16 11:23:23,845 | INFO    | epoch 1 | train loss 1.0158 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.4s
+2026-08-16 11:23:24,215 | INFO    | epoch 2 | train loss 0.9182 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:24,581 | INFO    | epoch 3 | train loss 0.8237 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:24,945 | INFO    | epoch 4 | train loss 0.7842 | val selective_accuracy 0.7838 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:25,312 | INFO    | epoch 5 | train loss 0.7099 | val selective_accuracy 0.7973 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:25,676 | INFO    | epoch 6 | train loss 0.6773 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:26,025 | INFO    | epoch 7 | train loss 0.6826 | val selective_accuracy 0.7838 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:26,385 | INFO    | epoch 8 | train loss 0.7646 | val selective_accuracy 0.7432 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:26,385 | INFO    | early stopping at epoch 8 after 8 rounds without improvement
+2026-08-16 11:23:29,464 | INFO    | retraining coalition 7/7: (1, 1, 1, 1, 1, 0)
+2026-08-16 11:23:34,185 | INFO    | epoch 0 | train loss 1.2563 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 1.3s
+2026-08-16 11:23:34,578 | INFO    | epoch 1 | train loss 1.0122 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:34,922 | INFO    | epoch 2 | train loss 0.9142 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:35,280 | INFO    | epoch 3 | train loss 0.8198 | val selective_accuracy 0.8243 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:35,648 | INFO    | epoch 4 | train loss 0.7847 | val selective_accuracy 0.7838 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:36,016 | INFO    | epoch 5 | train loss 0.7087 | val selective_accuracy 0.8108 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:36,388 | INFO    | epoch 6 | train loss 0.6719 | val selective_accuracy 0.8108 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:36,754 | INFO    | epoch 7 | train loss 0.6675 | val selective_accuracy 0.7432 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:37,116 | INFO    | epoch 8 | train loss 0.7206 | val selective_accuracy 0.7838 | best 0.8243 (epoch 0) | 0.3s
+2026-08-16 11:23:37,116 | INFO    | early stopping at epoch 8 after 8 rounds without improvement
+2026-08-16 11:23:39,656 | INFO    | 
+role                      loo_contrast  ci_lo    ci_hi   moves_benchmark  primary_benchmark  
+------------------------  ------------  -------  ------  ---------------  -------------------
+counter_evidence_checker  0.0104        0.0000   0.0330  False            truthfulqa         
+consistency_checker       0.0000        -0.0303  0.0306  False            math_aime          
+local_claim_checker       0.0208        0.0000   0.0544  False            advconsistency     
+explore_then_prune        0.0000        0.0000   0.0000  False            creative_divergence
+rare_hypothesis_checker   0.0104        0.0000   0.0333  False            temporal_qa        
+confidence_calibrator     -0.0104       -0.0345  0.0000  False            sycophancy         
+2026-08-16 11:23:39,656 | INFO    | degeneracy check: PASS (4 distinct coalition values)
+2026-08-16 11:23:39,668 | INFO    | wrote report to <BUNDLE>/cca_synth/runs/arms-neutral_council/REPORT.md
+2026-08-19 01:01:51,620 | INFO    | ==============================================================================
+2026-08-19 01:01:51,621 | INFO    | CCA calibrated synthesizer | run_id=arms-neutral_council
+2026-08-19 01:01:51,621 | INFO    | config_hash=a905600db20304a2
+2026-08-19 01:01:51,621 | INFO    | DISCLAIMER: These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.
+2026-08-19 01:01:51,621 | INFO    | DATA PROVENANCE: REAL (runs/arms/records.neutral_council.jsonl)
+2026-08-19 01:01:51,621 | INFO    | ==============================================================================
+2026-08-19 01:01:51,621 | INFO    | device=mps world_size=1 amp=True
+2026-08-19 01:01:52,015 | INFO    | model parameters: 2,454,540 | splits: {'train': 526, 'calibration': 229, 'validation': 219, 'test': 270}
+2026-08-19 01:02:00,378 | INFO    | epoch 0 | train loss 1.1996 | val selective_accuracy 0.8239 | best 0.8239 (epoch 0) | 2.2s
+2026-08-19 01:02:05,917 | INFO    | epoch 1 | train loss 0.9636 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.7s
+2026-08-19 01:02:08,518 | INFO    | epoch 2 | train loss 0.7746 | val selective_accuracy 0.8169 | best 0.8310 (epoch 1) | 0.5s
+2026-08-19 01:02:13,604 | INFO    | epoch 3 | train loss 0.7368 | val selective_accuracy 0.8521 | best 0.8521 (epoch 3) | 0.6s
+2026-08-19 01:02:15,673 | INFO    | epoch 4 | train loss 0.6934 | val selective_accuracy 0.8380 | best 0.8521 (epoch 3) | 0.5s
+2026-08-19 01:02:18,277 | INFO    | epoch 5 step 50 | loss 0.7427 | answer 0.3812 | calib 0.4301 | lr 2.86e-04
+2026-08-19 01:02:18,587 | INFO    | epoch 5 | train loss 0.6563 | val selective_accuracy 0.8310 | best 0.8521 (epoch 3) | 0.5s
+2026-08-19 01:02:21,422 | INFO    | epoch 6 | train loss 0.6522 | val selective_accuracy 0.8310 | best 0.8521 (epoch 3) | 0.5s
+2026-08-19 01:02:25,738 | INFO    | epoch 7 | train loss 0.6116 | val selective_accuracy 0.8310 | best 0.8521 (epoch 3) | 1.3s
+2026-08-19 01:02:35,344 | INFO    | epoch 8 | train loss 0.5946 | val selective_accuracy 0.8239 | best 0.8521 (epoch 3) | 5.0s
+2026-08-19 01:02:38,612 | INFO    | epoch 9 | train loss 0.5929 | val selective_accuracy 0.8521 | best 0.8521 (epoch 3) | 0.6s
+2026-08-19 01:02:41,540 | INFO    | epoch 10 | train loss 0.5547 | val selective_accuracy 0.8310 | best 0.8521 (epoch 3) | 0.8s
+2026-08-19 01:02:44,342 | INFO    | epoch 11 step 100 | loss 0.7527 | answer 0.4233 | calib 0.4455 | lr 2.27e-04
+2026-08-19 01:02:45,011 | INFO    | epoch 11 | train loss 0.5878 | val selective_accuracy 0.8380 | best 0.8521 (epoch 3) | 0.7s
+2026-08-19 01:02:45,011 | INFO    | early stopping at epoch 11 after 8 rounds without improvement
+2026-08-19 01:02:47,800 | INFO    | training complete in 55.6s | best selective_accuracy=0.8521 at epoch 3
+2026-08-19 01:02:47,824 | INFO    | ==============================================================================
+2026-08-19 01:02:47,824 | INFO    | CCA calibrated synthesizer | run_id=arms-neutral_council
+2026-08-19 01:02:47,824 | INFO    | config_hash=a905600db20304a2
+2026-08-19 01:02:47,824 | INFO    | DISCLAIMER: These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.
+2026-08-19 01:02:47,824 | INFO    | DATA PROVENANCE: REAL (runs/arms/records.neutral_council.jsonl)
+2026-08-19 01:02:47,824 | INFO    | ==============================================================================
+2026-08-19 01:02:47,824 | INFO    | device=mps world_size=1 amp=True
+2026-08-19 01:03:28,420 | INFO    | model parameters: 2,454,540 | splits: {'train': 526, 'calibration': 229, 'validation': 219, 'test': 270}
+2026-08-19 01:03:31,716 | INFO    | fitted temperature: 0.3186
+2026-08-19 01:03:31,802 | INFO    | selective threshold 0.1343 at target coverage 0.90
+2026-08-19 01:03:34,705 | INFO    | 
+arm                                      accuracy  selective_accuracy  coverage  ece     brier   aurc  
+---------------------------------------  --------  ------------------  --------  ------  ------  ------
+cca_synthesizer                          0.8043    0.8043              0.9259    0.1153  0.3275  0.0822
+cca_synthesizer_no_selective_abstention  0.8043    0.8043              1.0000    0.1153  0.3275  0.0822
+direct_answer_base                       0.4076    0.4076              1.0000    0.1359  0.5000  0.6109
+majority_vote                            0.7989    0.7989              1.0000    0.1881  0.3871  0.1559
+confidence_weighted_vote                 0.8043    0.8043              1.0000    0.1835  0.3839  0.1039
+oracle_upper_bound_not_deployable        0.8424    0.8424              1.0000    0.3633  0.4355  0.4434
+single_agent::counter_evidence_checker   0.7935    0.7935              1.0000    0.1504  0.3355  0.2859
+single_agent::consistency_checker        0.8043    0.8043              1.0000    0.1420  0.3255  0.2941
+single_agent::local_claim_checker        0.8043    0.8043              1.0000    0.1444  0.3255  0.2851
+single_agent::explore_then_prune         0.7880    0.7880              1.0000    0.1449  0.3406  0.3065
+single_agent::rare_hypothesis_checker    0.7935    0.7935              1.0000    0.1420  0.3355  0.2965
+single_agent::confidence_calibrator      0.8098    0.8098              1.0000    0.1583  0.3205  0.2792
+2026-08-19 01:03:34,830 | INFO    | ==============================================================================
+2026-08-19 01:03:34,830 | INFO    | CCA calibrated synthesizer | run_id=arms-neutral_council
+2026-08-19 01:03:34,830 | INFO    | config_hash=a905600db20304a2
+2026-08-19 01:03:34,830 | INFO    | DISCLAIMER: These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.
+2026-08-19 01:03:34,830 | INFO    | DATA PROVENANCE: REAL (runs/arms/records.neutral_council.jsonl)
+2026-08-19 01:03:34,830 | INFO    | ==============================================================================
+2026-08-19 01:03:34,830 | INFO    | device=mps world_size=1 amp=True
+2026-08-19 01:03:34,999 | INFO    | model parameters: 2,454,540 | splits: {'train': 526, 'calibration': 229, 'validation': 219, 'test': 270}
+2026-08-19 01:03:36,646 | INFO    | retraining coalition 1/7: (1, 1, 1, 1, 1, 1)
+2026-08-19 01:04:22,916 | INFO    | epoch 0 | train loss 1.1702 | val selective_accuracy 0.8239 | best 0.8239 (epoch 0) | 1.9s
+2026-08-19 01:04:25,884 | INFO    | epoch 1 | train loss 0.9224 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.6s
+2026-08-19 01:04:26,531 | INFO    | epoch 2 | train loss 0.7762 | val selective_accuracy 0.8239 | best 0.8310 (epoch 1) | 0.5s
+2026-08-19 01:04:29,273 | INFO    | epoch 3 | train loss 0.7008 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:04:32,361 | INFO    | epoch 4 | train loss 0.6696 | val selective_accuracy 0.8451 | best 0.8451 (epoch 4) | 0.5s
+2026-08-19 01:04:32,665 | INFO    | epoch 5 step 50 | loss 0.7484 | answer 0.3919 | calib 0.4284 | lr 2.86e-04
+2026-08-19 01:04:33,004 | INFO    | epoch 5 | train loss 0.6352 | val selective_accuracy 0.8099 | best 0.8451 (epoch 4) | 0.5s
+2026-08-19 01:04:33,644 | INFO    | epoch 6 | train loss 0.6142 | val selective_accuracy 0.8239 | best 0.8451 (epoch 4) | 0.5s
+2026-08-19 01:04:34,253 | INFO    | epoch 7 | train loss 0.5924 | val selective_accuracy 0.8380 | best 0.8451 (epoch 4) | 0.5s
+2026-08-19 01:04:34,859 | INFO    | epoch 8 | train loss 0.5824 | val selective_accuracy 0.8310 | best 0.8451 (epoch 4) | 0.5s
+2026-08-19 01:04:37,011 | INFO    | epoch 9 | train loss 0.5715 | val selective_accuracy 0.8521 | best 0.8521 (epoch 9) | 0.5s
+2026-08-19 01:04:37,831 | INFO    | epoch 10 | train loss 0.5575 | val selective_accuracy 0.8310 | best 0.8521 (epoch 9) | 0.7s
+2026-08-19 01:04:37,924 | INFO    | epoch 11 step 100 | loss 0.7167 | answer 0.3926 | calib 0.4300 | lr 2.27e-04
+2026-08-19 01:04:38,438 | INFO    | epoch 11 | train loss 0.5576 | val selective_accuracy 0.8239 | best 0.8521 (epoch 9) | 0.5s
+2026-08-19 01:04:39,049 | INFO    | epoch 12 | train loss 0.5479 | val selective_accuracy 0.8380 | best 0.8521 (epoch 9) | 0.5s
+2026-08-19 01:04:39,682 | INFO    | epoch 13 | train loss 0.5387 | val selective_accuracy 0.8310 | best 0.8521 (epoch 9) | 0.5s
+2026-08-19 01:04:40,296 | INFO    | epoch 14 | train loss 0.5369 | val selective_accuracy 0.8239 | best 0.8521 (epoch 9) | 0.5s
+2026-08-19 01:04:40,917 | INFO    | epoch 15 | train loss 0.5347 | val selective_accuracy 0.8451 | best 0.8521 (epoch 9) | 0.5s
+2026-08-19 01:04:41,252 | INFO    | epoch 16 step 150 | loss 0.5764 | answer 0.3266 | calib 0.3191 | lr 1.43e-04
+2026-08-19 01:04:41,529 | INFO    | epoch 16 | train loss 0.5481 | val selective_accuracy 0.8169 | best 0.8521 (epoch 9) | 0.5s
+2026-08-19 01:04:42,168 | INFO    | epoch 17 | train loss 0.5344 | val selective_accuracy 0.8380 | best 0.8521 (epoch 9) | 0.5s
+2026-08-19 01:04:42,168 | INFO    | early stopping at epoch 17 after 8 rounds without improvement
+2026-08-19 01:04:46,034 | INFO    | retraining coalition 2/7: (0, 1, 1, 1, 1, 1)
+2026-08-19 01:04:51,884 | INFO    | epoch 0 | train loss 1.1712 | val selective_accuracy 0.8239 | best 0.8239 (epoch 0) | 1.6s
+2026-08-19 01:04:54,853 | INFO    | epoch 1 | train loss 0.9232 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.6s
+2026-08-19 01:04:55,628 | INFO    | epoch 2 | train loss 0.7778 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.6s
+2026-08-19 01:04:59,346 | INFO    | epoch 3 | train loss 0.7001 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 1.0s
+2026-08-19 01:05:00,650 | INFO    | epoch 4 | train loss 0.6714 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 1.0s
+2026-08-19 01:05:01,110 | INFO    | epoch 5 step 50 | loss 0.7447 | answer 0.3924 | calib 0.4221 | lr 2.86e-04
+2026-08-19 01:05:01,516 | INFO    | epoch 5 | train loss 0.6366 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.7s
+2026-08-19 01:05:02,289 | INFO    | epoch 6 | train loss 0.6158 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.6s
+2026-08-19 01:05:03,053 | INFO    | epoch 7 | train loss 0.5956 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.6s
+2026-08-19 01:05:03,718 | INFO    | epoch 8 | train loss 0.5856 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:05:04,327 | INFO    | epoch 9 | train loss 0.5727 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:05:04,955 | INFO    | epoch 10 | train loss 0.5601 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:05:05,036 | INFO    | epoch 11 step 100 | loss 0.7149 | answer 0.3921 | calib 0.4184 | lr 2.27e-04
+2026-08-19 01:05:05,599 | INFO    | epoch 11 | train loss 0.5598 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:05:05,599 | INFO    | early stopping at epoch 11 after 8 rounds without improvement
+2026-08-19 01:05:10,073 | INFO    | retraining coalition 3/7: (1, 0, 1, 1, 1, 1)
+2026-08-19 01:06:35,515 | INFO    | epoch 0 | train loss 1.1695 | val selective_accuracy 0.8239 | best 0.8239 (epoch 0) | 1.8s
+2026-08-19 01:06:38,715 | INFO    | epoch 1 | train loss 0.9252 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.5s
+2026-08-19 01:06:39,329 | INFO    | epoch 2 | train loss 0.7794 | val selective_accuracy 0.8239 | best 0.8310 (epoch 1) | 0.5s
+2026-08-19 01:06:42,082 | INFO    | epoch 3 | train loss 0.7090 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:06:42,854 | INFO    | epoch 4 | train loss 0.6831 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:06:43,145 | INFO    | epoch 5 step 50 | loss 0.7847 | answer 0.4232 | calib 0.4341 | lr 2.86e-04
+2026-08-19 01:06:43,477 | INFO    | epoch 5 | train loss 0.6412 | val selective_accuracy 0.8028 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:06:44,177 | INFO    | epoch 6 | train loss 0.6253 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.6s
+2026-08-19 01:06:44,857 | INFO    | epoch 7 | train loss 0.5862 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.6s
+2026-08-19 01:06:45,488 | INFO    | epoch 8 | train loss 0.5767 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:06:46,095 | INFO    | epoch 9 | train loss 0.5704 | val selective_accuracy 0.8169 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:06:46,709 | INFO    | epoch 10 | train loss 0.5600 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:06:46,776 | INFO    | epoch 11 step 100 | loss 0.7215 | answer 0.3948 | calib 0.4318 | lr 2.27e-04
+2026-08-19 01:06:47,309 | INFO    | epoch 11 | train loss 0.5577 | val selective_accuracy 0.8169 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:06:47,309 | INFO    | early stopping at epoch 11 after 8 rounds without improvement
+2026-08-19 01:06:50,988 | INFO    | retraining coalition 4/7: (1, 1, 0, 1, 1, 1)
+2026-08-19 01:06:57,823 | INFO    | epoch 0 | train loss 1.1725 | val selective_accuracy 0.8239 | best 0.8239 (epoch 0) | 2.1s
+2026-08-19 01:07:01,319 | INFO    | epoch 1 | train loss 0.9306 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.7s
+2026-08-19 01:07:02,294 | INFO    | epoch 2 | train loss 0.7816 | val selective_accuracy 0.8239 | best 0.8310 (epoch 1) | 0.7s
+2026-08-19 01:07:05,304 | INFO    | epoch 3 | train loss 0.7015 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:07:05,950 | INFO    | epoch 4 | train loss 0.6785 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:07:06,234 | INFO    | epoch 5 step 50 | loss 0.7334 | answer 0.3774 | calib 0.4270 | lr 2.86e-04
+2026-08-19 01:07:06,554 | INFO    | epoch 5 | train loss 0.6342 | val selective_accuracy 0.8099 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:07:09,769 | INFO    | epoch 6 | train loss 0.6138 | val selective_accuracy 0.8451 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:07:10,422 | INFO    | epoch 7 | train loss 0.6086 | val selective_accuracy 0.8380 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:07:11,038 | INFO    | epoch 8 | train loss 0.5906 | val selective_accuracy 0.8310 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:07:11,649 | INFO    | epoch 9 | train loss 0.5730 | val selective_accuracy 0.8239 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:07:12,258 | INFO    | epoch 10 | train loss 0.5633 | val selective_accuracy 0.8239 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:07:12,330 | INFO    | epoch 11 step 100 | loss 0.7245 | answer 0.3992 | calib 0.4301 | lr 2.27e-04
+2026-08-19 01:07:13,030 | INFO    | epoch 11 | train loss 0.5613 | val selective_accuracy 0.8169 | best 0.8451 (epoch 6) | 0.6s
+2026-08-19 01:07:13,807 | INFO    | epoch 12 | train loss 0.5480 | val selective_accuracy 0.8169 | best 0.8451 (epoch 6) | 0.7s
+2026-08-19 01:07:14,409 | INFO    | epoch 13 | train loss 0.5372 | val selective_accuracy 0.8099 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:07:15,069 | INFO    | epoch 14 | train loss 0.5348 | val selective_accuracy 0.8169 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:07:15,069 | INFO    | early stopping at epoch 14 after 8 rounds without improvement
+2026-08-19 01:07:21,044 | INFO    | retraining coalition 5/7: (1, 1, 1, 0, 1, 1)
+2026-08-19 01:10:11,001 | INFO    | epoch 0 | train loss 1.1693 | val selective_accuracy 0.8239 | best 0.8239 (epoch 0) | 4.1s
+2026-08-19 01:10:14,522 | INFO    | epoch 1 | train loss 0.9219 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.8s
+2026-08-19 01:10:15,154 | INFO    | epoch 2 | train loss 0.7755 | val selective_accuracy 0.8239 | best 0.8310 (epoch 1) | 0.5s
+2026-08-19 01:10:18,583 | INFO    | epoch 3 | train loss 0.6999 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:10:20,153 | INFO    | epoch 4 | train loss 0.6683 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 1.3s
+2026-08-19 01:10:21,151 | INFO    | epoch 5 step 50 | loss 0.7492 | answer 0.3913 | calib 0.4295 | lr 2.86e-04
+2026-08-19 01:10:21,685 | INFO    | epoch 5 | train loss 0.6316 | val selective_accuracy 0.8028 | best 0.8380 (epoch 3) | 1.3s
+2026-08-19 01:10:22,600 | INFO    | epoch 6 | train loss 0.6181 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.8s
+2026-08-19 01:10:23,227 | INFO    | epoch 7 | train loss 0.6011 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:10:23,941 | INFO    | epoch 8 | train loss 0.5973 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.6s
+2026-08-19 01:10:24,591 | INFO    | epoch 9 | train loss 0.5821 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:10:25,455 | INFO    | epoch 10 | train loss 0.5633 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.7s
+2026-08-19 01:10:25,526 | INFO    | epoch 11 step 100 | loss 0.7022 | answer 0.3862 | calib 0.4178 | lr 2.27e-04
+2026-08-19 01:10:26,103 | INFO    | epoch 11 | train loss 0.5648 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:10:26,103 | INFO    | early stopping at epoch 11 after 8 rounds without improvement
+2026-08-19 01:10:30,955 | INFO    | retraining coalition 6/7: (1, 1, 1, 1, 0, 1)
+2026-08-19 01:10:36,596 | INFO    | epoch 0 | train loss 1.1703 | val selective_accuracy 0.8239 | best 0.8239 (epoch 0) | 1.8s
+2026-08-19 01:10:39,873 | INFO    | epoch 1 | train loss 0.9225 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.6s
+2026-08-19 01:10:44,533 | INFO    | epoch 2 | train loss 0.7755 | val selective_accuracy 0.8239 | best 0.8310 (epoch 1) | 4.5s
+2026-08-19 01:10:47,756 | INFO    | epoch 3 | train loss 0.6966 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.7s
+2026-08-19 01:10:48,497 | INFO    | epoch 4 | train loss 0.6667 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.6s
+2026-08-19 01:10:48,789 | INFO    | epoch 5 step 50 | loss 0.7309 | answer 0.3782 | calib 0.4213 | lr 2.86e-04
+2026-08-19 01:10:49,155 | INFO    | epoch 5 | train loss 0.6299 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:10:52,278 | INFO    | epoch 6 | train loss 0.6136 | val selective_accuracy 0.8451 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:10:53,044 | INFO    | epoch 7 | train loss 0.6021 | val selective_accuracy 0.8310 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:10:53,664 | INFO    | epoch 8 | train loss 0.5943 | val selective_accuracy 0.8239 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:10:54,267 | INFO    | epoch 9 | train loss 0.5780 | val selective_accuracy 0.8310 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:10:54,865 | INFO    | epoch 10 | train loss 0.5577 | val selective_accuracy 0.8380 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:10:54,931 | INFO    | epoch 11 step 100 | loss 0.6987 | answer 0.3817 | calib 0.4202 | lr 2.27e-04
+2026-08-19 01:10:55,451 | INFO    | epoch 11 | train loss 0.5581 | val selective_accuracy 0.8239 | best 0.8451 (epoch 6) | 0.5s
+2026-08-19 01:10:58,959 | INFO    | epoch 12 | train loss 0.5435 | val selective_accuracy 0.8521 | best 0.8521 (epoch 12) | 0.5s
+2026-08-19 01:10:59,808 | INFO    | epoch 13 | train loss 0.5392 | val selective_accuracy 0.8380 | best 0.8521 (epoch 12) | 0.6s
+2026-08-19 01:11:00,692 | INFO    | epoch 14 | train loss 0.5356 | val selective_accuracy 0.8380 | best 0.8521 (epoch 12) | 0.8s
+2026-08-19 01:11:01,329 | INFO    | epoch 15 | train loss 0.5324 | val selective_accuracy 0.8239 | best 0.8521 (epoch 12) | 0.5s
+2026-08-19 01:11:01,667 | INFO    | epoch 16 step 150 | loss 0.5695 | answer 0.3205 | calib 0.3145 | lr 1.43e-04
+2026-08-19 01:11:01,980 | INFO    | epoch 16 | train loss 0.5391 | val selective_accuracy 0.8380 | best 0.8521 (epoch 12) | 0.5s
+2026-08-19 01:11:02,795 | INFO    | epoch 17 | train loss 0.5322 | val selective_accuracy 0.8239 | best 0.8521 (epoch 12) | 0.7s
+2026-08-19 01:11:03,391 | INFO    | epoch 18 | train loss 0.5264 | val selective_accuracy 0.8169 | best 0.8521 (epoch 12) | 0.5s
+2026-08-19 01:11:04,021 | INFO    | epoch 19 | train loss 0.5309 | val selective_accuracy 0.8169 | best 0.8521 (epoch 12) | 0.5s
+2026-08-19 01:11:04,649 | INFO    | epoch 20 | train loss 0.5256 | val selective_accuracy 0.8239 | best 0.8521 (epoch 12) | 0.5s
+2026-08-19 01:11:04,649 | INFO    | early stopping at epoch 20 after 8 rounds without improvement
+2026-08-19 01:11:13,367 | INFO    | retraining coalition 7/7: (1, 1, 1, 1, 1, 0)
+2026-08-19 01:11:25,077 | INFO    | epoch 0 | train loss 1.1663 | val selective_accuracy 0.8239 | best 0.8239 (epoch 0) | 7.0s
+2026-08-19 01:11:28,534 | INFO    | epoch 1 | train loss 0.9193 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.8s
+2026-08-19 01:11:30,281 | INFO    | epoch 2 | train loss 0.7741 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 1.5s
+2026-08-19 01:11:33,784 | INFO    | epoch 3 | train loss 0.6970 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.8s
+2026-08-19 01:11:34,835 | INFO    | epoch 4 | train loss 0.6636 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.7s
+2026-08-19 01:11:35,235 | INFO    | epoch 5 step 50 | loss 0.7407 | answer 0.3856 | calib 0.4244 | lr 2.86e-04
+2026-08-19 01:11:35,608 | INFO    | epoch 5 | train loss 0.6274 | val selective_accuracy 0.8169 | best 0.8380 (epoch 3) | 0.6s
+2026-08-19 01:11:36,571 | INFO    | epoch 6 | train loss 0.6205 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.8s
+2026-08-19 01:11:38,264 | INFO    | epoch 7 | train loss 0.6100 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 1.3s
+2026-08-19 01:11:39,760 | INFO    | epoch 8 | train loss 0.5978 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 1.3s
+2026-08-19 01:11:41,226 | INFO    | epoch 9 | train loss 0.5831 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 1.3s
+2026-08-19 01:11:41,867 | INFO    | epoch 10 | train loss 0.5649 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-19 01:11:41,950 | INFO    | epoch 11 step 100 | loss 0.7095 | answer 0.3873 | calib 0.4187 | lr 2.27e-04
+2026-08-19 01:11:42,594 | INFO    | epoch 11 | train loss 0.5654 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.6s
+2026-08-19 01:11:42,595 | INFO    | early stopping at epoch 11 after 8 rounds without improvement
+2026-08-19 01:11:47,886 | INFO    | 
+role                      loo_contrast  ci_lo    ci_hi   moves_benchmark  primary_benchmark  
+------------------------  ------------  -------  ------  ---------------  -------------------
+counter_evidence_checker  0.0163        -0.0056  0.0395  False            truthfulqa         
+consistency_checker       0.0109        -0.0157  0.0370  False            math_aime          
+local_claim_checker       0.0054        0.0000   0.0169  False            advconsistency     
+explore_then_prune        0.0000        -0.0215  0.0215  False            creative_divergence
+rare_hypothesis_checker   -0.0109       -0.0278  0.0000  False            temporal_qa        
+confidence_calibrator     0.0000        -0.0160  0.0161  False            sycophancy         
+2026-08-19 01:11:47,889 | INFO    | degeneracy check: PASS (5 distinct coalition values)
+2026-08-19 01:11:48,126 | INFO    | wrote report to <BUNDLE>/cca_synth/runs/arms-neutral_council/REPORT.md
+2026-08-20 11:37:36,108 | INFO    | ==============================================================================
+2026-08-20 11:37:36,110 | INFO    | CCA calibrated synthesizer | run_id=arms-neutral_council
+2026-08-20 11:37:36,110 | INFO    | config_hash=a905600db20304a2
+2026-08-20 11:37:36,110 | INFO    | DISCLAIMER: These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.
+2026-08-20 11:37:36,110 | INFO    | DATA PROVENANCE: REAL (runs/arms/records.neutral_council.jsonl)
+2026-08-20 11:37:36,110 | INFO    | ==============================================================================
+2026-08-20 11:37:36,110 | INFO    | device=mps world_size=1 amp=True
+2026-08-20 11:37:36,497 | INFO    | model parameters: 2,454,540 | splits: {'train': 526, 'calibration': 229, 'validation': 219, 'test': 270}
+2026-08-20 11:37:43,903 | INFO    | epoch 0 | train loss 1.1970 | val selective_accuracy 0.8169 | best 0.8169 (epoch 0) | 3.2s
+2026-08-20 11:37:51,289 | INFO    | epoch 1 | train loss 0.9563 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.5s
+2026-08-20 11:37:57,561 | INFO    | epoch 2 | train loss 0.7661 | val selective_accuracy 0.8451 | best 0.8451 (epoch 2) | 0.5s
+2026-08-20 11:38:02,041 | INFO    | epoch 3 | train loss 0.7208 | val selective_accuracy 0.8380 | best 0.8451 (epoch 2) | 0.7s
+2026-08-20 11:38:06,147 | INFO    | epoch 4 | train loss 0.6814 | val selective_accuracy 0.8380 | best 0.8451 (epoch 2) | 1.3s
+2026-08-20 11:38:09,113 | INFO    | epoch 5 step 50 | loss 0.7336 | answer 0.3703 | calib 0.4285 | lr 2.86e-04
+2026-08-20 11:38:09,627 | INFO    | epoch 5 | train loss 0.6405 | val selective_accuracy 0.8451 | best 0.8451 (epoch 2) | 0.6s
+2026-08-20 11:38:13,624 | INFO    | epoch 6 | train loss 0.6215 | val selective_accuracy 0.8380 | best 0.8451 (epoch 2) | 0.6s
+2026-08-20 11:38:17,439 | INFO    | epoch 7 | train loss 0.6102 | val selective_accuracy 0.8380 | best 0.8451 (epoch 2) | 0.7s
+2026-08-20 11:38:21,672 | INFO    | epoch 8 | train loss 0.5798 | val selective_accuracy 0.8310 | best 0.8451 (epoch 2) | 1.0s
+2026-08-20 11:38:25,409 | INFO    | epoch 9 | train loss 0.5715 | val selective_accuracy 0.8380 | best 0.8451 (epoch 2) | 0.6s
+2026-08-20 11:38:28,440 | INFO    | epoch 10 | train loss 0.5324 | val selective_accuracy 0.8380 | best 0.8451 (epoch 2) | 0.5s
+2026-08-20 11:38:28,444 | INFO    | early stopping at epoch 10 after 8 rounds without improvement
+2026-08-20 11:38:31,165 | INFO    | training complete in 54.5s | best selective_accuracy=0.8451 at epoch 2
+2026-08-20 11:38:31,172 | INFO    | ==============================================================================
+2026-08-20 11:38:31,172 | INFO    | CCA calibrated synthesizer | run_id=arms-neutral_council
+2026-08-20 11:38:31,172 | INFO    | config_hash=a905600db20304a2
+2026-08-20 11:38:31,173 | INFO    | DISCLAIMER: These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.
+2026-08-20 11:38:31,173 | INFO    | DATA PROVENANCE: REAL (runs/arms/records.neutral_council.jsonl)
+2026-08-20 11:38:31,173 | INFO    | ==============================================================================
+2026-08-20 11:38:31,173 | INFO    | device=mps world_size=1 amp=True
+2026-08-20 11:39:11,573 | INFO    | model parameters: 2,454,540 | splits: {'train': 526, 'calibration': 229, 'validation': 219, 'test': 270}
+2026-08-20 11:39:14,425 | INFO    | fitted temperature: 0.3784
+2026-08-20 11:39:14,508 | INFO    | selective threshold 0.1303 at target coverage 0.90
+2026-08-20 11:39:17,315 | INFO    | 
+arm                                      accuracy  selective_accuracy  coverage  ece     brier   aurc  
+---------------------------------------  --------  ------------------  --------  ------  ------  ------
+cca_synthesizer                          0.7989    0.7989              0.9296    0.1748  0.3615  0.0954
+cca_synthesizer_no_selective_abstention  0.7989    0.7989              1.0000    0.1748  0.3615  0.0954
+direct_answer_base                       0.8043    0.8043              1.0000    0.1612  0.3255  0.2885
+majority_vote                            0.7989    0.7989              1.0000    0.1881  0.3871  0.1559
+confidence_weighted_vote                 0.8043    0.8043              1.0000    0.1835  0.3839  0.1039
+oracle_upper_bound_not_deployable        0.8424    0.8424              1.0000    0.3633  0.4355  0.4434
+single_agent::counter_evidence_checker   0.7935    0.7935              1.0000    0.1504  0.3355  0.2859
+single_agent::consistency_checker        0.8043    0.8043              1.0000    0.1420  0.3255  0.2941
+single_agent::local_claim_checker        0.8043    0.8043              1.0000    0.1444  0.3255  0.2851
+single_agent::explore_then_prune         0.7880    0.7880              1.0000    0.1449  0.3406  0.3065
+single_agent::rare_hypothesis_checker    0.7935    0.7935              1.0000    0.1420  0.3355  0.2965
+single_agent::confidence_calibrator      0.8098    0.8098              1.0000    0.1583  0.3205  0.2792
+2026-08-20 11:39:17,324 | INFO    | ==============================================================================
+2026-08-20 11:39:17,324 | INFO    | CCA calibrated synthesizer | run_id=arms-neutral_council
+2026-08-20 11:39:17,324 | INFO    | config_hash=a905600db20304a2
+2026-08-20 11:39:17,324 | INFO    | DISCLAIMER: These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.
+2026-08-20 11:39:17,324 | INFO    | DATA PROVENANCE: REAL (runs/arms/records.neutral_council.jsonl)
+2026-08-20 11:39:17,324 | INFO    | ==============================================================================
+2026-08-20 11:39:17,324 | INFO    | device=mps world_size=1 amp=True
+2026-08-20 11:39:17,495 | INFO    | model parameters: 2,454,540 | splits: {'train': 526, 'calibration': 229, 'validation': 219, 'test': 270}
+2026-08-20 11:39:18,856 | INFO    | retraining coalition 1/7: (1, 1, 1, 1, 1, 1)
+2026-08-20 11:40:05,364 | INFO    | epoch 0 | train loss 1.1685 | val selective_accuracy 0.8169 | best 0.8169 (epoch 0) | 1.9s
+2026-08-20 11:40:09,451 | INFO    | epoch 1 | train loss 0.9201 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.6s
+2026-08-20 11:40:13,177 | INFO    | epoch 2 | train loss 0.7729 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:14,015 | INFO    | epoch 3 | train loss 0.6951 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.6s
+2026-08-20 11:40:14,634 | INFO    | epoch 4 | train loss 0.6708 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:14,918 | INFO    | epoch 5 step 50 | loss 0.7617 | answer 0.4024 | calib 0.4242 | lr 2.86e-04
+2026-08-20 11:40:15,245 | INFO    | epoch 5 | train loss 0.6382 | val selective_accuracy 0.8169 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:15,860 | INFO    | epoch 6 | train loss 0.6162 | val selective_accuracy 0.8239 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:16,465 | INFO    | epoch 7 | train loss 0.5835 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:17,133 | INFO    | epoch 8 | train loss 0.5726 | val selective_accuracy 0.8310 | best 0.8380 (epoch 2) | 0.6s
+2026-08-20 11:40:20,318 | INFO    | epoch 9 | train loss 0.5629 | val selective_accuracy 0.8521 | best 0.8521 (epoch 9) | 0.5s
+2026-08-20 11:40:21,443 | INFO    | epoch 10 | train loss 0.5512 | val selective_accuracy 0.8310 | best 0.8521 (epoch 9) | 0.8s
+2026-08-20 11:40:21,545 | INFO    | epoch 11 step 100 | loss 0.7108 | answer 0.3869 | calib 0.4261 | lr 2.27e-04
+2026-08-20 11:40:22,119 | INFO    | epoch 11 | train loss 0.5505 | val selective_accuracy 0.8310 | best 0.8521 (epoch 9) | 0.6s
+2026-08-20 11:40:22,740 | INFO    | epoch 12 | train loss 0.5411 | val selective_accuracy 0.8310 | best 0.8521 (epoch 9) | 0.5s
+2026-08-20 11:40:23,410 | INFO    | epoch 13 | train loss 0.5329 | val selective_accuracy 0.8310 | best 0.8521 (epoch 9) | 0.6s
+2026-08-20 11:40:24,103 | INFO    | epoch 14 | train loss 0.5307 | val selective_accuracy 0.8310 | best 0.8521 (epoch 9) | 0.6s
+2026-08-20 11:40:24,731 | INFO    | epoch 15 | train loss 0.5301 | val selective_accuracy 0.8310 | best 0.8521 (epoch 9) | 0.5s
+2026-08-20 11:40:25,087 | INFO    | epoch 16 step 150 | loss 0.5468 | answer 0.3093 | calib 0.3166 | lr 1.43e-04
+2026-08-20 11:40:25,373 | INFO    | epoch 16 | train loss 0.5397 | val selective_accuracy 0.8380 | best 0.8521 (epoch 9) | 0.5s
+2026-08-20 11:40:26,038 | INFO    | epoch 17 | train loss 0.5248 | val selective_accuracy 0.8310 | best 0.8521 (epoch 9) | 0.5s
+2026-08-20 11:40:26,038 | INFO    | early stopping at epoch 17 after 8 rounds without improvement
+2026-08-20 11:40:30,040 | INFO    | retraining coalition 2/7: (0, 1, 1, 1, 1, 1)
+2026-08-20 11:40:36,350 | INFO    | epoch 0 | train loss 1.1696 | val selective_accuracy 0.8169 | best 0.8169 (epoch 0) | 1.7s
+2026-08-20 11:40:40,503 | INFO    | epoch 1 | train loss 0.9210 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.5s
+2026-08-20 11:40:43,785 | INFO    | epoch 2 | train loss 0.7744 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:44,638 | INFO    | epoch 3 | train loss 0.6948 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:45,249 | INFO    | epoch 4 | train loss 0.6722 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:45,575 | INFO    | epoch 5 step 50 | loss 0.7554 | answer 0.3998 | calib 0.4184 | lr 2.86e-04
+2026-08-20 11:40:45,914 | INFO    | epoch 5 | train loss 0.6384 | val selective_accuracy 0.8239 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:46,584 | INFO    | epoch 6 | train loss 0.6149 | val selective_accuracy 0.8099 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:47,234 | INFO    | epoch 7 | train loss 0.5884 | val selective_accuracy 0.8310 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:40:47,963 | INFO    | epoch 8 | train loss 0.5773 | val selective_accuracy 0.8310 | best 0.8380 (epoch 2) | 0.6s
+2026-08-20 11:40:48,735 | INFO    | epoch 9 | train loss 0.5654 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.6s
+2026-08-20 11:40:49,493 | INFO    | epoch 10 | train loss 0.5529 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.6s
+2026-08-20 11:40:49,493 | INFO    | early stopping at epoch 10 after 8 rounds without improvement
+2026-08-20 11:40:54,154 | INFO    | retraining coalition 3/7: (1, 0, 1, 1, 1, 1)
+2026-08-20 11:42:20,906 | INFO    | epoch 0 | train loss 1.1678 | val selective_accuracy 0.8169 | best 0.8169 (epoch 0) | 2.1s
+2026-08-20 11:42:25,379 | INFO    | epoch 1 | train loss 0.9224 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.5s
+2026-08-20 11:42:29,132 | INFO    | epoch 2 | train loss 0.7746 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:42:31,079 | INFO    | epoch 3 | train loss 0.6997 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 1.7s
+2026-08-20 11:42:31,792 | INFO    | epoch 4 | train loss 0.6744 | val selective_accuracy 0.8380 | best 0.8380 (epoch 2) | 0.6s
+2026-08-20 11:42:32,095 | INFO    | epoch 5 step 50 | loss 0.7810 | answer 0.4177 | calib 0.4319 | lr 2.86e-04
+2026-08-20 11:42:32,454 | INFO    | epoch 5 | train loss 0.6376 | val selective_accuracy 0.8310 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:42:33,069 | INFO    | epoch 6 | train loss 0.6169 | val selective_accuracy 0.8310 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:42:33,685 | INFO    | epoch 7 | train loss 0.5792 | val selective_accuracy 0.8310 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:42:34,329 | INFO    | epoch 8 | train loss 0.5708 | val selective_accuracy 0.8239 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:42:34,985 | INFO    | epoch 9 | train loss 0.5640 | val selective_accuracy 0.8310 | best 0.8380 (epoch 2) | 0.5s
+2026-08-20 11:42:35,658 | INFO    | epoch 10 | train loss 0.5519 | val selective_accuracy 0.8310 | best 0.8380 (epoch 2) | 0.6s
+2026-08-20 11:42:35,658 | INFO    | early stopping at epoch 10 after 8 rounds without improvement
+2026-08-20 11:42:39,869 | INFO    | retraining coalition 4/7: (1, 1, 0, 1, 1, 1)
+2026-08-20 11:42:46,873 | INFO    | epoch 0 | train loss 1.1708 | val selective_accuracy 0.8239 | best 0.8239 (epoch 0) | 2.1s
+2026-08-20 11:42:51,031 | INFO    | epoch 1 | train loss 0.9269 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.7s
+2026-08-20 11:42:51,764 | INFO    | epoch 2 | train loss 0.7755 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.6s
+2026-08-20 11:42:53,421 | INFO    | epoch 3 | train loss 0.6934 | val selective_accuracy 0.8239 | best 0.8310 (epoch 1) | 1.5s
+2026-08-20 11:42:54,314 | INFO    | epoch 4 | train loss 0.6707 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.7s
+2026-08-20 11:42:54,629 | INFO    | epoch 5 step 50 | loss 0.7318 | answer 0.3739 | calib 0.4253 | lr 2.86e-04
+2026-08-20 11:42:54,988 | INFO    | epoch 5 | train loss 0.6269 | val selective_accuracy 0.8239 | best 0.8310 (epoch 1) | 0.6s
+2026-08-20 11:42:58,523 | INFO    | epoch 6 | train loss 0.6059 | val selective_accuracy 0.8592 | best 0.8592 (epoch 6) | 0.6s
+2026-08-20 11:42:59,453 | INFO    | epoch 7 | train loss 0.6045 | val selective_accuracy 0.8310 | best 0.8592 (epoch 6) | 0.7s
+2026-08-20 11:43:00,621 | INFO    | epoch 8 | train loss 0.5826 | val selective_accuracy 0.8310 | best 0.8592 (epoch 6) | 1.0s
+2026-08-20 11:43:01,749 | INFO    | epoch 9 | train loss 0.5644 | val selective_accuracy 0.8310 | best 0.8592 (epoch 6) | 1.0s
+2026-08-20 11:43:03,109 | INFO    | epoch 10 | train loss 0.5524 | val selective_accuracy 0.8380 | best 0.8592 (epoch 6) | 0.7s
+2026-08-20 11:43:03,226 | INFO    | epoch 11 step 100 | loss 0.7116 | answer 0.3873 | calib 0.4273 | lr 2.27e-04
+2026-08-20 11:43:06,192 | INFO    | epoch 11 | train loss 0.5499 | val selective_accuracy 0.8239 | best 0.8592 (epoch 6) | 2.9s
+2026-08-20 11:43:07,481 | INFO    | epoch 12 | train loss 0.5388 | val selective_accuracy 0.8239 | best 0.8592 (epoch 6) | 1.1s
+2026-08-20 11:43:08,851 | INFO    | epoch 13 | train loss 0.5285 | val selective_accuracy 0.8239 | best 0.8592 (epoch 6) | 1.1s
+2026-08-20 11:43:09,730 | INFO    | epoch 14 | train loss 0.5280 | val selective_accuracy 0.8239 | best 0.8592 (epoch 6) | 0.6s
+2026-08-20 11:43:09,730 | INFO    | early stopping at epoch 14 after 8 rounds without improvement
+2026-08-20 11:43:14,813 | INFO    | retraining coalition 5/7: (1, 1, 1, 0, 1, 1)
+2026-08-20 11:46:05,158 | INFO    | epoch 0 | train loss 1.1677 | val selective_accuracy 0.8169 | best 0.8169 (epoch 0) | 2.7s
+2026-08-20 11:46:09,147 | INFO    | epoch 1 | train loss 0.9197 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.8s
+2026-08-20 11:46:09,797 | INFO    | epoch 2 | train loss 0.7722 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.5s
+2026-08-20 11:46:13,264 | INFO    | epoch 3 | train loss 0.6945 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:46:14,259 | INFO    | epoch 4 | train loss 0.6707 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.6s
+2026-08-20 11:46:14,555 | INFO    | epoch 5 step 50 | loss 0.7615 | answer 0.4022 | calib 0.4260 | lr 2.86e-04
+2026-08-20 11:46:14,899 | INFO    | epoch 5 | train loss 0.6379 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:46:15,541 | INFO    | epoch 6 | train loss 0.6153 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:46:16,171 | INFO    | epoch 7 | train loss 0.5851 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:46:16,796 | INFO    | epoch 8 | train loss 0.5748 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:46:19,332 | INFO    | epoch 9 | train loss 0.5656 | val selective_accuracy 0.8451 | best 0.8451 (epoch 9) | 0.5s
+2026-08-20 11:46:21,932 | INFO    | epoch 10 | train loss 0.5527 | val selective_accuracy 0.8521 | best 0.8521 (epoch 10) | 0.5s
+2026-08-20 11:46:22,015 | INFO    | epoch 11 step 100 | loss 0.7062 | answer 0.3879 | calib 0.4170 | lr 2.27e-04
+2026-08-20 11:46:22,575 | INFO    | epoch 11 | train loss 0.5529 | val selective_accuracy 0.8239 | best 0.8521 (epoch 10) | 0.5s
+2026-08-20 11:46:23,223 | INFO    | epoch 12 | train loss 0.5430 | val selective_accuracy 0.8310 | best 0.8521 (epoch 10) | 0.5s
+2026-08-20 11:46:23,892 | INFO    | epoch 13 | train loss 0.5363 | val selective_accuracy 0.8310 | best 0.8521 (epoch 10) | 0.5s
+2026-08-20 11:46:24,519 | INFO    | epoch 14 | train loss 0.5344 | val selective_accuracy 0.8380 | best 0.8521 (epoch 10) | 0.5s
+2026-08-20 11:46:27,742 | INFO    | epoch 15 | train loss 0.5426 | val selective_accuracy 0.8592 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:46:28,230 | INFO    | epoch 16 step 150 | loss 0.5361 | answer 0.3050 | calib 0.3062 | lr 1.43e-04
+2026-08-20 11:46:28,528 | INFO    | epoch 16 | train loss 0.5377 | val selective_accuracy 0.8451 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:46:29,129 | INFO    | epoch 17 | train loss 0.5297 | val selective_accuracy 0.8380 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:46:29,779 | INFO    | epoch 18 | train loss 0.5246 | val selective_accuracy 0.8310 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:46:30,419 | INFO    | epoch 19 | train loss 0.5265 | val selective_accuracy 0.8451 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:46:31,089 | INFO    | epoch 20 | train loss 0.5217 | val selective_accuracy 0.8310 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:46:31,773 | INFO    | epoch 21 | train loss 0.5175 | val selective_accuracy 0.8310 | best 0.8592 (epoch 15) | 0.6s
+2026-08-20 11:46:31,896 | INFO    | epoch 22 step 200 | loss 0.2791 | answer 0.1660 | calib 0.1523 | lr 6.41e-05
+2026-08-20 11:46:32,372 | INFO    | epoch 22 | train loss 0.5164 | val selective_accuracy 0.8310 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:46:33,015 | INFO    | epoch 23 | train loss 0.5122 | val selective_accuracy 0.8521 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:46:33,015 | INFO    | early stopping at epoch 23 after 8 rounds without improvement
+2026-08-20 11:46:36,756 | INFO    | retraining coalition 6/7: (1, 1, 1, 1, 0, 1)
+2026-08-20 11:46:46,791 | INFO    | epoch 0 | train loss 1.1688 | val selective_accuracy 0.8169 | best 0.8169 (epoch 0) | 4.2s
+2026-08-20 11:46:50,944 | INFO    | epoch 1 | train loss 0.9203 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.6s
+2026-08-20 11:46:51,643 | INFO    | epoch 2 | train loss 0.7723 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.6s
+2026-08-20 11:46:55,301 | INFO    | epoch 3 | train loss 0.6913 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:46:55,927 | INFO    | epoch 4 | train loss 0.6674 | val selective_accuracy 0.8380 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:46:56,741 | INFO    | epoch 5 step 50 | loss 0.7376 | answer 0.3833 | calib 0.4175 | lr 2.86e-04
+2026-08-20 11:46:57,117 | INFO    | epoch 5 | train loss 0.6322 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 1.1s
+2026-08-20 11:46:57,787 | INFO    | epoch 6 | train loss 0.6075 | val selective_accuracy 0.8239 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:46:58,432 | INFO    | epoch 7 | train loss 0.5919 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:46:59,050 | INFO    | epoch 8 | train loss 0.5781 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:46:59,699 | INFO    | epoch 9 | train loss 0.5647 | val selective_accuracy 0.8310 | best 0.8380 (epoch 3) | 0.5s
+2026-08-20 11:47:02,334 | INFO    | epoch 10 | train loss 0.5499 | val selective_accuracy 0.8521 | best 0.8521 (epoch 10) | 0.5s
+2026-08-20 11:47:02,602 | INFO    | epoch 11 step 100 | loss 0.7017 | answer 0.3836 | calib 0.4204 | lr 2.27e-04
+2026-08-20 11:47:03,232 | INFO    | epoch 11 | train loss 0.5511 | val selective_accuracy 0.8310 | best 0.8521 (epoch 10) | 0.6s
+2026-08-20 11:47:03,873 | INFO    | epoch 12 | train loss 0.5406 | val selective_accuracy 0.8380 | best 0.8521 (epoch 10) | 0.5s
+2026-08-20 11:47:04,493 | INFO    | epoch 13 | train loss 0.5314 | val selective_accuracy 0.8380 | best 0.8521 (epoch 10) | 0.5s
+2026-08-20 11:47:05,234 | INFO    | epoch 14 | train loss 0.5310 | val selective_accuracy 0.8380 | best 0.8521 (epoch 10) | 0.6s
+2026-08-20 11:47:08,605 | INFO    | epoch 15 | train loss 0.5268 | val selective_accuracy 0.8592 | best 0.8592 (epoch 15) | 0.8s
+2026-08-20 11:47:09,332 | INFO    | epoch 16 step 150 | loss 0.5496 | answer 0.3114 | calib 0.3181 | lr 1.43e-04
+2026-08-20 11:47:09,642 | INFO    | epoch 16 | train loss 0.5384 | val selective_accuracy 0.8521 | best 0.8592 (epoch 15) | 0.8s
+2026-08-20 11:47:10,311 | INFO    | epoch 17 | train loss 0.5278 | val selective_accuracy 0.8451 | best 0.8592 (epoch 15) | 0.6s
+2026-08-20 11:47:10,957 | INFO    | epoch 18 | train loss 0.5202 | val selective_accuracy 0.8592 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:47:11,670 | INFO    | epoch 19 | train loss 0.5172 | val selective_accuracy 0.8451 | best 0.8592 (epoch 15) | 0.6s
+2026-08-20 11:47:12,384 | INFO    | epoch 20 | train loss 0.5150 | val selective_accuracy 0.8310 | best 0.8592 (epoch 15) | 0.6s
+2026-08-20 11:47:13,053 | INFO    | epoch 21 | train loss 0.5106 | val selective_accuracy 0.8521 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:47:13,225 | INFO    | epoch 22 step 200 | loss 0.2828 | answer 0.1678 | calib 0.1559 | lr 6.41e-05
+2026-08-20 11:47:13,816 | INFO    | epoch 22 | train loss 0.5149 | val selective_accuracy 0.8310 | best 0.8592 (epoch 15) | 0.6s
+2026-08-20 11:47:14,519 | INFO    | epoch 23 | train loss 0.5059 | val selective_accuracy 0.8451 | best 0.8592 (epoch 15) | 0.6s
+2026-08-20 11:47:14,519 | INFO    | early stopping at epoch 23 after 8 rounds without improvement
+2026-08-20 11:47:18,814 | INFO    | retraining coalition 7/7: (1, 1, 1, 1, 1, 0)
+2026-08-20 11:47:26,092 | INFO    | epoch 0 | train loss 1.1648 | val selective_accuracy 0.8169 | best 0.8169 (epoch 0) | 1.8s
+2026-08-20 11:47:29,692 | INFO    | epoch 1 | train loss 0.9170 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 0.9s
+2026-08-20 11:47:31,054 | INFO    | epoch 2 | train loss 0.7707 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 1.0s
+2026-08-20 11:47:36,043 | INFO    | epoch 3 | train loss 0.6906 | val selective_accuracy 0.8310 | best 0.8310 (epoch 1) | 4.5s
+2026-08-20 11:47:40,728 | INFO    | epoch 4 | train loss 0.6649 | val selective_accuracy 0.8380 | best 0.8380 (epoch 4) | 1.5s
+2026-08-20 11:47:41,256 | INFO    | epoch 5 step 50 | loss 0.7470 | answer 0.3910 | calib 0.4203 | lr 2.86e-04
+2026-08-20 11:47:42,083 | INFO    | epoch 5 | train loss 0.6309 | val selective_accuracy 0.8310 | best 0.8380 (epoch 4) | 1.0s
+2026-08-20 11:47:49,974 | INFO    | epoch 6 | train loss 0.6089 | val selective_accuracy 0.8239 | best 0.8380 (epoch 4) | 7.2s
+2026-08-20 11:47:51,189 | INFO    | epoch 7 | train loss 0.5976 | val selective_accuracy 0.8310 | best 0.8380 (epoch 4) | 1.0s
+2026-08-20 11:47:51,970 | INFO    | epoch 8 | train loss 0.5835 | val selective_accuracy 0.8310 | best 0.8380 (epoch 4) | 0.6s
+2026-08-20 11:47:52,680 | INFO    | epoch 9 | train loss 0.5704 | val selective_accuracy 0.8380 | best 0.8380 (epoch 4) | 0.6s
+2026-08-20 11:47:56,972 | INFO    | epoch 10 | train loss 0.5541 | val selective_accuracy 0.8451 | best 0.8451 (epoch 10) | 0.8s
+2026-08-20 11:47:57,407 | INFO    | epoch 11 step 100 | loss 0.7025 | answer 0.3862 | calib 0.4165 | lr 2.27e-04
+2026-08-20 11:47:58,095 | INFO    | epoch 11 | train loss 0.5589 | val selective_accuracy 0.8310 | best 0.8451 (epoch 10) | 0.9s
+2026-08-20 11:48:02,511 | INFO    | epoch 12 | train loss 0.5430 | val selective_accuracy 0.8521 | best 0.8521 (epoch 12) | 1.2s
+2026-08-20 11:48:03,363 | INFO    | epoch 13 | train loss 0.5357 | val selective_accuracy 0.8521 | best 0.8521 (epoch 12) | 0.7s
+2026-08-20 11:48:04,466 | INFO    | epoch 14 | train loss 0.5312 | val selective_accuracy 0.8380 | best 0.8521 (epoch 12) | 1.0s
+2026-08-20 11:48:09,110 | INFO    | epoch 15 | train loss 0.5291 | val selective_accuracy 0.8592 | best 0.8592 (epoch 15) | 0.8s
+2026-08-20 11:48:09,916 | INFO    | epoch 16 step 150 | loss 0.5276 | answer 0.2993 | calib 0.3007 | lr 1.43e-04
+2026-08-20 11:48:10,249 | INFO    | epoch 16 | train loss 0.5308 | val selective_accuracy 0.8592 | best 0.8592 (epoch 15) | 0.8s
+2026-08-20 11:48:11,150 | INFO    | epoch 17 | train loss 0.5530 | val selective_accuracy 0.8380 | best 0.8592 (epoch 15) | 0.6s
+2026-08-20 11:48:12,218 | INFO    | epoch 18 | train loss 0.5225 | val selective_accuracy 0.8451 | best 0.8592 (epoch 15) | 0.9s
+2026-08-20 11:48:12,917 | INFO    | epoch 19 | train loss 0.5238 | val selective_accuracy 0.8521 | best 0.8592 (epoch 15) | 0.6s
+2026-08-20 11:48:13,582 | INFO    | epoch 20 | train loss 0.5251 | val selective_accuracy 0.8310 | best 0.8592 (epoch 15) | 0.5s
+2026-08-20 11:48:14,339 | INFO    | epoch 21 | train loss 0.5151 | val selective_accuracy 0.8310 | best 0.8592 (epoch 15) | 0.6s
+2026-08-20 11:48:14,570 | INFO    | epoch 22 step 200 | loss 0.2766 | answer 0.1651 | calib 0.1501 | lr 6.41e-05
+2026-08-20 11:48:15,260 | INFO    | epoch 22 | train loss 0.5191 | val selective_accuracy 0.8310 | best 0.8592 (epoch 15) | 0.8s
+2026-08-20 11:48:16,109 | INFO    | epoch 23 | train loss 0.5122 | val selective_accuracy 0.8592 | best 0.8592 (epoch 15) | 0.7s
+2026-08-20 11:48:16,109 | INFO    | early stopping at epoch 23 after 8 rounds without improvement
+2026-08-20 11:48:20,465 | INFO    | 
+role                      loo_contrast  ci_lo    ci_hi   moves_benchmark  primary_benchmark  
+------------------------  ------------  -------  ------  ---------------  -------------------
+counter_evidence_checker  0.0163        -0.0056  0.0395  False            truthfulqa         
+consistency_checker       0.0109        -0.0157  0.0370  False            math_aime          
+local_claim_checker       0.0054        0.0000   0.0169  False            advconsistency     
+explore_then_prune        -0.0109       -0.0279  0.0000  False            creative_divergence
+rare_hypothesis_checker   -0.0163       -0.0383  0.0000  False            temporal_qa        
+confidence_calibrator     0.0000        0.0000   0.0000  False            sycophancy         
+2026-08-20 11:48:20,467 | INFO    | degeneracy check: PASS (6 distinct coalition values)
+2026-08-20 11:48:20,532 | INFO    | wrote report to <BUNDLE>/cca_synth/runs/arms-neutral_council/REPORT.md

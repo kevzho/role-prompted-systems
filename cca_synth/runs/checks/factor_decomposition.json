@@ -1,0 +1,103 @@
+{
+  "note": "``_check_hypothesis_diversity`` scores ``diversity * concentration`` and\n``_check_claim_decomposition`` scores ``claims * (1 + sourced_fraction)``. A\nproduct can fall while one of its factors rises, so a negative contrast on\neither statistic does not by itself establish that the declared operation ran\nbackwards -- it may mean the prompt traded one factor for the other, which for\n``explore_then_prune`` is arguably what \"prune\" is supposed to do.",
+  "roles": {
+    "explore_then_prune": {
+      "factors": {
+        "concentration": {
+          "diff": 0.0,
+          "hi": 0.0,
+          "interval_excludes_zero": false,
+          "lo": 0.0,
+          "mean_neutral": 1.0,
+          "mean_operation": 1.0,
+          "p_value": 1.0,
+          "prob_positive": 0.0,
+          "standardized_effect": 0.0
+        },
+        "diversity": {
+          "diff": -0.855,
+          "hi": -0.73,
+          "interval_excludes_zero": true,
+          "lo": -0.985,
+          "mean_neutral": 2.55,
+          "mean_operation": 1.695,
+          "p_value": 0.0005,
+          "prob_positive": 0.0,
+          "standardized_effect": -0.9511661426912795
+        }
+      },
+      "n_items": 200,
+      "reconstructed_operation_mean": 1.695
+    },
+    "local_claim_checker": {
+      "factors": {
+        "claim_count": {
+          "diff": -0.2,
+          "hi": -0.05,
+          "interval_excludes_zero": true,
+          "lo": -0.35012499999999996,
+          "mean_neutral": 2.52,
+          "mean_operation": 2.32,
+          "p_value": 0.008,
+          "prob_positive": 0.003,
+          "standardized_effect": -0.18211717839530317
+        },
+        "sourced_weight": {
+          "diff": 0.0,
+          "hi": 0.0,
+          "interval_excludes_zero": false,
+          "lo": 0.0,
+          "mean_neutral": 2.0,
+          "mean_operation": 2.0,
+          "p_value": 1.0,
+          "prob_positive": 0.0,
+          "standardized_effect": 0.0
+        }
+      },
+      "n_items": 200,
+      "reconstructed_operation_mean": 4.64
+    }
+  },
+  "table": [
+    {
+      "ci!=0": true,
+      "d": -0.9511661426912795,
+      "delta": -0.855,
+      "factor": "diversity",
+      "neutral": 2.55,
+      "operation": 1.695,
+      "p": 0.0005,
+      "role": "explore_then_prune"
+    },
+    {
+      "ci!=0": false,
+      "d": 0.0,
+      "delta": 0.0,
+      "factor": "concentration",
+      "neutral": 1.0,
+      "operation": 1.0,
+      "p": 1.0,
+      "role": "explore_then_prune"
+    },
+    {
+      "ci!=0": true,
+      "d": -0.18211717839530317,
+      "delta": -0.2,
+      "factor": "claim_count",
+      "neutral": 2.52,
+      "operation": 2.32,
+      "p": 0.008,
+      "role": "local_claim_checker"
+    },
+    {
+      "ci!=0": false,
+      "d": 0.0,
+      "delta": 0.0,
+      "factor": "sourced_weight",
+      "neutral": 2.0,
+      "operation": 2.0,
+      "p": 1.0,
+      "role": "local_claim_checker"
+    }
+  ]
+}

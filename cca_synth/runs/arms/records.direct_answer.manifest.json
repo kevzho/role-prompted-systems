@@ -1,0 +1,44 @@
+{
+  "agents_isolated": true,
+  "condition": "direct_answer",
+  "counts": {
+    "calls": 1500,
+    "errors": 0,
+    "injections_flagged": 0,
+    "malformed": 0,
+    "redactions": 0,
+    "refusals": 1,
+    "retries": 0,
+    "truncations": 0
+  },
+  "exclusion_rates": {
+    "error_rate": 0.0,
+    "malformed_rate": 0.0,
+    "refusal_rate": 0.0006666666666666666,
+    "retry_rate": 0.0,
+    "truncation_rate": 0.0
+  },
+  "max_workers": 8,
+  "mean_output_tokens_per_item": 99.802,
+  "model_snapshot": "gpt-5.6-terra",
+  "n_items": 1500,
+  "n_items_skipped_existing": 0,
+  "n_items_written": 1500,
+  "output_path": "runs/arms/records.direct_answer.jsonl",
+  "provenance": "real",
+  "provider": {
+    "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+    "kind": "azure-openai",
+    "model_snapshot": "gpt-5.6-terra",
+    "synthetic": false
+  },
+  "provider_pricing_usd_per_million_tokens": {
+    "input": 2.0,
+    "output": 12.0
+  },
+  "resumed": false,
+  "total_cost_usd": 2.6883699999999964,
+  "total_input_tokens": 445967,
+  "total_output_tokens": 149703,
+  "wall_clock_seconds": 607.7180485000026
+}

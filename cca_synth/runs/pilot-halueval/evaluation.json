@@ -1,0 +1,550 @@
+{
+  "arms": {
+    "cca_synthesizer": {
+      "abstention_rate": 0.2127659574468085,
+      "accuracy": 0.723404255319149,
+      "accuracy_on_answered": 0.8108108108108109,
+      "agent_confidence_ece": 0.22498729444564658,
+      "aurc": 0.13050243467062114,
+      "brier": 0.42907010112888494,
+      "coverage": 0.7872340425531915,
+      "ece": 0.2646621605183216,
+      "loss": 1.4922579526901245,
+      "mean_agent_dominance": 0.16709595918655396,
+      "mean_confidence": 0.5704157948493958,
+      "n_items": 47.0,
+      "selective_accuracy": 0.6382978723404256
+    },
+    "cca_synthesizer_no_selective_abstention": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.723404255319149,
+      "accuracy_on_answered": 0.723404255319149,
+      "agent_confidence_ece": 0.22498729444564658,
+      "aurc": 0.13050243467062114,
+      "brier": 0.42907010112888494,
+      "coverage": 1.0,
+      "ece": 0.2646621605183216,
+      "loss": 1.4922579526901245,
+      "mean_agent_dominance": 0.16709595918655396,
+      "mean_confidence": 0.5704157948493958,
+      "n_items": 47.0,
+      "selective_accuracy": 0.723404255319149
+    },
+    "confidence_weighted_vote": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7446808510638298,
+      "accuracy_on_answered": 0.7446808510638298,
+      "agent_confidence_ece": 0.7553191489361702,
+      "aurc": 0.14622451156216174,
+      "brier": 0.46252669049142325,
+      "coverage": 1.0,
+      "ece": 0.2359844179863625,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.9779338240623474,
+      "n_items": 47.0,
+      "selective_accuracy": 0.7446808510638298
+    },
+    "direct_answer_base": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.3404255319148936,
+      "accuracy_on_answered": 0.3404255319148936,
+      "agent_confidence_ece": 0.7553191489361702,
+      "aurc": 0.7112525789139224,
+      "brier": 0.5000001807163709,
+      "coverage": 1.0,
+      "ece": 0.28723418839434356,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.5000002384185791,
+      "n_items": 47.0,
+      "selective_accuracy": 0.3404255319148936
+    },
+    "majority_vote": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7446808510638298,
+      "accuracy_on_answered": 0.7446808510638298,
+      "agent_confidence_ece": 0.7553191489361702,
+      "aurc": 0.20219299075933356,
+      "brier": 0.46439238057307963,
+      "coverage": 1.0,
+      "ece": 0.23538358794881944,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.9781705737113953,
+      "n_items": 47.0,
+      "selective_accuracy": 0.7446808510638298
+    },
+    "oracle_upper_bound_not_deployable": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.851063829787234,
+      "accuracy_on_answered": 0.851063829787234,
+      "agent_confidence_ece": 0.7553191489361702,
+      "aurc": 0.4115165703618961,
+      "brier": 0.41951520462931147,
+      "coverage": 1.0,
+      "ece": 0.35456568256337584,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.7707454562187195,
+      "n_items": 47.0,
+      "selective_accuracy": 0.851063829787234
+    },
+    "single_agent::confidence_calibrator": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7446808510638298,
+      "accuracy_on_answered": 0.7446808510638298,
+      "agent_confidence_ece": 0.7553191489361702,
+      "aurc": 0.36372887775220675,
+      "brier": 0.3806338184111493,
+      "coverage": 1.0,
+      "ece": 0.2152641479005205,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.7310585379600525,
+      "n_items": 47.0,
+      "selective_accuracy": 0.7446808510638298
+    },
+    "single_agent::consistency_checker": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7872340425531915,
+      "accuracy_on_answered": 0.7872340425531915,
+      "agent_confidence_ece": 0.7553191489361702,
+      "aurc": 0.32427063486498986,
+      "brier": 0.3413046871110956,
+      "coverage": 1.0,
+      "ece": 0.20704391662110677,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.7310585379600525,
+      "n_items": 47.0,
+      "selective_accuracy": 0.7872340425531915
+    },
+    "single_agent::counter_evidence_checker": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7446808510638298,
+      "accuracy_on_answered": 0.7446808510638298,
+      "agent_confidence_ece": 0.7553191489361702,
+      "aurc": 0.35688204249275846,
+      "brier": 0.38063378910867385,
+      "coverage": 1.0,
+      "ece": 0.20704390140289958,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.7310585379600525,
+      "n_items": 47.0,
+      "selective_accuracy": 0.7446808510638298
+    },
+    "single_agent::explore_then_prune": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7659574468085106,
+      "accuracy_on_answered": 0.7659574468085106,
+      "agent_confidence_ece": 0.7553191489361702,
+      "aurc": 0.3281729969934663,
+      "brier": 0.36096923810988474,
+      "coverage": 1.0,
+      "ece": 0.22832050475668403,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.7310585379600525,
+      "n_items": 47.0,
+      "selective_accuracy": 0.7659574468085106
+    },
+    "single_agent::local_claim_checker": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7446808510638298,
+      "accuracy_on_answered": 0.7446808510638298,
+      "agent_confidence_ece": 0.7553191489361702,
+      "aurc": 0.35292544944042076,
+      "brier": 0.38063378910867385,
+      "coverage": 1.0,
+      "ece": 0.20704390140289958,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.7310585379600525,
+      "n_items": 47.0,
+      "selective_accuracy": 0.7446808510638298
+    },
+    "single_agent::rare_hypothesis_checker": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7446808510638298,
+      "accuracy_on_answered": 0.7446808510638298,
+      "agent_confidence_ece": 0.7553191489361702,
+      "aurc": 0.3644872367681704,
+      "brier": 0.3806338184111493,
+      "coverage": 1.0,
+      "ece": 0.24959712332867562,
+      "loss": NaN,
+      "mean_agent_dominance": 0.0,
+      "mean_confidence": 0.7310585379600525,
+      "n_items": 47.0,
+      "selective_accuracy": 0.7446808510638298
+    }
+  },
+  "audit_records": {
+    "enabled": true,
+    "path": "<BUNDLE>/cca_synth/runs/pilot-halueval/audit_records.jsonl",
+    "written": 47
+  },
+  "calibration": {
+    "abstention_threshold": 0.28510479629039764,
+    "fitted_on": "calibration split only",
+    "target_coverage": 0.9,
+    "temperature": 0.45889782905578613
+  },
+  "config_hash": "97da97b6a0339949c0a1ba614616dd1ca325a0aeb9d706440c78440d9a686a61",
+  "cost": {
+    "cost_usd_per_item": 0.02299991471970335,
+    "council_calls_per_item": 6.0,
+    "exclusions": {
+      "absent_agent_rate": 0.0,
+      "absent_agent_records": {
+        "confidence_calibrator": 0,
+        "consistency_checker": 0,
+        "counter_evidence_checker": 0,
+        "explore_then_prune": 0,
+        "local_claim_checker": 0,
+        "rare_hypothesis_checker": 0
+      },
+      "retries_per_item": 0.0,
+      "total_retries": {
+        "confidence_calibrator": 0,
+        "consistency_checker": 0,
+        "counter_evidence_checker": 0,
+        "explore_then_prune": 0,
+        "local_claim_checker": 0,
+        "rare_hypothesis_checker": 0
+      }
+    },
+    "input_tokens_per_item": 612.1063829787234,
+    "mean_latency_ms_per_agent": {
+      "confidence_calibrator": 2586.402593085106,
+      "consistency_checker": 2609.4749002659573,
+      "counter_evidence_checker": 3002.532579787234,
+      "explore_then_prune": 2830.853723404255,
+      "local_claim_checker": 3085.189494680851,
+      "rare_hypothesis_checker": 2759.890126329787
+    },
+    "n_items": 47,
+    "note": "Budget-matched comparison requires holding these quantities equal across arms; the unconstrained numbers above are the quality-cost frontier point, not a matched comparison.",
+    "output_tokens_per_item": 1304.5531914893618,
+    "per_agent_output_token_share": {
+      "confidence_calibrator": 0.156717878461689,
+      "consistency_checker": 0.15016146393972013,
+      "counter_evidence_checker": 0.17428319796457578,
+      "explore_then_prune": 0.16376357764947647,
+      "local_claim_checker": 0.18473758032423263,
+      "rare_hypothesis_checker": 0.17033630166030597
+    },
+    "per_agent_output_tokens_per_item": {
+      "confidence_calibrator": 204.4468085106383,
+      "consistency_checker": 195.89361702127658,
+      "counter_evidence_checker": 227.36170212765958,
+      "explore_then_prune": 213.63829787234042,
+      "local_claim_checker": 241.0,
+      "rare_hypothesis_checker": 222.2127659574468
+    }
+  },
+  "data": {
+    "absent_agent_rate": 0.0,
+    "absent_agent_records": 0,
+    "exclusion_ledger": {
+      "abstentions_by_role": {
+        "confidence_calibrator": 0,
+        "consistency_checker": 0,
+        "counter_evidence_checker": 0,
+        "explore_then_prune": 0,
+        "local_claim_checker": 0,
+        "rare_hypothesis_checker": 0
+      },
+      "flags_on_present_records": {
+        "calculation_error": 1,
+        "contradiction": 101,
+        "format_invalid": 0,
+        "injection_suspected": 0,
+        "privacy_sensitive": 0,
+        "refusal": 0,
+        "truncated_output": 0,
+        "unsupported_claim": 144
+      },
+      "missing_outputs": {
+        "by_failure_flag": {
+          "calculation_error": 0,
+          "contradiction": 0,
+          "format_invalid": 0,
+          "injection_suspected": 0,
+          "privacy_sensitive": 0,
+          "refusal": 0,
+          "truncated_output": 0,
+          "unsupported_claim": 0
+        },
+        "by_role": {
+          "confidence_calibrator": 0,
+          "consistency_checker": 0,
+          "counter_evidence_checker": 0,
+          "explore_then_prune": 0,
+          "local_claim_checker": 0,
+          "rare_hypothesis_checker": 0
+        },
+        "rate": 0.0,
+        "total": 0,
+        "unexplained": 0
+      },
+      "n_expected_calls": 1200,
+      "n_items": 200,
+      "note": "Published per specification section 8. 'unexplained' counts absent records carrying no failure_flag; a non-zero value means the orchestrator dropped a call without recording why.",
+      "retries": {
+        "by_role": {
+          "confidence_calibrator": 0,
+          "consistency_checker": 0,
+          "counter_evidence_checker": 0,
+          "explore_then_prune": 0,
+          "local_claim_checker": 0,
+          "rare_hypothesis_checker": 0
+        },
+        "calls_with_at_least_one_retry": 0,
+        "per_item": 0.0,
+        "total": 0
+      },
+      "source_lines": 200,
+      "unparsable_lines": 0
+    },
+    "n_parsed": 200,
+    "n_raw": 200,
+    "parse_failures": 0,
+    "provenance": "real",
+    "records_path": "runs/pilot/records.jsonl",
+    "split_fractions": [
+      0.5,
+      0.15,
+      0.15,
+      0.2
+    ],
+    "split_salt": "cca-synth-v1",
+    "split_sizes": {
+      "calibration": 26,
+      "test": 47,
+      "train": 98,
+      "validation": 29
+    },
+    "unlabelled_train_items_dropped": 0
+  },
+  "disclaimer": "These roles are functional AI processing constraints. They are not diagnostic models, simulations of lived experience, or claims that mental health conditions confer a single cognitive mechanism.",
+  "error_correlation": {
+    "interpretation": "High off-diagonal correlation means the council supplies less independent evidence than its agent count implies (limitation L7). It does not by itself invalidate a measured gain, but it bounds how much of that gain can be attributed to diversity.",
+    "matrix": [
+      [
+        0.9999999999999999,
+        0.7686296284892391,
+        0.8880952380952379,
+        0.8287899232572372,
+        0.6642857142857141,
+        0.7761904761904761
+      ],
+      [
+        0.7686296284892392,
+        1.0,
+        0.8878560065057217,
+        0.9404897046331154,
+        0.6494032504727564,
+        0.8878560065057217
+      ],
+      [
+        0.8880952380952379,
+        0.8878560065057218,
+        0.9999999999999999,
+        0.9440358593314683,
+        0.6642857142857141,
+        0.7761904761904761
+      ],
+      [
+        0.8287899232572371,
+        0.9404897046331155,
+        0.9440358593314683,
+        1.0,
+        0.7135439871830059,
+        0.8287899232572371
+      ],
+      [
+        0.6642857142857141,
+        0.6494032504727565,
+        0.6642857142857141,
+        0.7135439871830059,
+        0.9999999999999999,
+        0.7761904761904761
+      ],
+      [
+        0.7761904761904761,
+        0.8878560065057218,
+        0.7761904761904761,
+        0.8287899232572372,
+        0.7761904761904761,
+        0.9999999999999999
+      ]
+    ],
+    "max_off_diagonal": 0.9440358593314683,
+    "mean_off_diagonal": 0.799642158991573,
+    "n_items_all_agents_answered": 47,
+    "roles": [
+      "counter_evidence_checker",
+      "consistency_checker",
+      "local_claim_checker",
+      "explore_then_prune",
+      "rare_hypothesis_checker",
+      "confidence_calibrator"
+    ],
+    "solo_accuracy": {
+      "confidence_calibrator": 0.7446808218955994,
+      "consistency_checker": 0.7872340679168701,
+      "counter_evidence_checker": 0.7446808218955994,
+      "explore_then_prune": 0.7659574747085571,
+      "local_claim_checker": 0.7446808218955994,
+      "rare_hypothesis_checker": 0.7446808218955994
+    }
+  },
+  "paired_contrasts_vs_synthesizer": [
+    {
+      "comparator": "direct_answer_base",
+      "deployable_comparator": true,
+      "diff": 0.29787234042553196,
+      "hi": 0.48936170212765956,
+      "lo": 0.1063829787234043,
+      "n": 47.0,
+      "p_superior": 0.9975,
+      "p_two_sided": 0.0035
+    },
+    {
+      "comparator": "majority_vote",
+      "deployable_comparator": true,
+      "diff": -0.10638297872340419,
+      "hi": -0.021276595744680882,
+      "lo": -0.19148936170212771,
+      "n": 47.0,
+      "p_superior": 0.0,
+      "p_two_sided": 0.03
+    },
+    {
+      "comparator": "confidence_weighted_vote",
+      "deployable_comparator": true,
+      "diff": -0.10638297872340419,
+      "hi": -0.021276595744680882,
+      "lo": -0.19148936170212771,
+      "n": 47.0,
+      "p_superior": 0.0,
+      "p_two_sided": 0.03
+    },
+    {
+      "comparator": "oracle_upper_bound_not_deployable",
+      "deployable_comparator": false,
+      "diff": -0.21276595744680848,
+      "hi": -0.10638297872340419,
+      "lo": -0.34042553191489355,
+      "n": 47.0,
+      "p_superior": 0.0,
+      "p_two_sided": 0.0015
+    },
+    {
+      "comparator": "single_agent::counter_evidence_checker",
+      "deployable_comparator": true,
+      "diff": -0.10638297872340419,
+      "hi": -0.021276595744680882,
+      "lo": -0.19148936170212771,
+      "n": 47.0,
+      "p_superior": 0.0,
+      "p_two_sided": 0.0245
+    },
+    {
+      "comparator": "single_agent::consistency_checker",
+      "deployable_comparator": true,
+      "diff": -0.14893617021276595,
+      "hi": -0.06382978723404253,
+      "lo": -0.25531914893617025,
+      "n": 47.0,
+      "p_superior": 0.0,
+      "p_two_sided": 0.0115
+    },
+    {
+      "comparator": "single_agent::local_claim_checker",
+      "deployable_comparator": true,
+      "diff": -0.10638297872340419,
+      "hi": -0.021276595744680882,
+      "lo": -0.21276595744680848,
+      "n": 47.0,
+      "p_superior": 0.0,
+      "p_two_sided": 0.0325
+    },
+    {
+      "comparator": "single_agent::explore_then_prune",
+      "deployable_comparator": true,
+      "diff": -0.12765957446808507,
+      "hi": -0.04255319148936165,
+      "lo": -0.23404255319148937,
+      "n": 47.0,
+      "p_superior": 0.0,
+      "p_two_sided": 0.018
+    },
+    {
+      "comparator": "single_agent::rare_hypothesis_checker",
+      "deployable_comparator": true,
+      "diff": -0.10638297872340419,
+      "hi": -0.021276595744680882,
+      "lo": -0.19148936170212771,
+      "n": 47.0,
+      "p_superior": 0.0,
+      "p_two_sided": 0.031
+    },
+    {
+      "comparator": "single_agent::confidence_calibrator",
+      "deployable_comparator": true,
+      "diff": -0.10638297872340419,
+      "hi": -0.021276595744680882,
+      "lo": -0.19148936170212771,
+      "n": 47.0,
+      "p_superior": 0.0,
+      "p_two_sided": 0.0285
+    }
+  ],
+  "provenance": "real",
+  "robustness": {
+    "clean_accuracy": 0.7234042286872864,
+    "confidently_wrong_majority": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.3617021143436432,
+      "base_fallback_rate": 0.0,
+      "degradation": 0.3617021143436432
+    },
+    "evidence_free_agreement": {
+      "abstention_rate": 0.021276595070958138,
+      "accuracy": 0.0,
+      "base_fallback_rate": 0.0,
+      "degradation": 0.7234042286872864
+    },
+    "option_permutation_equivariance": {
+      "agreement": 1.0,
+      "max_abs_logit_deviation": 0.0,
+      "note": "Nothing in the option scorer embeds the option index, so relabelling answer options must carry each score with it. max_abs_logit_deviation is the exact test; argmax agreement below 1.0 with a tiny deviation means near-ties flipping under float non-associativity, not position bias."
+    },
+    "permutation_invariance": {
+      "max_abs_logit_deviation": 1.0058283805847168e-07,
+      "note": "The set encoder has no positional encoding over the agent axis and role identity enters only as content, so invariance is a structural guarantee; a failure here indicates a bug.",
+      "passed": true,
+      "tolerance": 0.0001
+    },
+    "prompt_injection_via_agent_output": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.6170212626457214,
+      "base_fallback_rate": 0.0,
+      "degradation": 0.10638296604156494
+    },
+    "role_label_permutation": {
+      "abstention_rate": 0.0,
+      "accuracy": 0.7234042286872864,
+      "base_fallback_rate": 0.0,
+      "degradation": 0.0,
+      "note": "Under model.use_role_embeddings=False this degradation must be exactly zero. A large value in the role-aware configuration means the model relies on role labels rather than on the operations they stand for (RQ3).",
+      "role_blind_model": false
+    },
+    "split": "test"
+  },
+  "run_id": "pilot-halueval"
+}

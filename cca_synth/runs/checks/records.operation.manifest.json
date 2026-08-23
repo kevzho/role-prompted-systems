@@ -1,0 +1,127 @@
+{
+  "condition": "manipulation_check/operation",
+  "counts": {
+    "calls": 1200,
+    "errors": 0,
+    "injections_flagged": 0,
+    "malformed": 0,
+    "redactions": 0,
+    "refusals": 0,
+    "retries": 0,
+    "truncations": 0
+  },
+  "exclusion_rates": {
+    "error_rate": 0.0,
+    "malformed_rate": 0.0,
+    "refusal_rate": 0.0,
+    "retry_rate": 0.0,
+    "truncation_rate": 0.0
+  },
+  "governance": "Item content is redacted before dispatch; injection-like content is flagged rather than removed; prompts are recorded by hash, never by text.",
+  "heterogeneous_council": false,
+  "isolation": "Agents are isolated: each agent's user content is built from the item alone and no agent output is reachable from another agent's call (RESEARCH_SPECIFICATION.md section 4).",
+  "model_snapshots": {
+    "confidence_calibrator": "gpt-5.6-terra",
+    "consistency_checker": "gpt-5.6-terra",
+    "counter_evidence_checker": "gpt-5.6-terra",
+    "explore_then_prune": "gpt-5.6-terra",
+    "local_claim_checker": "gpt-5.6-terra",
+    "rare_hypothesis_checker": "gpt-5.6-terra"
+  },
+  "n_items": 200,
+  "n_items_skipped_existing": 0,
+  "n_items_written": 200,
+  "output_path": "runs/checks/records.operation.jsonl",
+  "prompt_manifest": {
+    "prompt_version": "v1.0.0",
+    "roles": {
+      "confidence_calibrator": {
+        "check": "negative_expected_calibration_error",
+        "neutral": "e470bafac566be18",
+        "operation": "fd10f8ad04876d1f",
+        "persona": "8987d58bd1f79917",
+        "primary_benchmark": "sycophancy"
+      },
+      "consistency_checker": {
+        "check": "contradiction_detection_minus_abstention",
+        "neutral": "ba6a153f4675917f",
+        "operation": "f418043db2bbee4a",
+        "persona": "a9060c228e9b93cb",
+        "primary_benchmark": "math_aime"
+      },
+      "counter_evidence_checker": {
+        "check": "counterclaim_and_flag_rate",
+        "neutral": "e470bafac566be18",
+        "operation": "e52ef02e147b8c50",
+        "persona": "3358a1fc6f8a8ea4",
+        "primary_benchmark": "truthfulqa"
+      },
+      "explore_then_prune": {
+        "check": "hypothesis_diversity_times_concentration",
+        "neutral": "e470bafac566be18",
+        "operation": "db352dbe82db6e82",
+        "persona": "861f810a3ca21da0",
+        "primary_benchmark": "creative_divergence"
+      },
+      "local_claim_checker": {
+        "check": "atomic_claim_decomposition",
+        "neutral": "ba6a153f4675917f",
+        "operation": "1913f77bed392533",
+        "persona": "b894df3d03577f70",
+        "primary_benchmark": "advconsistency"
+      },
+      "rare_hypothesis_checker": {
+        "check": "sourced_alternatives_minus_unsourced",
+        "neutral": "e470bafac566be18",
+        "operation": "e5558ff267e75008",
+        "persona": "384529400caaa0c8",
+        "primary_benchmark": "temporal_qa"
+      }
+    },
+    "variants": [
+      "operation",
+      "neutral",
+      "persona"
+    ]
+  },
+  "prompt_variant": "operation",
+  "provider_pricing_usd_per_million_tokens": {
+    "confidence_calibrator": {
+      "input": 2.0,
+      "output": 12.0
+    },
+    "consistency_checker": {
+      "input": 2.0,
+      "output": 12.0
+    },
+    "counter_evidence_checker": {
+      "input": 2.0,
+      "output": 12.0
+    },
+    "explore_then_prune": {
+      "input": 2.0,
+      "output": 12.0
+    },
+    "local_claim_checker": {
+      "input": 2.0,
+      "output": 12.0
+    },
+    "rare_hypothesis_checker": {
+      "input": 2.0,
+      "output": 12.0
+    }
+  },
+  "resumed": true,
+  "sampling": {
+    "max_tokens": 1024,
+    "max_workers": 4,
+    "seed": 1337,
+    "temperature": 0.0
+  },
+  "total_cost_usd": 4.35738,
+  "usage": {
+    "input_tokens": 731718,
+    "output_tokens": 241162
+  },
+  "wall_clock_seconds": 865.8002125839703
+}

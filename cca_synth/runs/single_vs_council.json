@@ -1,0 +1,96 @@
+{
+  "direct_answer_accuracy": 0.861,
+  "estimator": "majority_vote",
+  "n_baseline_without_usable_answer": 0,
+  "n_bootstrap": 2000,
+  "n_items_scorable_common": 1000,
+  "note": "Single-agent direct-answer baseline (condition 1, v(empty)) against each council arm's majority vote, on the scorable items common to all arms and the baseline. Paired item-level bootstrap, 2,000 resamples, Benjamini-Hochberg across the three contrasts within each analysis. PRIMARY follows the pre-committed rule that a tied or answerless council has failed the item; ROBUSTNESS drops those items instead. The baseline runs the same model as the councils, so it is call-matched and cheaper, not cost-matched.",
+  "primary_ties_count_as_failure": [
+    {
+      "ci_hi": -0.002,
+      "ci_lo": -0.027,
+      "contrast": "cca_council - direct_answer",
+      "council_accuracy": 0.846,
+      "d": -0.07249014927334292,
+      "delta": -0.015,
+      "direct_answer_accuracy": 0.861,
+      "n_council_no_answer": 14,
+      "n_items": 1000,
+      "p": 0.026,
+      "q": 0.026,
+      "sig_fdr": true
+    },
+    {
+      "ci_hi": -0.002,
+      "ci_lo": -0.028,
+      "contrast": "persona_only_council - direct_answer",
+      "council_accuracy": 0.846,
+      "d": -0.07085266757513484,
+      "delta": -0.015,
+      "direct_answer_accuracy": 0.861,
+      "n_council_no_answer": 11,
+      "n_items": 1000,
+      "p": 0.024,
+      "q": 0.026,
+      "sig_fdr": true
+    },
+    {
+      "ci_hi": -0.009,
+      "ci_lo": -0.035,
+      "contrast": "neutral_council - direct_answer",
+      "council_accuracy": 0.839,
+      "d": -0.1030678888786483,
+      "delta": -0.022,
+      "direct_answer_accuracy": 0.861,
+      "n_council_no_answer": 7,
+      "n_items": 1000,
+      "p": 0.003,
+      "q": 0.009000000000000001,
+      "sig_fdr": true
+    }
+  ],
+  "robustness_ties_excluded": [
+    {
+      "ci_hi": 0.004056795131845842,
+      "ci_lo": -0.019269776876267748,
+      "contrast": "cca_council - direct_answer",
+      "council_accuracy": 0.8580121703853956,
+      "d": -0.037688925836602105,
+      "delta": -0.007099391480730223,
+      "direct_answer_accuracy": 0.8651115618661258,
+      "n_council_no_answer": 14,
+      "n_items": 986,
+      "p": 0.269,
+      "q": 0.286,
+      "sig_fdr": false
+    },
+    {
+      "ci_hi": 0.005055611729019211,
+      "ci_lo": -0.019211324570273004,
+      "contrast": "persona_only_council - direct_answer",
+      "council_accuracy": 0.8554095045500506,
+      "d": -0.036599093216399314,
+      "delta": -0.007077856420626896,
+      "direct_answer_accuracy": 0.8624873609706775,
+      "n_council_no_answer": 11,
+      "n_items": 989,
+      "p": 0.286,
+      "q": 0.286,
+      "sig_fdr": false
+    },
+    {
+      "ci_hi": -0.006042296072507553,
+      "ci_lo": -0.03121852970795569,
+      "contrast": "neutral_council - direct_answer",
+      "council_accuracy": 0.8449144008056395,
+      "d": -0.08843984621882509,
+      "delta": -0.01812688821752266,
+      "direct_answer_accuracy": 0.8630412890231621,
+      "n_council_no_answer": 7,
+      "n_items": 993,
+      "p": 0.003,
+      "q": 0.009000000000000001,
+      "sig_fdr": true
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "confidence_levels_cca_council": [
+    {
+      "accuracy": 0.9146110056925996,
+      "n": 4743,
+      "share": 0.7905,
+      "stated_confidence": 0.99
+    },
+    {
+      "accuracy": 0.6723338485316847,
+      "n": 647,
+      "share": 0.10783333333333334,
+      "stated_confidence": 0.98
+    },
+    {
+      "accuracy": 0.5169491525423728,
+      "n": 118,
+      "share": 0.019666666666666666,
+      "stated_confidence": 0.93
+    },
+    {
+      "accuracy": 0.425531914893617,
+      "n": 94,
+      "share": 0.015666666666666666,
+      "stated_confidence": 0.9
+    },
+    {
+      "accuracy": 0.5697674418604651,
+      "n": 86,
+      "share": 0.014333333333333333,
+      "stated_confidence": 0.96
+    },
+    {
+      "accuracy": 0.6133333333333333,
+      "n": 75,
+      "share": 0.0125,
+      "stated_confidence": 0.97
+    },
+    {
+      "accuracy": 0.5555555555555556,
+      "n": 63,
+      "share": 0.0105,
+      "stated_confidence": 0.94
+    },
+    {
+      "accuracy": 0.5333333333333333,
+      "n": 45,
+      "share": 0.0075,
+      "stated_confidence": 0.91
+    }
+  ],
+  "note": "Verbalised agent confidence against realised correctness over the scorable items, one row per present, non-abstaining agent answer. EXPLORATORY: not pre-registered, reported as an observation. The isotonic fit is a diagnostic of scale compression, not a proposed method; a monotone map cannot change AUROC, so a large drop in ECE beside an unchanged AUROC is the signature of a rescaling problem rather than a knowledge problem.",
+  "per_arm": {
+    "cca_council": {
+      "accuracy": 0.8476666666666667,
+      "accuracy_when_at_or_above_0.95": 0.8764347202295553,
+      "auroc": 0.7158207066035309,
+      "ece": 0.13415333333333346,
+      "gap": 0.13415333333333335,
+      "mean_stated_confidence": 0.98182,
+      "n_agent_answers": 6000,
+      "sd_stated_confidence": 0.026131480376485876,
+      "share_at_or_above_0.95": 0.9293333333333333
+    },
+    "neutral_council": {
+      "accuracy": 0.8448333333333333,
+      "accuracy_when_at_or_above_0.95": 0.8747334754797441,
+      "auroc": 0.7229887064418649,
+      "ece": 0.13774500000000006,
+      "gap": 0.137745,
+      "mean_stated_confidence": 0.9825783333333333,
+      "n_agent_answers": 6000,
+      "sd_stated_confidence": 0.02656191880409914,
+      "share_at_or_above_0.95": 0.938
+    },
+    "persona_only_council": {
+      "accuracy": 0.8506417736289381,
+      "accuracy_when_at_or_above_0.95": 0.8788964528842709,
+      "auroc": 0.7084070382268134,
+      "ece": 0.13130188364727463,
+      "gap": 0.1313018836472747,
+      "mean_stated_confidence": 0.9819436572762128,
+      "n_agent_answers": 5999,
+      "sd_stated_confidence": 0.026750864674249874,
+      "share_at_or_above_0.95": 0.9304884147357892
+    }
+  },
+  "recalibration_cca_council": {
+    "auroc_after": 0.711917901946347,
+    "auroc_before": 0.7124332289076284,
+    "ece_after": 0.006650701744491344,
+    "ece_before": 0.1326633333333334,
+    "estimator": "isotonic_regression_pav",
+    "fit": "random half, evaluated on the held-out half",
+    "seed": 0
+  }
+}

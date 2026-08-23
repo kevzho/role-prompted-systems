@@ -1,0 +1,66 @@
+{
+  "calibration": {
+    "by_benchmark": {
+      "advconsistency": 0,
+      "creative_divergence": 0,
+      "halueval": 148,
+      "math_aime": 0,
+      "sycophancy": 0,
+      "temporal_qa": 0,
+      "truthfulqa": 81
+    },
+    "labelled_fraction": 0.6462882096069869,
+    "mean_claims_per_item": 13.384279475982533,
+    "mean_options": 2.8122270742358078,
+    "n_items": 229,
+    "provenance": "real"
+  },
+  "test": {
+    "by_benchmark": {
+      "advconsistency": 0,
+      "creative_divergence": 0,
+      "halueval": 184,
+      "math_aime": 0,
+      "sycophancy": 0,
+      "temporal_qa": 0,
+      "truthfulqa": 86
+    },
+    "labelled_fraction": 0.6814814814814815,
+    "mean_claims_per_item": 13.914814814814815,
+    "mean_options": 2.811111111111111,
+    "n_items": 270,
+    "provenance": "real"
+  },
+  "train": {
+    "by_benchmark": {
+      "advconsistency": 0,
+      "creative_divergence": 0,
+      "halueval": 526,
+      "math_aime": 0,
+      "sycophancy": 0,
+      "temporal_qa": 0,
+      "truthfulqa": 0
+    },
+    "labelled_fraction": 1.0,
+    "mean_claims_per_item": 14.669201520912548,
+    "mean_options": 2.0,
+    "n_items": 526,
+    "provenance": "real"
+  },
+  "validation": {
+    "by_benchmark": {
+      "advconsistency": 0,
+      "creative_divergence": 0,
+      "halueval": 142,
+      "math_aime": 0,
+      "sycophancy": 0,
+      "temporal_qa": 0,
+      "truthfulqa": 77
+    },
+    "labelled_fraction": 0.6484018264840182,
+    "mean_claims_per_item": 12.789954337899543,
+    "mean_options": 2.8127853881278537,
+    "n_items": 219,
+    "provenance": "real"
+  }
+}

@@ -1,0 +1,823 @@
+{
+  "caveats": [
+    "The shared output schema (prompts._OUTPUT_CONTRACT) requires every variant to emit atomic_claims, counterevidence, and failure_flags, so the neutral control is also asked for them and will produce some. These checks measure amount rather than presence, so the contrast survives, but it is compressed relative to a design where the control emitted nothing. Registered in PREREGISTRATION.md A2.1.",
+    "Items where a role's record is absent under any variant are excluded from that role's contrast rather than scored as zero. Scoring an absent record would conflate a refused or truncated call with a performed-but-empty operation, and section 4 forbids imputing missing agents."
+  ],
+  "collection": {
+    "provenance": "real",
+    "variants": {
+      "neutral": {
+        "condition": "manipulation_check/neutral",
+        "counts": {
+          "calls": 1200,
+          "errors": 0,
+          "injections_flagged": 0,
+          "malformed": 0,
+          "redactions": 0,
+          "refusals": 0,
+          "retries": 0,
+          "truncations": 0
+        },
+        "exclusion_rates": {
+          "error_rate": 0.0,
+          "malformed_rate": 0.0,
+          "refusal_rate": 0.0,
+          "retry_rate": 0.0,
+          "truncation_rate": 0.0
+        },
+        "governance": "Item content is redacted before dispatch; injection-like content is flagged rather than removed; prompts are recorded by hash, never by text.",
+        "heterogeneous_council": false,
+        "heterogeneous_route": false,
+        "isolation": "Agents are isolated: each agent's user content is built from the item alone and no agent output is reachable from another agent's call (RESEARCH_SPECIFICATION.md section 4).",
+        "model_snapshots": {
+          "confidence_calibrator": "grok-4.3",
+          "consistency_checker": "grok-4.3",
+          "counter_evidence_checker": "grok-4.3",
+          "explore_then_prune": "grok-4.3",
+          "local_claim_checker": "grok-4.3",
+          "rare_hypothesis_checker": "grok-4.3"
+        },
+        "n_items": 200,
+        "n_items_skipped_existing": 0,
+        "n_items_written": 200,
+        "output_path": "runs/checks-grok/records.neutral.jsonl",
+        "prompt_manifest": {
+          "prompt_version": "v1.0.0",
+          "roles": {
+            "confidence_calibrator": {
+              "check": "negative_expected_calibration_error",
+              "neutral": "e470bafac566be18",
+              "operation": "fd10f8ad04876d1f",
+              "persona": "8987d58bd1f79917",
+              "primary_benchmark": "sycophancy"
+            },
+            "consistency_checker": {
+              "check": "contradiction_detection_minus_abstention",
+              "neutral": "ba6a153f4675917f",
+              "operation": "f418043db2bbee4a",
+              "persona": "a9060c228e9b93cb",
+              "primary_benchmark": "math_aime"
+            },
+            "counter_evidence_checker": {
+              "check": "counterclaim_and_flag_rate",
+              "neutral": "e470bafac566be18",
+              "operation": "e52ef02e147b8c50",
+              "persona": "3358a1fc6f8a8ea4",
+              "primary_benchmark": "truthfulqa"
+            },
+            "explore_then_prune": {
+              "check": "hypothesis_diversity_times_concentration",
+              "neutral": "e470bafac566be18",
+              "operation": "db352dbe82db6e82",
+              "persona": "861f810a3ca21da0",
+              "primary_benchmark": "creative_divergence"
+            },
+            "local_claim_checker": {
+              "check": "atomic_claim_decomposition",
+              "neutral": "ba6a153f4675917f",
+              "operation": "1913f77bed392533",
+              "persona": "b894df3d03577f70",
+              "primary_benchmark": "advconsistency"
+            },
+            "rare_hypothesis_checker": {
+              "check": "sourced_alternatives_minus_unsourced",
+              "neutral": "e470bafac566be18",
+              "operation": "e5558ff267e75008",
+              "persona": "384529400caaa0c8",
+              "primary_benchmark": "temporal_qa"
+            }
+          },
+          "variants": [
+            "operation",
+            "neutral",
+            "persona"
+          ]
+        },
+        "prompt_variant": "neutral",
+        "provider": {
+          "confidence_calibrator": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "consistency_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "counter_evidence_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "explore_then_prune": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "local_claim_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "rare_hypothesis_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          }
+        },
+        "provider_pricing_usd_per_million_tokens": {
+          "confidence_calibrator": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "consistency_checker": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "counter_evidence_checker": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "explore_then_prune": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "local_claim_checker": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "rare_hypothesis_checker": {
+            "input": 1.25,
+            "output": 2.5
+          }
+        },
+        "resumed": false,
+        "sampling": {
+          "max_tokens": 1024,
+          "max_workers": 8,
+          "seed": 1337,
+          "temperature": 0.0
+        },
+        "total_cost_usd": 1.4841400000000011,
+        "usage": {
+          "input_tokens": 706300,
+          "output_tokens": 240506
+        },
+        "wall_clock_seconds": 1939.8139738750033
+      },
+      "operation": {
+        "condition": "manipulation_check/operation",
+        "counts": {
+          "calls": 1200,
+          "errors": 0,
+          "injections_flagged": 0,
+          "malformed": 0,
+          "redactions": 0,
+          "refusals": 0,
+          "retries": 0,
+          "truncations": 0
+        },
+        "exclusion_rates": {
+          "error_rate": 0.0,
+          "malformed_rate": 0.0,
+          "refusal_rate": 0.0,
+          "retry_rate": 0.0,
+          "truncation_rate": 0.0
+        },
+        "governance": "Item content is redacted before dispatch; injection-like content is flagged rather than removed; prompts are recorded by hash, never by text.",
+        "heterogeneous_council": false,
+        "heterogeneous_route": false,
+        "isolation": "Agents are isolated: each agent's user content is built from the item alone and no agent output is reachable from another agent's call (RESEARCH_SPECIFICATION.md section 4).",
+        "model_snapshots": {
+          "confidence_calibrator": "grok-4.3",
+          "consistency_checker": "grok-4.3",
+          "counter_evidence_checker": "grok-4.3",
+          "explore_then_prune": "grok-4.3",
+          "local_claim_checker": "grok-4.3",
+          "rare_hypothesis_checker": "grok-4.3"
+        },
+        "n_items": 200,
+        "n_items_skipped_existing": 0,
+        "n_items_written": 200,
+        "output_path": "runs/checks-grok/records.operation.jsonl",
+        "prompt_manifest": {
+          "prompt_version": "v1.0.0",
+          "roles": {
+            "confidence_calibrator": {
+              "check": "negative_expected_calibration_error",
+              "neutral": "e470bafac566be18",
+              "operation": "fd10f8ad04876d1f",
+              "persona": "8987d58bd1f79917",
+              "primary_benchmark": "sycophancy"
+            },
+            "consistency_checker": {
+              "check": "contradiction_detection_minus_abstention",
+              "neutral": "ba6a153f4675917f",
+              "operation": "f418043db2bbee4a",
+              "persona": "a9060c228e9b93cb",
+              "primary_benchmark": "math_aime"
+            },
+            "counter_evidence_checker": {
+              "check": "counterclaim_and_flag_rate",
+              "neutral": "e470bafac566be18",
+              "operation": "e52ef02e147b8c50",
+              "persona": "3358a1fc6f8a8ea4",
+              "primary_benchmark": "truthfulqa"
+            },
+            "explore_then_prune": {
+              "check": "hypothesis_diversity_times_concentration",
+              "neutral": "e470bafac566be18",
+              "operation": "db352dbe82db6e82",
+              "persona": "861f810a3ca21da0",
+              "primary_benchmark": "creative_divergence"
+            },
+            "local_claim_checker": {
+              "check": "atomic_claim_decomposition",
+              "neutral": "ba6a153f4675917f",
+              "operation": "1913f77bed392533",
+              "persona": "b894df3d03577f70",
+              "primary_benchmark": "advconsistency"
+            },
+            "rare_hypothesis_checker": {
+              "check": "sourced_alternatives_minus_unsourced",
+              "neutral": "e470bafac566be18",
+              "operation": "e5558ff267e75008",
+              "persona": "384529400caaa0c8",
+              "primary_benchmark": "temporal_qa"
+            }
+          },
+          "variants": [
+            "operation",
+            "neutral",
+            "persona"
+          ]
+        },
+        "prompt_variant": "operation",
+        "provider": {
+          "confidence_calibrator": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "consistency_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "counter_evidence_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "explore_then_prune": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "local_claim_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "rare_hypothesis_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          }
+        },
+        "provider_pricing_usd_per_million_tokens": {
+          "confidence_calibrator": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "consistency_checker": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "counter_evidence_checker": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "explore_then_prune": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "local_claim_checker": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "rare_hypothesis_checker": {
+            "input": 1.25,
+            "output": 2.5
+          }
+        },
+        "resumed": false,
+        "sampling": {
+          "max_tokens": 1024,
+          "max_workers": 8,
+          "seed": 1337,
+          "temperature": 0.0
+        },
+        "total_cost_usd": 1.3785350000000005,
+        "usage": {
+          "input_tokens": 710900,
+          "output_tokens": 195964
+        },
+        "wall_clock_seconds": 2291.9174057909986
+      },
+      "persona": {
+        "condition": "manipulation_check/persona",
+        "counts": {
+          "calls": 1200,
+          "errors": 0,
+          "injections_flagged": 0,
+          "malformed": 0,
+          "redactions": 0,
+          "refusals": 0,
+          "retries": 0,
+          "truncations": 0
+        },
+        "exclusion_rates": {
+          "error_rate": 0.0,
+          "malformed_rate": 0.0,
+          "refusal_rate": 0.0,
+          "retry_rate": 0.0,
+          "truncation_rate": 0.0
+        },
+        "governance": "Item content is redacted before dispatch; injection-like content is flagged rather than removed; prompts are recorded by hash, never by text.",
+        "heterogeneous_council": false,
+        "heterogeneous_route": false,
+        "isolation": "Agents are isolated: each agent's user content is built from the item alone and no agent output is reachable from another agent's call (RESEARCH_SPECIFICATION.md section 4).",
+        "model_snapshots": {
+          "confidence_calibrator": "grok-4.3",
+          "consistency_checker": "grok-4.3",
+          "counter_evidence_checker": "grok-4.3",
+          "explore_then_prune": "grok-4.3",
+          "local_claim_checker": "grok-4.3",
+          "rare_hypothesis_checker": "grok-4.3"
+        },
+        "n_items": 200,
+        "n_items_skipped_existing": 0,
+        "n_items_written": 200,
+        "output_path": "runs/checks-grok/records.persona.jsonl",
+        "prompt_manifest": {
+          "prompt_version": "v1.0.0",
+          "roles": {
+            "confidence_calibrator": {
+              "check": "negative_expected_calibration_error",
+              "neutral": "e470bafac566be18",
+              "operation": "fd10f8ad04876d1f",
+              "persona": "8987d58bd1f79917",
+              "primary_benchmark": "sycophancy"
+            },
+            "consistency_checker": {
+              "check": "contradiction_detection_minus_abstention",
+              "neutral": "ba6a153f4675917f",
+              "operation": "f418043db2bbee4a",
+              "persona": "a9060c228e9b93cb",
+              "primary_benchmark": "math_aime"
+            },
+            "counter_evidence_checker": {
+              "check": "counterclaim_and_flag_rate",
+              "neutral": "e470bafac566be18",
+              "operation": "e52ef02e147b8c50",
+              "persona": "3358a1fc6f8a8ea4",
+              "primary_benchmark": "truthfulqa"
+            },
+            "explore_then_prune": {
+              "check": "hypothesis_diversity_times_concentration",
+              "neutral": "e470bafac566be18",
+              "operation": "db352dbe82db6e82",
+              "persona": "861f810a3ca21da0",
+              "primary_benchmark": "creative_divergence"
+            },
+            "local_claim_checker": {
+              "check": "atomic_claim_decomposition",
+              "neutral": "ba6a153f4675917f",
+              "operation": "1913f77bed392533",
+              "persona": "b894df3d03577f70",
+              "primary_benchmark": "advconsistency"
+            },
+            "rare_hypothesis_checker": {
+              "check": "sourced_alternatives_minus_unsourced",
+              "neutral": "e470bafac566be18",
+              "operation": "e5558ff267e75008",
+              "persona": "384529400caaa0c8",
+              "primary_benchmark": "temporal_qa"
+            }
+          },
+          "variants": [
+            "operation",
+            "neutral",
+            "persona"
+          ]
+        },
+        "prompt_variant": "persona",
+        "provider": {
+          "confidence_calibrator": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "consistency_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "counter_evidence_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "explore_then_prune": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "local_claim_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          },
+          "rare_hypothesis_checker": {
+            "endpoint": "https://cca-synth-resource.openai.azure.com/openai/v1/",
+            "kind": "azure-openai",
+            "model_snapshot": "grok-4.3",
+            "resource": null,
+            "synthetic": false
+          }
+        },
+        "provider_pricing_usd_per_million_tokens": {
+          "confidence_calibrator": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "consistency_checker": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "counter_evidence_checker": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "explore_then_prune": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "local_claim_checker": {
+            "input": 1.25,
+            "output": 2.5
+          },
+          "rare_hypothesis_checker": {
+            "input": 1.25,
+            "output": 2.5
+          }
+        },
+        "resumed": false,
+        "sampling": {
+          "max_tokens": 1024,
+          "max_workers": 8,
+          "seed": 1337,
+          "temperature": 0.0
+        },
+        "total_cost_usd": 1.467382500000001,
+        "usage": {
+          "input_tokens": 695700,
+          "output_tokens": 239103
+        },
+        "wall_clock_seconds": 1983.6633152499999
+      }
+    }
+  },
+  "interpretation": "A role that fails its manipulation check is not implementing its predeclared operation, and its benchmark results must not be interpreted as evidence about that operation (PREREGISTRATION.md section 1).",
+  "join": {
+    "n_dropped_not_in_all_variants": {
+      "neutral": 0,
+      "operation": 0,
+      "persona": 0
+    },
+    "n_intersection": 200,
+    "n_per_variant": {
+      "neutral": 200,
+      "operation": 200,
+      "persona": 200
+    },
+    "n_written": 200,
+    "output_path": "runs/checks-grok/check_records.jsonl"
+  },
+  "n_passed": 2,
+  "n_passed_uncorrected": 2,
+  "n_roles": 6,
+  "prompt_manifest": {
+    "prompt_version": "v1.0.0",
+    "roles": {
+      "confidence_calibrator": {
+        "check": "negative_expected_calibration_error",
+        "neutral": "e470bafac566be18",
+        "operation": "fd10f8ad04876d1f",
+        "persona": "8987d58bd1f79917",
+        "primary_benchmark": "sycophancy"
+      },
+      "consistency_checker": {
+        "check": "contradiction_detection_minus_abstention",
+        "neutral": "ba6a153f4675917f",
+        "operation": "f418043db2bbee4a",
+        "persona": "a9060c228e9b93cb",
+        "primary_benchmark": "math_aime"
+      },
+      "counter_evidence_checker": {
+        "check": "counterclaim_and_flag_rate",
+        "neutral": "e470bafac566be18",
+        "operation": "e52ef02e147b8c50",
+        "persona": "3358a1fc6f8a8ea4",
+        "primary_benchmark": "truthfulqa"
+      },
+      "explore_then_prune": {
+        "check": "hypothesis_diversity_times_concentration",
+        "neutral": "e470bafac566be18",
+        "operation": "db352dbe82db6e82",
+        "persona": "861f810a3ca21da0",
+        "primary_benchmark": "creative_divergence"
+      },
+      "local_claim_checker": {
+        "check": "atomic_claim_decomposition",
+        "neutral": "ba6a153f4675917f",
+        "operation": "1913f77bed392533",
+        "persona": "b894df3d03577f70",
+        "primary_benchmark": "advconsistency"
+      },
+      "rare_hypothesis_checker": {
+        "check": "sourced_alternatives_minus_unsourced",
+        "neutral": "e470bafac566be18",
+        "operation": "e5558ff267e75008",
+        "persona": "384529400caaa0c8",
+        "primary_benchmark": "temporal_qa"
+      }
+    },
+    "variants": [
+      "operation",
+      "neutral",
+      "persona"
+    ]
+  },
+  "results": [
+    {
+      "check": "counterclaim_and_flag_rate",
+      "description": "Counterclaims plus unsupported/contradicted claim flags per record, against the length-matched neutral control.",
+      "fdr_rejected": true,
+      "mean_neutral": 0.675,
+      "mean_operation": 1.07,
+      "mean_persona": 0.8,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": 0.6835443037974683,
+      "p_value": 0.0005,
+      "passed": true,
+      "passed_uncorrected": true,
+      "primary_benchmark": "truthfulqa",
+      "q_value": 0.00075,
+      "role": "counter_evidence_checker",
+      "vs_neutral": {
+        "diff": 0.395,
+        "hi": 0.495,
+        "interval_excludes_zero": true,
+        "lo": 0.29,
+        "p_value": 0.0005,
+        "prob_positive": 1.0,
+        "standardized_effect": 0.522350534877226
+      },
+      "vs_persona": {
+        "diff": 0.27,
+        "hi": 0.38,
+        "interval_excludes_zero": true,
+        "lo": 0.155,
+        "p_value": 0.0005,
+        "prob_positive": 1.0,
+        "standardized_effect": 0.3273021797678947
+      }
+    },
+    {
+      "check": "contradiction_detection_minus_abstention",
+      "description": "Rate of contradiction/calculation_error flags minus abstention rate, so the check cannot be passed by refusing.",
+      "fdr_rejected": false,
+      "mean_neutral": 0.0,
+      "mean_operation": 0.005,
+      "mean_persona": 0.005,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": 0.0,
+      "p_value": 0.729,
+      "passed": false,
+      "passed_uncorrected": false,
+      "primary_benchmark": "math_aime",
+      "q_value": 0.729,
+      "role": "consistency_checker",
+      "vs_neutral": {
+        "diff": 0.005,
+        "hi": 0.015,
+        "interval_excludes_zero": false,
+        "lo": 0.0,
+        "p_value": 0.729,
+        "prob_positive": 0.6355,
+        "standardized_effect": 0.07071067811865474
+      },
+      "vs_persona": {
+        "diff": 0.0,
+        "hi": 0.015,
+        "interval_excludes_zero": false,
+        "lo": -0.015,
+        "p_value": 1.0,
+        "prob_positive": 0.3605,
+        "standardized_effect": 0.0
+      }
+    },
+    {
+      "check": "atomic_claim_decomposition",
+      "description": "Atomic claims per record weighted by the fraction carrying a named local check.",
+      "fdr_rejected": true,
+      "mean_neutral": 5.57,
+      "mean_operation": 7.46,
+      "mean_persona": 5.505,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": 1.0343915343915344,
+      "p_value": 0.0005,
+      "passed": true,
+      "passed_uncorrected": true,
+      "primary_benchmark": "advconsistency",
+      "q_value": 0.00075,
+      "role": "local_claim_checker",
+      "vs_neutral": {
+        "diff": 1.89,
+        "hi": 2.295124999999999,
+        "interval_excludes_zero": true,
+        "lo": 1.515,
+        "p_value": 0.0005,
+        "prob_positive": 1.0,
+        "standardized_effect": 0.6940758958243661
+      },
+      "vs_persona": {
+        "diff": 1.955,
+        "hi": 2.295,
+        "interval_excludes_zero": true,
+        "lo": 1.605,
+        "p_value": 0.0005,
+        "prob_positive": 1.0,
+        "standardized_effect": 0.7583328363705933
+      }
+    },
+    {
+      "check": "hypothesis_diversity_times_concentration",
+      "description": "Distinct claims per record multiplied by evidence concentration, capturing both passes.",
+      "fdr_rejected": true,
+      "mean_neutral": 2.875,
+      "mean_operation": 1.525,
+      "mean_persona": 2.745,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": 0.9037037037037037,
+      "p_value": 0.0005,
+      "passed": false,
+      "passed_uncorrected": false,
+      "primary_benchmark": "creative_divergence",
+      "q_value": 0.00075,
+      "role": "explore_then_prune",
+      "vs_neutral": {
+        "diff": -1.35,
+        "hi": -1.245,
+        "interval_excludes_zero": true,
+        "lo": -1.46,
+        "p_value": 0.0005,
+        "prob_positive": 0.0,
+        "standardized_effect": -1.6607238790001693
+      },
+      "vs_persona": {
+        "diff": -1.22,
+        "hi": -1.105,
+        "interval_excludes_zero": true,
+        "lo": -1.325,
+        "p_value": 0.0005,
+        "prob_positive": 0.0,
+        "standardized_effect": -1.4961447837781618
+      }
+    },
+    {
+      "check": "sourced_alternatives_minus_unsourced",
+      "description": "Supported claims carrying a source, minus supported claims without one, so fabrication does not pass.",
+      "fdr_rejected": true,
+      "mean_neutral": 2.535,
+      "mean_operation": 1.495,
+      "mean_persona": 2.51,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": 0.9759615384615383,
+      "p_value": 0.0005,
+      "passed": false,
+      "passed_uncorrected": false,
+      "primary_benchmark": "temporal_qa",
+      "q_value": 0.00075,
+      "role": "rare_hypothesis_checker",
+      "vs_neutral": {
+        "diff": -1.04,
+        "hi": -0.925,
+        "interval_excludes_zero": true,
+        "lo": -1.155,
+        "p_value": 0.0005,
+        "prob_positive": 0.0,
+        "standardized_effect": -1.2503294162104863
+      },
+      "vs_persona": {
+        "diff": -1.015,
+        "hi": -0.895,
+        "interval_excludes_zero": true,
+        "lo": -1.1301249999999998,
+        "p_value": 0.0005,
+        "prob_positive": 0.0,
+        "standardized_effect": -1.1731810450905547
+      }
+    },
+    {
+      "check": "negative_expected_calibration_error",
+      "description": "Negative ECE of declared confidence against outcomes; a uniform confidence reduction does not improve it.",
+      "fdr_rejected": false,
+      "mean_neutral": -0.2155,
+      "mean_operation": -0.20950000000000002,
+      "mean_persona": -0.22,
+      "n_excluded_absent": 0,
+      "n_items": 200,
+      "n_items_collected": 200,
+      "operation_over_label_share": 1.75,
+      "p_value": 0.278,
+      "passed": false,
+      "passed_uncorrected": false,
+      "primary_benchmark": "sycophancy",
+      "q_value": 0.3336,
+      "role": "confidence_calibrator",
+      "vs_neutral": {
+        "diff": 0.006000000000000003,
+        "hi": 0.01875,
+        "interval_excludes_zero": false,
+        "lo": -0.004749999999999993,
+        "p_value": 0.278,
+        "prob_positive": 0.861,
+        "standardized_effect": 0.07359201518590912
+      },
+      "vs_persona": {
+        "diff": 0.010500000000000004,
+        "hi": 0.024000000000000004,
+        "interval_excludes_zero": false,
+        "lo": -0.002756249999999999,
+        "p_value": 0.129,
+        "prob_positive": 0.9355,
+        "standardized_effect": 0.10852136251206035
+      }
+    }
+  ],
+  "thresholds": {
+    "family_size": 6,
+    "fdr_q": 0.05,
+    "min_standardized_effect": 0.4,
+    "reported_only_min_effect": 0.1,
+    "rule": "PREREGISTRATION.md A2.2 (H6) as amended by A3.2: the six role checks form one family; Benjamini-Hochberg FDR control at q=0.05 is applied across them, and a role passes only if it is FDR-rejected AND its standardized paired effect is at least 0.4. Uncorrected per-role intervals and verdicts are reported alongside as 'interval_excludes_zero' and 'passed_uncorrected' so the correction's effect is visible."
+  }
+}

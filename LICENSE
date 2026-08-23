@@ -1,0 +1,56 @@
+MIT License
+
+Copyright (c) 2026 [author withheld for double-blind review]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Third-party data redistributed in this bundle
+
+The licence above covers the code in `cca_synth/`, the collected records in
+`cca_synth/runs/`, and the documents in `logistics/`. Two benchmark corpora are
+redistributed under their own terms, at the revisions pinned in
+`cca_synth/data/materialize_manifest.json` and verified by SHA-256:
+
+  HaluEval (QA split) -- MIT License
+    Copyright (c) RUCAIBox
+    Source:  https://github.com/RUCAIBox/HaluEval
+    Licence: https://github.com/RUCAIBox/HaluEval/blob/main/LICENSE
+    Revision: 207f479c555a68b8d2431631a95083b84b2accbe
+    Files:   cca_synth/data/halueval_qa_data.json
+             cca_synth/data/items.halueval.jsonl
+             cca_synth/data/items.halueval.dev.jsonl
+    Citation: Li, Cheng, Zhao, Nie, and Wen. HaluEval: A Large-Scale
+              Hallucination Evaluation Benchmark for Large Language Models.
+              EMNLP 2023.
+
+  TruthfulQA (generation split) -- Apache License 2.0
+    Copyright (c) The TruthfulQA authors
+    Source:  https://github.com/sylinrl/TruthfulQA
+    Licence: https://github.com/sylinrl/TruthfulQA/blob/main/LICENSE
+    Revision: 741b8276f2d1982aa3d5b832d3ee81ed3b896490
+    Files:   cca_synth/data/truthfulqa_generation.jsonl
+             cca_synth/data/items.truthfulqa.jsonl
+             cca_synth/data/items.truthfulqa.dev.jsonl
+    Citation: Lin, Hilton, and Evans. TruthfulQA: Measuring How Models Mimic
+              Human Falsehoods. ACL 2022.
+
+Neither corpus contains personal data; both are recorded as such in
+`cca_synth/data/materialize_manifest.json`.
