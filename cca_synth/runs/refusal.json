@@ -1,0 +1,77 @@
+{
+  "n_common_truthfulqa_items": 500,
+  "rates": {
+    "cca_council": {
+      "halueval": {
+        "absent_not_refusal": 0,
+        "rate": 0.0,
+        "refused": 0,
+        "slots": 6000
+      },
+      "truthfulqa": {
+        "absent_not_refusal": 2,
+        "rate": 0.06166666666666667,
+        "refused": 185,
+        "slots": 3000
+      }
+    },
+    "neutral_council": {
+      "halueval": {
+        "absent_not_refusal": 0,
+        "rate": 0.0,
+        "refused": 0,
+        "slots": 6000
+      },
+      "truthfulqa": {
+        "absent_not_refusal": 2,
+        "rate": 0.055,
+        "refused": 165,
+        "slots": 3000
+      }
+    },
+    "persona_only_council": {
+      "halueval": {
+        "absent_not_refusal": 1,
+        "rate": 0.0,
+        "refused": 0,
+        "slots": 6000
+      },
+      "truthfulqa": {
+        "absent_not_refusal": 3,
+        "rate": 0.04533333333333334,
+        "refused": 136,
+        "slots": 3000
+      }
+    }
+  },
+  "status": "EXPLORATORY -- not pre-registered",
+  "truthfulqa_contrasts": [
+    {
+      "contrast": "cca_council - neutral_council",
+      "diff_points": 0.6666666666666666,
+      "fdr_rejected": false,
+      "hi_points": 1.8666666666666665,
+      "lo_points": -0.5675000000000003,
+      "p": 0.279,
+      "q": 0.279
+    },
+    {
+      "contrast": "persona_only_council - cca_council",
+      "diff_points": -1.633333333333333,
+      "fdr_rejected": true,
+      "hi_points": -0.5999999999999996,
+      "lo_points": -2.6666666666666665,
+      "p": 0.002,
+      "q": 0.006
+    },
+    {
+      "contrast": "persona_only_council - neutral_council",
+      "diff_points": -0.9666666666666663,
+      "fdr_rejected": true,
+      "hi_points": -0.1666666666666666,
+      "lo_points": -1.7666666666666664,
+      "p": 0.022,
+      "q": 0.033
+    }
+  ]
+}

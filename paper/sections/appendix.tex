@@ -1,0 +1,828 @@
+\section{Synthesiser estimator}
+\label{app:synth}
+
+The cross-arm analysis using only majority vote is given in Appendix~\ref{app:cross-arm}. That
+analysis is cleaner --- no training is used and any difference between arms is due to the prompt
+difference only (the synthesiser used a separate trained model for each arm, inflating its variance
+with training variance in addition to the prompt). The majority-only analysis is relegated to the
+Appendix because it does not alter any of our conclusions.
+
+For the synthesiser accuracies on 184 test problems, we get 0.783 (op), 0.804 (pl), and 0.799
+(neutral). None of the contrasts between any two arms excludes zero: the op--pl contrast is $-0.022$
+($[-0.065, +0.022]$, $q = 0.85$), the op--neutral contrast is $-0.022$ ($[-0.065, +0.027]$,
+$q = 0.85$), and the pl--neutral contrast is $+0.005$ ($[-0.027, +0.038]$, $q = 0.88$). The
+point-estimates rank the operation arm lower than the controls, with the opposite ranking as with
+majority voting, but the $\pm 0.05$ size of the confidence intervals at $n = 184$ exclude any
+ranking.
+
+The operation arm's synthesiser accuracy is not significantly different from the baselines it is
+designed to outperform: there is no difference to pure majority voting ($\Delta = 0.000$) and the
+biggest difference between the synthesiser and any one of the six single agents is 0.027 in absolute
+value, with the confidence interval including zero. From \texttt{runs/cross\_arm.json} and
+\texttt{runs/arms-cca\_council/evaluation.json}.
+
+\section{Provenance and exclusion accounting}
+\label{app:provenance}
+
+We leave provenance to be inferred: providers self-report whether their answers are fabricated
+(omitted answers are treated as synthetic to guarantee that a buggy provider logs simulated, not
+real, records; if any provider is synthetic, the record is synthetic; and the analysis step simply
+skips simulated records); track and report refusals, truncation, malformed outputs, and retried
+queries by role (rather than assuming them); and omit rows without a record in any variant from
+contrasts by role (rather than assuming them to be zero).
+
+We report no refusals, no truncations, no malformed outputs, and no retried queries in our current
+experiments: we encountered none in 1,128 pilot queries or 3,600 queries in the manipulation check
+study.
+
+\section{Scope of the novelty search}
+\label{app:novelty-search}
+
+We only used nine queries to arXiv, ACL Anthology, OpenReview (rejected and withdrawn papers), and
+Semantic Scholar and only performed title/abstract screening, did not obtain full-texts nor snowball
+through citations, nor queried PubMed by clinical MeSH terms, nor even had a double screener to
+report inter-screener agreement on, reported only five out of eight queries to Semantic Scholar that
+encountered rate limits as failures (rather than as zero findings), already encountered two
+potential predecessors and one borderline finding (\S\ref{sec:related}) and thus claim no ``none in
+$N$ papers screened''.
+
+\section{What the check design concedes}
+\label{app:concedes}
+
+Three concessions were predeclared; a fourth was identified by post-collection audit and is reported
+here.
+
+\paragraph{The shared output contract compresses the contrast.}
+To all versions we explicitly request atomic claims, counterclaims, and fault indicators in their
+output. This means that even the length-matched neutral condition will output some counterclaims. In
+that case we can only check for quantity, not for existence. While the dynamic range persists, it
+will be squeezed compared to a setting where the neutral version did not output such information. We
+anticipate operation $-$ neutral gaps to be smaller than with a version of this experiment that did
+not employ a common record format but viewed the standard record format as necessary to route all
+treatments through the same measurement apparatus.
+
+\paragraph{Absent records are excluded, never scored as zero.}
+We do not impute missing values, i.e.\ in case of refusals, truncations, or other malformations.
+Otherwise we would artificially deflate the check scores in line with the failure rate, rather than
+the performance of the variations.
+
+\paragraph{The checks are benchmark-independent.}
+A check only evaluates if the model lived up to its role, but does not evaluate the utility of the
+role. For this reason shrinking the scope from four to two benchmarks is cost-neutral: it comes at
+the expense of losing a role-wise distinction on a designated primary benchmark, not any roles.
+
+\paragraph{The local-claim guard collapsed, and the check is therefore one-factorial in fact.}
+\texttt{\_check\_claim\_decomposition} scores atomic claims per record weighted by the fraction
+carrying a local check, so the weighting term is the guard: a role that emitted many unchecked
+claims should not score well. In the collected records that term is the constant 2.0 in 1,191 of
+1,200 records and has no variance at all in the operation arm of either family
+(Table~\ref{tab:localclaim-guard}). The check is thus $2\times$ the claim count, and its guard never
+discriminated. We report all local-claim results for preregistration transparency, but do not
+interpret them as a validated pass or reversal.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llrrrl}
+\toprule
+Family & Arm & $n$ & weight $= 2.0$ & weight $< 2.0$ & distinct values \\
+\midrule
+\texttt{gpt-5.6-terra} & operation & 200 & 200 & 0 & \{2.0\} \\
+\texttt{gpt-5.6-terra} & persona   & 200 & 200 & 0 & \{2.0\} \\
+\texttt{gpt-5.6-terra} & neutral   & 200 & 200 & 0 & \{2.0\} \\
+\texttt{grok-4.3}      & operation & 200 & 200 & 0 & \{2.0\} \\
+\texttt{grok-4.3}      & persona   & 200 & 197 & 3 & \{1.667, 2.0\} \\
+\texttt{grok-4.3}      & neutral   & 200 & 194 & 6 & \{1.667, 2.0\} \\
+\bottomrule
+\end{tabular}
+\caption{The local-claim check's source-weighting guard, by family and arm. The guard takes one value
+in 1,191 of 1,200 records and is constant in every operation arm, so the product it belongs to has
+only one live factor.}
+\label{tab:localclaim-guard}
+\end{table}
+
+\paragraph{Two further guards are defeatable rather than collapsed.}
+The consistency safeguard evaluates flag rate against abstain rate. This means that the behavior of
+always-flagging but never-abstaining gets a perfect score of 1.0 (compared to the operation prompt
+score of 0.025). This safeguards against always-flagging-and-abstaining, but not
+always-flagging-and-responding. The calibration safeguard was designed with the assumption that
+uniformly reducing confidence would not reduce the expected calibration error. However, in this
+dataset, we see that uniformly reducing confidence by a constant for all samples reduces ECE from
+0.144 to 0.112 ($-0.05$ on the operation arm), and from 0.129 to 0.065 ($-0.10$ on the neutral arm),
+without actually performing any calibration based on individual samples. While neither of these were
+pre-registered, they do put limitations on how you can interpret their corresponding safeguard
+metric in \S\ref{sec:did-fire}, but they do not supplant the safeguard metric.
+
+\section{Benchmark materialisation and splits}
+\label{app:splits}
+
+We split the data 50/15/15/20 train/calibration/validation/test by calculating the salted hash of the
+item contents. We further sample 200 items from the train split to be used for a manipulation-check
+dev set.
+
+We draw 1,000 HaluEval samples per arm for the benchmark arms, sampled sequentially from the file.
+Sampling sequentially is not correlated with the data split (which is calculated off of item
+content, not file index), and we have confirmed that the proportions of items in each split of the
+subsample are within 1 percentage point of those in the full corpus.
+
+\section{Failure modes in coalition attribution}
+\label{app:attribution-failures}
+
+If manipulation checks are an assessment of whether each role followed its instructions, this section
+evaluates whether the attribution system followed its instructions: did the attribution system
+calculate that a role's contribution to a coalition ablation was $\phi$, or does it vouch for
+hallucination? We present two ways that this fails, discovered by running code that we had written
+but not executed. Two are from our system presented as existence proofs with explanations of
+mechanism, not prevalence in the wild.
+
+\subsection{Finding (i): an all-zero ablation that passed its own efficiency check}
+
+When we ran a Shapley ablation in retrain-per-coalition mode, it completed all 64 coalitions without
+error and returned identically zero contributions for every role, while the efficiency axiom --- the
+standard internal correctness check for a Shapley computation --- reported no violation.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+ & retrain & masked (same config) \\
+\midrule
+Distinct coalition values across 64 & 1 & 30 \\
+$v(\emptyset)$ & 0.0000 & 0.0000 \\
+$v(A)$ & 0.0000 & 0.3314 \\
+Every role's $\phi$ & 0.0000, CI $[0, 0]$ & $+0.036 \ldots +0.084$ \\
+Efficiency check & 0.00e-00 (vacuous) & 0.00e-00 \\
+\bottomrule
+\end{tabular}
+\caption{The degenerate ablation beside a masked run on identical configuration. The efficiency check
+passes in both columns, and distinguishes them not at all.}
+\label{tab:degenerate}
+\end{table}
+
+Why? We also found that we were reusing the same calibration data for all models. We had calibrated
+the logit temperature and selective prediction threshold on the calibration set for the original
+model trained on the main coalition dropout, and then reused this for all 64 models that are
+independently retrained for each new data dropout. This meant the threshold was set way higher than
+all selection scores, which are a completely new scale for each model, causing all to abstain and all
+coalition values to be equal to the abstention credit (i.e., zero).
+
+No overfitting was observed since efficiency (i.e., $\sum_i \phi_i = v(A) - v(\emptyset)$) will
+always hold for $0 = 0 - 0$. Anything true for a non-degenerate answer is also true for a degenerate
+answer; \textbf{this is the key learning, as internal checks can never catch a degenerate solution
+because degenerate solutions are always internally consistent.}
+
+The solution to this was to train each model in the ablation loop with its own logit temperature and
+selective prediction threshold, both calibrated solely on the calibration set. Generalised learning:
+when ablation involves retraining of a model, recalibrate all models. This is not a detail you can
+cut corners on without completely breaking your analysis.
+
+This guard is a different efficiency check --- a degeneracy check tallying distinct values assigned
+to coalitions and loudly failing if the value function is degenerate. And indeed our scoped
+experiment on real records now checks out, reporting 5 distinct coalition values:
+\texttt{OK got 5 distinct coalition values}, a sanity check that the patched branch works correctly
+on real data.
+
+\subsection{Finding (ii): the masking approximation exceeds the effect it is used to detect}
+
+With the calibration fixed, both estimator modes were run on identical configuration, differing only
+in \texttt{shapley\_mode}. This isolates the masking approximation.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Role & masked & retrain & gap \\
+\midrule
+\texttt{counter\_evidence\_checker} & $+0.0618$ & $+0.0356$ & $-0.0262$ \\
+\texttt{consistency\_checker}       & $+0.0381$ & $+0.0510$ & $+0.0129$ \\
+\texttt{local\_claim\_checker}      & $+0.0566$ & $+0.0711$ & $+0.0145$ \\
+\texttt{explore\_then\_prune}       & $+0.0836$ & $+0.0607$ & $-0.0230$ \\
+\texttt{rare\_hypothesis\_checker}  & $+0.0556$ & $+0.0560$ & $+0.0004$ \\
+\texttt{confidence\_calibrator}     & $+0.0356$ & $+0.0570$ & $+0.0214$ \\
+\midrule
+\multicolumn{4}{l}{mean $|$gap$|$ 0.0164 \quad max $|$gap$|$ 0.0262 \quad SESOI 0.010} \\
+\bottomrule
+\end{tabular}
+\caption{Per-role contributions under the two estimator modes. The mean disagreement between
+estimators is larger than the smallest effect the pre-registration declares worth detecting.}
+\label{tab:estimator-gap}
+\end{table}
+
+Two consequences follow, and both are properties of the estimator rather than of the data.
+
+\textbf{The approximation error exceeds the target effect.} For per-role effect sizes smaller than
+0.010 (the lowest effect size of interest in the pre-registration), the mean gap between the two
+modes is 0.0164, so a masked experiment will not be able to report a per-role conclusion at the
+effect size of interest in the pre-registration, regardless of the confidence interval.
+
+\textbf{The ranks are not stable.} The \texttt{explore\_then\_prune} role ranks 1st and the
+\texttt{counter\_evidence\_checker} role ranks 2nd according to the masked ranks, but after retrain,
+the \texttt{local\_claim\_checker} ranks 1st and the \texttt{counter\_evidence\_checker} ranks last.
+Statements like ``role X contributes the most'' are an artifact of the estimator and must be
+calculated using retrain.
+
+Interestingly, both modes give identical results on total values ($v(\emptyset) = 0.0000$ and
+$v(A) = 0.3314$ both). So masking is fine for iteration and the total council comparison, but fails
+where you use it most: the per-role breakdown. For this reason, in our scoping study we
+pre-registered a leave-one-out retrain sweep as opposed to a mask mode sweep --- this wasn't designed
+into the study; it resulted from the study.
+
+\subsection{What they have in common}
+
+Each of these was validated by the respective correctness checks of the whole pipeline. The
+ablation's degeneracy passed the efficiency tests. The masked estimator validity test validated that
+it constructed good confidence intervals around values that didn't survive the estimator swap. The
+interaction table fit together perfectly and was in part an artifact of a modelling constant.
+
+The theme is the same: \textbf{validity tests are validity tests, they can only check that something
+is valid --- not whether it actually measured anything.} Each of these can only be done through an
+orthogonal validity test; a validity test on variation, rather than coherence.
+
+This is just \S\ref{app:concedes} meta. Just like you want a manipulation check before interpreting
+the results of an intervention (did the intervention even happen?), you want a degeneracy check
+before interpreting the results of a value function (did the value function vary?). In both cases the
+problem will be silent, with the result being well-defined, and no internal validity tests along the
+way will catch it.
+
+\section{A third attribution finding, reported with its confound}
+\label{app:third-finding}
+
+Across all 15 role pairs, the pairwise interaction terms are negative and of the same order of
+magnitude as the main effects, implying that the roles substitute for one another rather than
+composing. We report this in full and decline to build on it, for a stated reason: our simulator
+deliberately induces correlated common-mode failure, so the magnitude is partly downstream of a
+constant we chose. We report the induced correlation parameter alongside the interaction table, and
+we do not carry the finding into the abstract. It stays unpromoted, and the scoped study cannot
+change that. The registered estimator there is leave-one-out, which contrasts the full council
+against each drop-one coalition and never evaluates a pair in isolation; it therefore yields no
+pairwise interaction term at all. Finding (iii) is consequently not testable on our real records
+rather than tested and unconfirmed, and it remains a simulated-data observation reported for
+completeness.
+
+One real-record measurement is adjacent but is deliberately not offered as confirmation. In the
+scoped run the mean pairwise error correlation across the six agents is 0.80 (max 0.95, on the 184
+items every agent answered), which bounds how much independent evidence a six-agent council supplies.
+That is a property of the agents' mistakes, not the estimator's interaction terms, and conflating the
+two would be exactly the kind of substitution this paper argues against.
+
+\section{Differential refusal}
+\label{app:refusal}
+
+None of these comparisons are affected by differences in refusal behaviour, which is the only
+difference between the arms. There were zero refusals in any of the 6,000 agent slots in the HaluEval
+benchmark in any of the arms, meaning that the HaluEval comparisons made above are comparing an
+identical and complete set of answers (the table above is a perfect matching). The only refusals are
+in the TruthfulQA questions, which are not scored (there is no gold answer for them), and also not
+part of the accuracy comparisons: 6.1\% refusal rate for agent slots in the operation arm, 5.5\%
+refusal rate for agent slots in the neutral arm, 4.5\% refusal rate for agent slots in the
+persona-label arm. These differences in refusal rate between operation and neutral are not
+significant ($+0.63$ pts difference, 95\% CI $[-0.57, +1.80]$, $q = 0.31$), but the persona-label
+prompt has a significantly lower refusal rate than both of these ($-1.63$ vs operation $q = 0.006$,
+$-1.00$ vs neutral $q = 0.035$). This shows that you can affect a model's willingness to answer a
+question by appending just a role label to the prompt, an operation-less effect which is the other
+pathway of concern in this paper, but we only see this in the unscored TruthfulQA questions, so we
+don't include this effect in our results.
+
+\section{Operationalisation of the six checks}
+\label{app:checks}
+
+Each check reduces a role's records to one scalar in which higher means more of the operation's
+signature behaviour. The design problem is not measuring the behaviour but preventing a degenerate
+strategy from scoring well on it, so each check carries a guard (Table~\ref{tab:check-specs}).
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{0.20\linewidth}p{0.38\linewidth}p{0.32\linewidth}}
+\toprule
+Role & Quantity measured & Guard \\
+\midrule
+counter-evidence checker & Counterevidence items plus claims flagged unsupported or contradicted,
+per record & --- \\
+consistency checker & Rate of contradiction and calculation-error flags, minus the abstention rate &
+Cannot be passed by flagging everything and refusing to answer \\
+local-claim checker & Atomic claims per record, weighted by the fraction carrying a local check &
+Rewards decomposition that is checked, not decomposition alone \\
+explore-then-prune & Distinct claim texts, multiplied by evidential concentration & Breadth alone
+does not score; unresolved claims suppress it \\
+rare-hypothesis checker & Sourced supported claims minus unsourced supported claims & Fabricated
+alternatives subtract \\
+confidence calibrator & Negative expected calibration error over declared confidences & Intended to
+exclude blanket low confidence; see \S\ref{sec:audit} \\
+\bottomrule
+\end{tabular}
+\caption{The six executable checks. Each is a predeclared function of the structured records; five
+carry an explicit guard against a strategy that would otherwise satisfy the check without performing
+the operation. \S\ref{sec:audit} reports which of those guards actually constrain that strategy.}
+\label{tab:check-specs}
+\end{table}
+
+The essence of these designs is these guards. Since a consistency checker could always fire on all
+questions and abstain from answering to achieve a high naive consistency detection rate, we subtract
+its abstention rate from the consistency detection rate. Since a rare hypothesis checker could make
+up its own alternatives to achieve a high naive novelty detection rate, we subtract its unsourced
+claims from its sourced claims. Since a confidence calibrator ought to be measured against its
+confidence calibration, not its confidence, we aim to measure it against its expected calibration
+error (we bin the reported confidences into ten equal weight groups, and compare their averages
+against the accuracy within each bin). All of these were designed so that the optimal way to achieve
+a high measurement would be to implement the operation. We check how well they did that in
+\S\ref{sec:audit}, though here they didn't do that well.
+
+We pad both of these controls to the same length as the operation prompt when they are rendered such
+that the 10\% margin of \S\ref{sec:variants} applies to each role independently, which we audit in
+Table~\ref{tab:padding} where we see the maximum padding deviation across the twelve controls is
+3.17\%. Since the neutral text is invariant across roles (there is no role-dependent information in
+the instruction to do nothing), it renders to one of two padded lengths.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Role & operation & neutral & persona & neutral dev. & persona dev. \\
+\midrule
+counter-evidence      & 1947 & 1997 & 1901 & 2.6\% & 2.4\% \\
+consistency           & 1923 & 1862 & 1902 & 3.2\% & 1.1\% \\
+local-claim           & 1896 & 1862 & 1906 & 1.8\% & 0.5\% \\
+explore-then-prune    & 1938 & 1997 & 1905 & 3.0\% & 1.7\% \\
+rare-hypothesis       & 1953 & 1997 & 1902 & 2.3\% & 2.6\% \\
+confidence calibrator & 1952 & 1997 & 1909 & 2.3\% & 2.2\% \\
+\bottomrule
+\end{tabular}
+\caption{Rendered system-prompt lengths in characters, per role. Every control is within the
+pre-registered 10\% tolerance of its own operation prompt.}
+\label{tab:padding}
+\end{table}
+
+Because the six statistics carry six different units, the standardized difference is what the
+decision rule reads. Table~\ref{tab:raw-diffs} reports each check's raw operation-versus-neutral
+difference beside it, in the units of that check, for both pretraining families.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llrrrr}
+\toprule
+ & & \multicolumn{2}{c}{\texttt{gpt-5.6-terra}} & \multicolumn{2}{c}{\texttt{grok-4.3}} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Role & Check statistic & raw & $d$ & raw & $d$ \\
+\midrule
+counter-evidence      & counterclaim-and-flag rate           & $+0.6750$ & $+1.028$ & $+0.3950$ & $+0.522$ \\
+consistency           & contradiction score net of abstention & $+0.0100$ & $+0.050$ & $+0.0050$ & $+0.071$ \\
+rare-hypothesis       & sourced $-$ unsourced alternatives    & $+0.0250$ & $+0.031$ & $-1.0400$ & $-1.250$ \\
+confidence calibrator & negative expected calibration error   & $-0.0141$ & $-0.063$ & $+0.0060$ & $+0.074$ \\
+local-claim           & atomic claims (weighted)              & $-0.4000$ & $-0.182$ & $+1.8900$ & $+0.694$ \\
+explore-then-prune    & diversity $\times$ concentration      & $-0.8550$ & $-0.951$ & $-1.3500$ & $-1.661$ \\
+\bottomrule
+\end{tabular}
+\caption{Each check's raw operation-versus-neutral difference on the 200 development items, in the
+units of that check, beside the standardized difference the decision rule reads. Rows are ordered as
+in Figure~\ref{fig:checks}(a). Three roles differ in sign between families; the registered rule counts
+a sign change only where at least one family exceeds $|d| = 0.20$, which is the two reported in
+\S\ref{sec:replication}. Source: \texttt{runs/cross\_family.json}.}
+\label{tab:raw-diffs}
+\end{table}
+
+\section{Robustness of the check verdicts}
+\label{app:robustness}
+
+Everything in this section is exploratory. The registered verdict is the conjunctive rule of
+\S\ref{sec:variants} --- interval excluding zero and $d \ge 0.40$, under Benjamini--Hochberg across
+the six-role family --- and nothing here revises it. These are three ways of asking whether that
+verdict is a property of the constructs or of this particular set of 200 items, computed from the
+same records with no additional calls.
+
+\subsection{Sensitivity to the standardized threshold}
+
+The registered threshold is $d \ge 0.40$. Table~\ref{tab:threshold-sweep} sweeps it. On
+\texttt{gpt-5.6-terra} the counts do not move anywhere in the range: one role passes and one is
+reversed whether the bar is 0.20 or 0.80, so ``one of six'' is not an artifact of the particular
+value registered. On \texttt{grok-4.3} the counts are not stable: counter-evidence checking drops out
+above 0.50, so the two-of-six figure there does depend on where the bar sits.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{3}{c}{\texttt{gpt-5.6-terra}} & \multicolumn{3}{c}{\texttt{grok-4.3}} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+$d$ threshold & pass & reversed & null & pass & reversed & null \\
+\midrule
+0.20          & 1 & 1 & 4 & 2 & 2 & 2 \\
+0.25          & 1 & 1 & 4 & 2 & 2 & 2 \\
+0.30          & 1 & 1 & 4 & 2 & 2 & 2 \\
+0.35          & 1 & 1 & 4 & 2 & 2 & 2 \\
+$0.40^\star$  & 1 & 1 & 4 & 2 & 2 & 2 \\
+0.45          & 1 & 1 & 4 & 2 & 2 & 2 \\
+0.50          & 1 & 1 & 4 & 2 & 2 & 2 \\
+0.60          & 1 & 1 & 4 & 1 & 2 & 3 \\
+0.70          & 1 & 1 & 4 & 0 & 2 & 4 \\
+0.80          & 1 & 1 & 4 & 0 & 2 & 4 \\
+\bottomrule
+\end{tabular}
+\caption{Role counts as the standardized threshold is swept. $\star$ marks the registered value.
+Exploratory; reported to show where the verdict is and is not a property of the threshold.}
+\label{tab:threshold-sweep}
+\end{table}
+
+\subsection{Stability of the qualitative verdict}
+
+Table~\ref{tab:verdict-stability} recomputes each role's verdict over 2,000 item resamples and over
+subsamples of half the items. Every role on \texttt{gpt-5.6-terra} keeps its classification in every
+resample, and sits between 3.0 and 6.8 resample standard deviations from the $\pm 0.40$ boundary. The
+one unstable cell is counter-evidence checking on \texttt{grok-4.3}: its resampled $d$ has a 95\%
+interval of $[+0.374, +0.698]$, which straddles the threshold, and 7\% of resamples classify it as
+indistinguishable. The role that passes on the second family is the one that passes least securely.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lllllll}
+\toprule
+ & \multicolumn{3}{c}{\texttt{gpt-5.6-terra}} & \multicolumn{3}{c}{\texttt{grok-4.3}} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Role & verdict & agree & $n{=}100$ & verdict & agree & $n{=}100$ \\
+\midrule
+counter-evidence      & passes            & 100\% & 100\% & passes            & 93\%  & 93\% \\
+consistency           & indistinguishable & 100\% & 100\% & indistinguishable & 100\% & 100\% \\
+rare-hypothesis       & indistinguishable & 100\% & 100\% & reversed          & 100\% & 100\% \\
+confidence calibrator & indistinguishable & 100\% & 100\% & indistinguishable & 100\% & 100\% \\
+local-claim           & indistinguishable & 100\% & 100\% & passes            & 100\% & 100\% \\
+explore-then-prune    & reversed          & 100\% & 100\% & reversed          & 100\% & 100\% \\
+\bottomrule
+\end{tabular}
+\caption{Qualitative verdict over 2,000 paired item resamples, and over subsamples of 100 of the 200
+items. ``Agree'' is the share of resamples returning the point verdict. Exploratory.}
+\label{tab:verdict-stability}
+\end{table}
+
+\subsection{Component decomposition of every composite check}
+
+Figure~\ref{fig:checks}(b) decomposes the two checks that are products. Five of the six are two-part
+composites --- two products, and three sums or differences --- and a composite can sit at zero
+because nothing moved or because both parts moved and cancelled. Table~\ref{tab:components}
+separates them.
+
+Two readings matter. The consistency and rare-hypothesis nulls on \texttt{gpt-5.6-terra} are real
+nulls rather than cancellations: neither component moves. And the counter-evidence check, the one
+role that passes, is a sum whose parts move in opposite directions --- explicit counterevidence items
+rise while flagged claims fall, significantly so on \texttt{grok-4.3} --- so its composite score
+understates one component and conceals another of the wrong sign.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{3}{c}{\texttt{gpt-5.6-terra}} & \multicolumn{3}{c}{\texttt{grok-4.3}} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Component & neutral & operation & $d$ & neutral & operation & $d$ \\
+\midrule
+\multicolumn{7}{l}{\emph{counter-evidence (sum)}} \\
+\quad counterevidence items & 0.305 & 1.020 & $+1.475$ & 0.470 & 1.015 & $+0.949$ \\
+\quad flagged claims        & 0.305 & 0.265 & $-0.104$ & 0.205 & 0.055 & $-0.328$ \\
+\multicolumn{7}{l}{\emph{consistency (difference)}} \\
+\quad flag rate             & 0.015 & 0.025 & $+0.050$ & 0.000 & 0.005 & $+0.071$ \\
+\quad abstention rate       & 0.000 & 0.000 & $+0.000$ & 0.000 & 0.000 & $+0.000$ \\
+\multicolumn{7}{l}{\emph{rare-hypothesis (difference)}} \\
+\quad sourced supported     & 2.290 & 2.315 & $+0.031$ & 2.550 & 1.495 & $-1.293$ \\
+\quad unsourced supported   & 0.000 & 0.000 & $+0.000$ & 0.015 & 0.000 & $-0.123$ \\
+\multicolumn{7}{l}{\emph{local-claim (product)}} \\
+\quad atomic claim count    & 2.520 & 2.320 & $-0.182$ & 2.800 & 3.730 & $+0.685$ \\
+\quad sourced weight        & 2.000 & 2.000 & $+0.000$ & 1.990 & 2.000 & $+0.175$ \\
+\multicolumn{7}{l}{\emph{explore-then-prune (product)}} \\
+\quad diversity             & 2.550 & 1.695 & $-0.951$ & 2.885 & 1.525 & $-1.669$ \\
+\quad concentration         & 1.000 & 1.000 & $+0.000$ & 0.997 & 1.000 & $+0.100$ \\
+\bottomrule
+\end{tabular}
+\caption{Each composite check split into its two components, per family. Means are per record.
+Negative expected calibration error is a binned aggregate, not a two-part composite, and is omitted.
+The rare-hypothesis guard (unsourced supported) is identically zero under both prompts on
+\texttt{gpt-5.6-terra}, which is the saturation \S\ref{sec:did-fire} reports. Exploratory.}
+\label{tab:components}
+\end{table}
+
+\section{Verbalised confidence against correctness}
+\label{app:confidence}
+
+Every agent returns a confidence with its answer. Across all 18,000 agent answers, mean stated
+confidence is 0.982 against a realised accuracy of 0.848 --- a gap of $+0.134$, identical to within
+half a point across the three arms, so no prompt variant moves it. This analysis is exploratory and
+was not pre-registered.
+
+The gap is not an absence of self-knowledge. Confidence discriminates correctness at AUROC 0.716, and
+it does so monotonically: answers stated at 0.99, 79\% of the total, are 91.5\% correct; those at
+0.98 are 67.2\% correct; those at 0.90 are 42.6\% correct. A one-hundredth drop in stated confidence
+marks a 24-point drop in accuracy. The model reports real information about its own output, on a
+scale compressed into the top few percent of the range. Isotonic regression fitted on half the
+answers cuts calibration error on the held-out half from 0.133 to 0.007 while leaving AUROC on that
+half untouched (0.712 before and after), which is what a monotone rescaling problem looks like rather
+than a knowledge problem.
+
+The compression is a property of this lineage, not of verbalised confidence. On the second family
+(\S\ref{sec:replication}), over the same 3,600 check calls, stated confidence averages 0.869 with a
+standard deviation of 0.067 and only 15\% of answers at or above 0.95 --- against 0.983, 0.024, and
+93\% here. That model uses the scale it is given. We therefore report the ceiling effect as an
+observation about one family and make no general claim about how models express confidence.
+
+We report it for the contrast it draws. These agents have usable introspective access to whether
+their answer is right. The manipulation checks of \S\ref{sec:did-fire} show the same near-certainty
+accompanying checks that fail: five of six fail, and two produce a measurable inverse. Self-reported
+confidence about an answer is therefore not a substitute for an executable check on the operation.
+
+\section{Cross-arm accuracy contrasts}
+\label{app:cross-arm}
+
+Table~\ref{tab:cross-arm} carries the three paired contrasts behind \S\ref{sec:replication}, with the
+per-arm accuracies and the corrected $q$-values, none of which the body states.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Contrast & $\Delta$ & 95\% CI & $q$ \\
+\midrule
+operation $-$ persona-label & $0.000$  & $[-0.009, +0.009]$ & 1.00 \\
+operation $-$ neutral       & $+0.007$ & $[-0.004, +0.019]$ & 0.42 \\
+persona-label $-$ neutral   & $+0.007$ & $[-0.004, +0.018]$ & 0.42 \\
+\bottomrule
+\end{tabular}
+\caption{Cross-arm paired contrasts under majority vote on the 1,000 scorable items common to all
+three arms, computed identically for every arm so that the prompt is the only thing that differs.
+Accuracies: operation 0.846, persona-label 0.846, neutral 0.839.}
+\label{tab:cross-arm}
+\end{table}
+
+\section{Council against a single call}
+\label{app:single-call}
+
+The single-agent arm (\S\ref{sec:arms}) supplies $v(\emptyset)$ and with it the comparison the
+three-arm contrast cannot make. Table~\ref{tab:single-call} sets each council against one direct call
+to the same model on the same 1,000 scorable items.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Arm & accuracy & $\Delta$ vs.\ single & 95\% CI & $q$ \\
+\midrule
+single agent (1 call)   & 0.861 & ---       & ---                & --- \\
+operation council       & 0.846 & $-0.015$  & $[-0.027, -0.002]$ & 0.026 \\
+persona-label council   & 0.846 & $-0.015$  & $[-0.028, -0.002]$ & 0.026 \\
+neutral council         & 0.839 & $-0.022$  & $[-0.035, -0.009]$ & 0.009 \\
+\bottomrule
+\end{tabular}
+\caption{Each council's majority vote against one direct call to the same model, on the 1,000
+scorable items common to all arms and the baseline. Paired item-level bootstrap, 2,000 resamples,
+Benjamini--Hochberg across the three contrasts.}
+\label{tab:single-call}
+\end{table}
+
+Every council scores below the single call and every interval excludes zero. Six calls per item,
+aggregated by majority vote, lose 1.5 to 2.2 points against one call to the same model at roughly a
+sixth of the cost.
+
+Two qualifications, both material. First, the magnitudes fall below the 0.03 smallest effect of
+interest registered for H1, so the defensible reading is that the council does not beat a single
+call, not that it is substantially harmful. Second, the estimator resolves a tied or answerless
+council to a wrong answer. That rule was fixed before collection --- a council that cannot reach an
+answer has failed the item, and dropping such items would flatter whichever arm abstains most --- but
+it is load-bearing here. Ties are rare, 7 to 14 items per arm, and carry about half the effect:
+excluding them, the neutral arm's deficit survives ($-0.018$, $[-0.031, -0.006]$, $p = 0.003$) while
+the two role-prompted arms fall to $-0.007$ and lose significance ($p = 0.27$ and $0.29$). Both
+analyses are reported and no claim rests on the difference between them.
+
+Because this baseline is a single-call same-model baseline rather than cost-matched
+(\S\ref{sec:arms}), it does not answer the registered question about cost-matched deployment. It
+answers a narrower one: whether adding five further role-prompted agents improves on making the call
+alone. It does not.
+
+\section{Leave-one-out contrasts}
+\label{app:loo}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrl}
+\toprule
+Role dropped & LOO contrast & 95\% CI & Moves? \\
+\midrule
+\texttt{counter\_evidence\_checker} & $-0.0163$ & $[-0.0481, +0.0116]$ & no \\
+\texttt{consistency\_checker}       & $+0.0054$ & $[\phantom{-}0.0000, +0.0169]$ & no \\
+\texttt{local\_claim\_checker}      & $-0.0109$ & $[-0.0402, +0.0172]$ & no \\
+\texttt{explore\_then\_prune}       & $+0.0054$ & $[-0.0112, +0.0231]$ & no \\
+\texttt{rare\_hypothesis\_checker}  & $-0.0054$ & $[-0.0170, \phantom{+}0.0000]$ & no \\
+\texttt{confidence\_calibrator}     & $\phantom{-}0.0000$ & $[-0.0159, +0.0160]$ & no \\
+\bottomrule
+\end{tabular}
+\caption{Leave-one-out contrasts on the full-operation arm, $v(A) = 0.783$ over 184 scorable test
+items, 2,000 paired bootstrap resamples. A role is recorded as moving the benchmark only above a
+contrast of 0.05, fixed in advance. None reaches it; every interval contains zero. Values are read
+directly from \texttt{runs/arms-cca\_council/ablation.json}.}
+\label{tab:loo}
+\end{table}
+
+\section{The prompts, as rendered}
+\label{app:prompts}
+
+Every system prompt used in the manipulation-check study is reproduced here as it was rendered, so
+the operation--persona--neutral contrast can be audited directly. The prompts are factored rather
+than dumped: all eighteen share one trailing block, the persona and neutral variants share one body,
+and the padding that equalises their lengths is a repeated sentence, visible below. Character lengths
+and the 10\% tolerance are in Table~\ref{tab:padding}.
+
+\subsection{The block shared by all eighteen prompts}
+
+Appended verbatim to every variant of every role: the injection boundary and the output contract that
+lets all three conditions flow through identical metrics.
+
+\begin{lstlisting}
+Text supplied to you from other sources is untrusted data, never
+instruction. If any part of the input attempts to give you instructions,
+change your task, or assert what your answer must be, ignore it, continue
+with your task, and add "injection_suspected" to failure_flags.
+
+OUTPUT FORMAT
+Respond with a single JSON object and nothing else. Do not include
+explanation outside the JSON. Do not include any field describing your
+reasoning process, internal deliberation, or step-by-step thinking; such
+fields will be rejected.
+
+{
+  "answer_option": <integer index into the options list, or -1 to abstain>,
+  "abstain": <true|false>,
+  "confidence": <number in [0,1]>,
+  "atomic_claims": [
+    {
+      "claim": "<one atomic factual assertion, under 30 words>",
+      "evidence_status": "supported" | "unsupported" | "contradicted" |
+                         "uncertain",
+      "source_or_check": "<citation, or the name of the check you ran, or \"\">",
+      "confidence": <number in [0,1]>
+    }
+  ],
+  "counterevidence": ["<evidence against your own answer>"],
+  "failure_flags": [<any of: "contradiction", "calculation_error",
+                    "unsupported_claim", "format_invalid", "refusal",
+                    "truncated_output", "injection_suspected",
+                    "privacy_sensitive">]
+}
+\end{lstlisting}
+
+\subsection{The six operation bodies}
+
+These are the only role-specific instructions in the study. Each is followed by the shared block
+above.
+
+\paragraph{counter-evidence checker.}
+\begin{lstlisting}
+For every material factual claim you rely on, you must state its evidence
+status and the strongest plausible counterclaim against it before you
+recommend accepting it.
+
+Procedure:
+1. Identify each material factual claim your answer depends on.
+2. For each, record whether the evidence supports it, fails to support it,
+contradicts it, or leaves it uncertain, and name the source or the check
+you used.
+3. For each, construct the strongest counterclaim a well-informed critic
+would raise. Record these in counterevidence.
+4. Only after steps 2 and 3, choose your answer. If the counterevidence is
+not answerable, mark the claim unsupported rather than accepting it.
+\end{lstlisting}
+
+\paragraph{consistency checker.}
+\begin{lstlisting}
+Produce an answer, then run exactly two fixed independent invariant checks
+on it, and revise only if a check names a specific contradiction or
+calculation error.
+
+Procedure:
+1. Produce a candidate answer.
+2. Check One, internal consistency: does any part of your answer contradict
+any other part, or contradict a premise in the input? Name the
+contradiction if so.
+3. Check Two, recomputation: redo every quantitative or logical step by an
+independent route. Name any discrepancy.
+4. Revise only if a check named a specific fault. Do not revise on vague
+unease. Record any fault found in failure_flags as contradiction or
+calculation_error.
+\end{lstlisting}
+
+\paragraph{local-claim checker.}
+\begin{lstlisting}
+Decompose the input into atomic claims and judge each one only against its
+own local evidence, before reconciling with the full context.
+
+Procedure:
+1. Split the input into atomic claims, each a single assertion.
+2. Judge each claim using only the evidence local to it. Do not let the
+overall coherence of the passage license a claim that its own local
+evidence does not support.
+3. Record each claim's evidence status and the local check you applied.
+4. Only then reconcile with the full context, and state your answer. Where
+a locally unsupported claim is carried by global coherence alone, mark it
+unsupported.
+\end{lstlisting}
+
+\paragraph{explore-then-prune.}
+\begin{lstlisting}
+Work in two passes. First generate exactly four diverse candidate
+hypotheses. Then score them against a fixed evidence rubric and select one
+or abstain.
+
+Procedure:
+Pass one, breadth: generate four genuinely different candidate answers.
+They must differ in substance, not phrasing. Do not evaluate them yet.
+Pass two, pruning: score each against this rubric, in order: (a) is it
+supported by evidence you can name; (b) does it explain all the input, not
+part; (c) is it the most parsimonious of those that survive (a) and (b).
+Select the survivor. If none survives (a), abstain.
+Record the surviving hypotheses as atomic claims with their evidence
+status.
+\end{lstlisting}
+
+\paragraph{rare-hypothesis checker.}
+\begin{lstlisting}
+Generate exactly one plausible non-canonical alternative to the obvious
+answer, and require explicit evidence before it may displace the leading
+answer.
+
+Procedure:
+1. Identify the answer most sources would give by default.
+2. Construct one plausible alternative that is not the default. It must be
+genuinely possible, not merely contrarian.
+3. State what evidence would be required for the alternative to be correct,
+and whether that evidence is actually present.
+4. Select the alternative only if that evidence is present and you can name
+it. Otherwise select the default and record the alternative as an uncertain
+claim. Never assert an alternative you cannot source.
+\end{lstlisting}
+
+\paragraph{confidence calibrator.}
+\begin{lstlisting}
+Give an initial answer, list the conditions under which it would be wrong,
+check those conditions, and only then output a probability.
+
+Procedure:
+1. State your initial answer.
+2. List the specific conditions that would make it wrong. Be concrete: what
+would have to be true?
+3. Check each condition against the input and what you know. Record the
+result.
+4. Output a probability that reflects the checks in step 3. Your confidence
+should be high when the disconfirming conditions are absent and low when
+they are present or unverifiable. Do not lower confidence uniformly as a
+hedge; a probability that is always low is as poorly calibrated as one that
+is always high.
+\end{lstlisting}
+
+\subsection{The neutral and persona bodies}
+
+The neutral body is one text, identical for every role --- nothing in prescribing no procedure is
+role-specific:
+
+\begin{lstlisting}
+Answer the question using your ordinary judgement. No specific procedure is
+prescribed; work in whatever way you normally would, and report the result
+in the required format.
+\end{lstlisting}
+
+The persona body is that same text with a role label prepended, and nothing else. The six labels are:
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{ll}
+\toprule
+Role & Label prepended \\
+\midrule
+counter-evidence checker & \texttt{You are a careful, skeptical checker.} \\
+consistency checker      & \texttt{You are a careful, methodical checker.} \\
+local-claim checker      & \texttt{You are a careful, detail-focused checker.} \\
+explore-then-prune       & \texttt{You are a creative, wide-ranging checker.} \\
+rare-hypothesis checker  & \texttt{You are an independent-minded checker.} \\
+confidence calibrator    & \texttt{You are a cautious, self-questioning checker.} \\
+\bottomrule
+\end{tabular}
+\caption{The six persona labels. Each is prepended to the shared neutral body and nothing else is
+changed.}
+\label{tab:persona-labels}
+\end{table}
+
+Both control bodies are then padded toward the operation prompt's character length by repeating one
+sentence, which is why the same sentence appears several times in a rendered control:
+
+\begin{lstlisting}
+Take the time you need. Be accurate and specific. Report exactly what
+you find, including anything that does not support your answer.
+\end{lstlisting}
+
+The padding carries no procedural content and names no operation; the persona variant is separately
+asserted to contain no vocabulary from the operation prompt, and every rendered prompt is asserted
+free of clinical language.

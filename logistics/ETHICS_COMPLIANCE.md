@@ -83,8 +83,8 @@ annotation or P10's human rating may start before it resolves.
 
 ## 4a. Named owner (E14, E33) — settled 2026-08-15
 
-**Data owner and accountable system owner:** [author withheld for double-blind
-review], sole investigator.
+**Data owner and accountable system owner:** Kevin Zhou (zhouk.2009@gmail.com),
+sole investigator at the time of collection.
 
 E33 requires a single accountable owner rather than a diffuse one, and the
 requirement applies to this study with particular force: a paper about an agent

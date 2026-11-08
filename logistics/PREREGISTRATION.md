@@ -542,7 +542,7 @@ observed, and must mark all affected analyses as exploratory.
 
 - Specification: `RESEARCH_SPECIFICATION.md`
 - Limitations addressed: L1, L3, L8, L10, L11, L12, L13, L14
-- Implementation: [repository URL withheld for double-blind review]
+- Implementation: https://github.com/kevzho/role-prompted-systems
 - Config hash of the registered configuration: recorded in each run's
   `manifest.json` under `config_hash`
 - Frozen at commit: *(record the SHA of the commit that adds this file)*

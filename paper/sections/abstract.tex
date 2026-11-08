@@ -1,0 +1,26 @@
+\begin{abstract}
+Many multi-agent LLM papers claim that the improvements they observe follow from the
+transformations implied by the role prompts (verifier, critic, devil's advocate) their agents
+use, often without checking whether these prompts implement them. We propose executable
+manipulation checks, drawing on the manipulation check paradigm in experimental psychology:
+predeclared behavioral checks, compared to a length-matched neutral baseline.
+
+We test six role prompts in three versions each: an explicit implementation, a bare role-name,
+and a length-matched neutral prompt. Of six diagnostic checks on 200 examples each, one meets
+the pre-set statistical criteria, one reverses, and three show no difference from neutral; we
+performed a sixth check that was non-diagnostic after audit.
+
+In terms of raw accuracy on the 1,000 scored HaluEval items, the three versions of the council
+vary within a single percentage point. None shows a significant effect on leaderboard score,
+according to our pre-registered test, and all score lower than a single call to the model.
+However, bare role-name prompts do show major reductions in refusal rates, suggesting that role
+prompting may affect refusal behavior, even if it doesn't implement its specified manipulation.
+
+We show silent failures in some of the coalition attribution analysis used in this literature,
+on simulated records. Retraining ablations may produce a Shapley value of zero that still meets
+efficiency. Masking approximations may also not be ranking-preserving. A post-collection audit
+further shows that manipulation checks themselves need degeneracy diagnostics: of six
+pre-registered checks, five included specific guards; two were defeatable, three didn't vary on
+observed support, and the one check that passed had none. Manipulation checks should survive
+executions.
+\end{abstract}

@@ -1,0 +1,87 @@
+% !TeX program = xelatex
+% AES Fall 2026 (NYC) extended abstract: 2 pages excluding references.
+% Build: latexmk -xelatex main.tex
+%
+% Numbers: Sec. 3 from runs/checks{,-grok}/manipulation_report.json,
+% runs/single_vs_council.json, runs/cross_arm.json, runs/arms-cca_council/ablation.json
+% (verified in ccarchs-docs/06-results.md). Sec. 4 guard tally from 06-results.md
+% Sec. 12; matrix and correlations from cca_synth/runs/a46_cross_role_EXPLORATORY/.
+\documentclass[11pt,a4paper]{article}
+\usepackage{aes}
+\usepackage{tabularx}
+
+\title[Did the Role Fire?]{Did the Role Fire? Auditing the Manipulation Checks
+Behind Role-Prompted Multi-Agent Systems}
+
+\aesauthor[affil={1}]{Kevin Zhou}
+\aesauthor[affil={1, 2}]{Sparsh Roy}
+\aesauthor[affil={1}]{Maxim Kudryashov}
+\aesaffiliation{1}{Hopewell Valley Central High School, Pennington, NJ, USA}
+\aesaffiliation{2}{Massachusetts Institute of Technology, Cambridge, MA, USA}
+\aesemails{\aesemail{zhouk.2009@gmail.com}\quad\aesemail{sparshr@mit.edu}\quad\aesemail{maximkud21+research@gmail.com}}
+
+\aeskeywords{Multi-agent systems; Role prompting; Manipulation checks; Construct validity}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Recent work in multi-agent LLM systems has shown that assigning agents distinct cognitive roles (e.g., critic, verifier, explorer, devil's advocate) can boost performance on downstream benchmarks. But does assigning a role actually change an agent's behavior in the intended way?  Drawing inspiration from experimental psychology, we propose a manipulation check for role-playing agents. Evaluating six distinct roles on two different language models, we find that only one role passes on the primary model tested, and two pass on a secondary model. Moreover, an exploratory investigation of the manipulation checks themselves finds that they have substantial threats to construct validity: the checks meet our discriminant-margin criterion in only one of twelve role-model combinations, three of the six checks are strongly correlated with the number of written claims, none of the five guards against degenerate passing survived audit, and a key reversal effect is explained by a prompt-check misalignment. This is a fundamental measurement problem; manipulation checks should be validated before their results are interpreted, and preregister controls to do so.
+\end{abstract}
+
+\section{The inferential gap}
+Multi-agent setups typically have different roles, just like debates having arguing sides, or different critics reviewing answers. 
+\citep{chan2024chateval,liang2024divergent,du2024debate}. The implicit claim is that these agents are performing their designated jobs, and this leads to improvements in benchmarks. However, the delta in benchmarks may be driven by other changes (e.g., longer prompts, different tone, higher abstention rates). Indeed, giving personas to agents is unreliable in improving performance, and there are records of instruction-following failures. \citep{zheng2023helpfulassistant, cemri2025mast}. In experimental psychology, there is a concept of a "manipulation check" to ensure that the experimenters are actually delivering the treatment \citep{hauser2018manipulation,ejelov2020manipulation}. We adopt this idea for checking that the agents follow the role given to them in the prompt, and audit the manipulation checks.\footnote{A
+preliminary version of the Sec.~3 results is under review at the
+\emph{Columbia Junior Science Journal}. The audit in Sec.~4 is new.}
+
+\section{Method}
+Each of the six roles from one council design (Table~\ref{tab:audit}) has three
+prompt variants: the
+\emph{operation} prompt, a bare role-name \emph{persona} prompt, and a
+\emph{neutral} prompt matched in length. Every variant emits the same output
+schema (atomic claims, counterevidence, failure flags, answer, and confidence),
+and each role's check is a fixed function of those fields. We ran each role and
+variant on 200 HaluEval development items \mbox{\citep{halueval2023}} with
+\texttt{gpt-5.6-terra} (primary) and \texttt{grok-4.3} (replication), 3,600 calls
+per family with no exclusions. The preregistered rule required that the paired
+bootstrap contrast against neutral be significant under Benjamini--Hochberg
+control across the six roles ($q = 0.05$) \emph{and} reach a paired $d \geq 0.40$.
+
+\section{Verdicts}
+Having a single role ("checking for counter-evidence") satisfies the preregistered passing criterion on \texttt{gpt-5.6-terra} with $d = +1.03$; number of counterclaims+flags rises from 0.61 to 1.285 per answer. Checking for counter-evidence ($d = +0.52$) or for local claims ($d = +0.69$) each cause a pass on \texttt{grok-4.3}. On the other hand, on 1000 items from HaluEval, none of the three different councils of six agents (via operation prompt, persona prompt, or neutral prompt) did better than a single call: 0.846, 0.846, and 0.839 vs. 0.861. All leave-one-out attribution confidence intervals contain zero.
+
+\section{Auditing the instrument}
+Five checks specified a guard against degenerate passing. Two were vulnerable, while three of them offered little difference in observed outputs. For example, the “local claim” guard was constant in 1,191/1,200 records. The only check that passes on the primary model does not have a safeguard against degenerate passing. In an exploratory study, for each check we wanted a prompt that increased that check more (by 0.2, specified ahead of time) than it increased any other check. Among the 12 cells of table \ref{tab:audit}, only one of them was true. For \texttt{grok-4.3}, the “counter-evidence” prompt has a larger absolute effect on the “explore then prune” check ($d = -1.23$) than on its own, intended check ($d = 0.52$). The “local claim”, “explore then prune”, and “rare hypothesis” checks have a correlation of $0.79-1.00$ with the number of atomic claims made (3,600 records in each family). The “explore then prune” prompt only writes down hypotheses that survive pruning, but the check counts those written-down claims as if they measured first-pass breadth. So the $d = -0.95$ (for \texttt{grok-4.3}, $-1.66$ ) is consistent with a prompt-check mismatch; the prompt is generating fewer claims, but it's not evidence that the model explored less. The “consistency” check was always near the floor (e.g., 0.025 vs. 0.015 on flagging). The null results here may be because the check is not very sensitive.
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}
+    \toprule
+     & \multicolumn{2}{c}{Own $d$ vs.\ neutral} & \multicolumn{2}{c}{Discriminant margin} & \multicolumn{2}{c}{$r$ with claim count} \\
+    Role & terra & grok & terra & grok & terra & grok \\
+    \midrule
+    Counter-evidence    & \textbf{+1.03} & \textbf{+0.52} & \textbf{+0.53} & $-0.71$ & 0.17 & 0.32 \\
+    Consistency         & +0.05 & +0.07 & $-0.22$ & $-1.23$ & 0.03 & 0.01 \\
+    Local-claim         & $-0.18$ & \textbf{+0.69} & $-0.75$ & $-0.02$ & 1.00 & 1.00 \\
+    Explore-then-prune  & $-0.95$ & $-1.66$ & $-1.90$ & $-3.30$ & 0.96 & 0.99 \\
+    Rare-hypothesis     & +0.03 & $-1.25$ & $-0.74$ & $-2.94$ & 0.79 & 0.88 \\
+    Confidence calib.   & $-0.06$ & +0.07 & $-0.34$ & $-0.70$ & $-0.01$ & $-0.01$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Bold $d$: passes the preregistered rule. Margin: own $d$ minus the
+  prompt's largest $|d|$ on another check; bold if $\geq 0.20$. Margins and
+  correlations are exploratory (computed on already-observed records).}
+  \label{tab:audit}
+\end{table}
+
+\section{Ongoing work and takeaway}
+To validate these instruments, we are preregistering controls where models are told to either exhibit (positive) or not (negative) the given operation. If effect sizes (Cohen's $d$) are lower than $d = 0.40$ (positive vs. neutral) or $d = 0.20$ (neutral vs. negative), we flag the role verdict as uninterpretable, since the corresponding check is not sensitive. Next, we'll test different prompt rewordings, an open-weight model, and a revised explore-then-prune check including initial hypotheses. Our findings show that observable role effects do not
+necessarily establish the intended cognitive operation. Manipulation checks require evidence of sensitivity, specificity, and robustness before their results can support claims of role adherence.\footnote{Independent research supported by Microsoft for Startups Azure credits. Claude Opus 5.5 assisted with analysis code, editing, and formatting; all content was reviewed
+by the authors. Code and records available on request.}
+
+
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,121 @@
+\section{Executable Manipulation Checks}
+\label{sec:method}
+
+\subsection{Giving \texorpdfstring{$f$}{f} empirical content}
+\label{sec:empirical-content}
+
+The definition of an information processing agent is that it executes a manipulation
+$f(C_i, y, x)$ on $y$. There are no restrictions on $f$, meaning any post-hoc observation about a
+model's behavior given a certain prompt can be claimed to be implementing an IPA, which makes the
+definition unfalsifiable and purely descriptive. To address this, we will demand a mechanism to
+check that the claimed manipulation was indeed performed.
+
+\begin{definition}[executable manipulation check]
+\label{def:check}
+An executable manipulation check for a role $i$ is a scalar-valued function $m_i$, taking as input
+structured output records, specified prior to running the experiment, where a higher value of $m_i$
+indicates that the structured output records are consistent with the claimed manipulation performed
+by $C_i$. For a role's performance to be ascribed to its operation, its manipulation check $m_i$
+must discriminate between the structured output records of the role, and a length-matched control
+condition.
+\end{definition}
+
+Throughout, \emph{implements} is operational: the role must produce the predeclared signature in its
+structured records, and no claim is made about latent computation that leaves no such trace.
+
+In experimental psychology, a manipulation check can confirm that the experimental manipulation was
+conducted as planned, before making any conclusions about the experimental condition's effects
+\citep{ejelov2020manipulation}. They're common in published studies: \citet{ejelov2020manipulation}
+report their usage across 207 published experiments. In multi-agent LLM literature, they are rare;
+\S\ref{sec:related} names the closest cases.
+
+While we use manipulation checks, we also acknowledge that their use in psychology is itself
+controversial, both because they can trigger self-reinforcing or self-defeating dynamic processes
+\citep{hauser2018necessary} and because the majority of checks reported do not account for these
+dynamics \citep{ejelov2020manipulation}. These concerns do not apply in this context, as our
+manipulation checks are ex-post functions over already generated structured outputs, that only use
+data produced by the benchmark. They are therefore non-interventionist, and do not `ripple' into the
+experiment: the key concern with manipulation checks in human studies stems from a necessary human
+intervention, which is not required when the check is executable code.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  box/.style={draw, rounded corners=1pt, minimum height=6.5mm, inner xsep=4pt, align=center},
+  gate/.style={draw, rounded corners=1pt, fill=blue!6, minimum height=6.5mm, inner xsep=4pt,
+               align=center},
+  arr/.style={-{Latex[length=1.6mm]}, gray!70},
+]
+  \node[box] (op)      {operation};
+  \node[box, right=3mm of op]  (pe) {persona};
+  \node[box, right=3mm of pe]  (ne) {neutral};
+
+  \node[gray!70, font=\scriptsize\itshape, above=1mm of pe.north]
+        {length-matched; identical output contract};
+  \draw[gray!55] ([xshift=-1mm,yshift=1.5mm]op.north west) -- ([xshift=1mm,yshift=1.5mm]ne.north east);
+
+  \node[box, below=8mm of pe] (model) {same model,\\fixed decoding};
+  \node[box, right=5mm of model] (rec) {structured\\records};
+  \node[box, right=5mm of rec]   (chk) {check $m_i$ vs.\\neutral: $d$, CI};
+  \node[gate, right=5mm of chk]  (gate) {gate: $q \le 0.05$ \textbf{and} $d \ge 0.40$};
+
+  \node[gray!70, font=\scriptsize\itshape, align=center, above=1.5mm of gate.north]
+        {attribution\\licensed only if};
+
+  \draw[arr] (op.south) |- ([yshift=3mm]model.north west) -- ([xshift=-3mm]model.north);
+  \draw[arr] (pe.south) -- (model.north);
+  \draw[arr] (ne.south) |- ([yshift=3mm]model.north east) -- ([xshift=3mm]model.north);
+  \draw[arr] (model) -- (rec);
+  \draw[arr] (rec)   -- (chk);
+  \draw[arr] (chk)   -- (gate);
+\end{tikzpicture}
+\caption{The check pipeline instantiated each role via three system prompts sharing one output
+contract (the predeclared processing instruction, the role label alone, and no instruction at all).
+All three traverse an identical path, so the contrast at the end isolates the prompt, and the gate
+decides whether a benchmark delta may be read as an effect of the operation at all.}
+\label{fig:pipeline}
+\end{figure}
+
+\subsection{Three prompt variants}
+\label{sec:variants}
+
+We present three conditions: operation vs neutral, which is the key contrast, and a persona
+condition that disentangles the role condition from the operation it represents. We programmatically
+test that all control conditions are padded so their length is within 10\% of the operation prompt
+(to ensure that only the operation is helpful, not longer token strings), that our persona
+conditions provably do not contain any words from the operation, and assert that none of the prompts
+(when rendered) contain any medical terms. In all cases, we use a standardized structured output
+format (a single JSON block with answer, abstain, confidence, list of atomic statements with whether
+they have evidence, counterevidence and failures), which is necessary to enable all conditions to be
+evaluated by the same set of metrics (the costs of this approach are discussed in
+\S\ref{app:concedes}).
+
+\subsection{The six checks}
+\label{sec:six-checks}
+
+For each condition, we specify a manipulation check. These manipulation checks (rate of
+counterclaims and flags, number of contradictions found (corrected for abstention), number of atomic
+statements made, diversity $\times$ concentration of hypotheses, number of sourced and unsourced
+alternatives proposed and negative expected calibration error (NECE)) were all explicitly specified,
+prior to data collection, by condition, and are only properties of the transformation represented by
+the condition rather than the ``correctness'' of a solution (see Appendix~\ref{app:checks} for
+details on how these checks are calculated).
+
+\subsection{Decision rule and gate}
+\label{sec:gate}
+
+The checks are paired at the item level (the same item under all three variants) and per-item
+differences are bootstrapped over 2,000 resamples. Both conditions in Figure~\ref{fig:pipeline} gate
+on the number of observations, $n = 200$ --- a tight interval around a negligible difference will
+pass a significance-only rule, and a large standardized effect with an interval spanning zero will
+not offer evidence for a difference. The threshold is on a standardized but not absolute scale
+because the six checks have no common unit (two return unbounded counts, one a rate difference in
+$[-1, 1]$, one a distinct-item count). A single absolute threshold would be uninterpretable. Bounded
+rates are sensitive to their inputs; rounding errors can seem like large moves.
+
+The check runner exits non-zero if any of the roles fail to pass their checks, making them a gate on
+a collection run instead of a report that will be produced and not read. If a role fails, it means
+that this role hasn't validated the predeclared behavioural signature of its operation ---
+equivalently, no matter how good it scored on the benchmark, this delta isn't licensed as evidence
+for an effect of this operation.

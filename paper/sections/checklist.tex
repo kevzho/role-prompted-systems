@@ -1,0 +1,144 @@
+\section*{NeurIPS Paper Checklist}
+
+\begin{enumerate}[leftmargin=*]
+
+\item \textbf{Claims}\\
+Question: Do the main claims made in the abstract and introduction accurately reflect the paper's
+contributions and scope?\\
+Answer: [Yes]\\
+Justification: The abstract and Sections 1--3 state the paper's main contribution as executable
+manipulation checks for role-prompted multi-agent systems, distinguish observable behavioral
+signatures from latent computation, and report the post-collection guard audit. Section 6 explicitly
+limits generalization beyond the two model families and benchmarks studied.
+
+\item \textbf{Limitations}\\
+Question: Does the paper discuss the limitations of the work performed by the authors?\\
+Answer: [Yes]\\
+Justification: Section 6 provides a dedicated discussion of limitations in scope, measurement,
+provenance, statistical power, and departures from the preregistered design. Appendix D
+additionally reports limitations discovered by post-collection audit, including collapsed or
+defeatable manipulation-check guards.
+
+\item \textbf{Theory assumptions and proofs}\\
+Question: For each theoretical result, does the paper provide the full set of assumptions and a
+complete (and correct) proof?\\
+Answer: [N/A]\\
+Justification: The paper introduces an operational definition of an executable manipulation check,
+but does not claim new theorems, lemmas, or formal theoretical results requiring proofs.
+
+\item \textbf{Experimental result reproducibility}\\
+Question: Does the paper fully disclose all the information needed to reproduce the main
+experimental results of the paper to the extent that it affects the main claims and/or conclusions of
+the paper (regardless of whether the code and data are provided or not)?\\
+Answer: [Yes]\\
+Justification: Sections 3--4 specify the experimental conditions, decision rules, models, decoding
+settings, benchmark revisions, and attribution procedure. Appendices E, I, J, and O provide the split
+construction, exact manipulation-check definitions, robustness analyses, and rendered prompts needed
+to reproduce the main comparisons.
+
+\item \textbf{Open access to data and code}\\
+Question: Does the paper provide open access to the data and code, with sufficient instructions to
+faithfully reproduce the main experimental results, as described in supplemental material?\\
+Answer: [Yes]\\
+Justification: The full artifact is available at
+\url{https://github.com/kevzho/role-prompted-systems} under an MIT license with
+complete environment and reproduction commands. The paper identifies the public benchmark revisions
+and documents the experimental procedure in detail.
+
+\item \textbf{Experimental setting/details}\\
+Question: Does the paper specify all the training and test details (e.g., data splits,
+hyperparameters, how they were chosen, type of optimizer) necessary to understand the results?\\
+Answer: [Yes]\\
+Justification: Section 4 specifies the benchmark arms, model deployments, temperature, token limit,
+seed, timeout, preregistered decision thresholds, and attribution estimator. Appendix E specifies the
+hash-based train/calibration/validation/test partition, and Appendix O reproduces the prompts used in
+the manipulation-check experiment.
+
+\item \textbf{Experiment statistical significance}\\
+Question: Does the paper report error bars suitably and correctly defined or other appropriate
+information about the statistical significance of the experiments?\\
+Answer: [Yes]\\
+Justification: Section 3.4 and Section 4.1 specify paired item-level bootstrap confidence intervals
+using 2,000 resamples, Benjamini--Hochberg correction for the registered role-check family, and
+preregistered effect-size thresholds. The results report confidence intervals, corrected significance
+values, and effect sizes, with additional sensitivity and resampling analyses in Appendix J.
+
+\item \textbf{Experiments compute resources}\\
+Question: For each experiment, does the paper provide sufficient information on the computer
+resources (type of compute workers, memory, time of execution) needed to reproduce the experiments?\\
+Answer: [Yes]\\
+Justification: Section 4.3 identifies the hosted model provider, deployment route, decoding
+parameters, and model versions, provider-side hardware, memory, execution time, call counts, and
+token usage.
+
+\item \textbf{Code of ethics}\\
+Question: Does the research conducted in the paper conform, in every respect, with the NeurIPS Code
+of Ethics \url{https://neurips.cc/public/EthicsGuidelines}?\\
+Answer: [Yes]\\
+Justification: The study evaluates existing hosted language models on established benchmarks, does
+not involve human-subject interventions, and makes no deployment claims. Section 6 explicitly
+cautions against using the evaluated council for medical, legal, financial, or other consequential
+decisions.
+
+\item \textbf{Broader impacts}\\
+Question: Does the paper discuss both potential positive societal impacts and negative societal
+impacts of the work performed?\\
+Answer: [No]\\
+Justification: The paper discusses risks of over-interpreting benchmark performance and explicitly
+cautions against consequential deployment in Section 6, but the current manuscript does not contain a
+dedicated discussion of both positive and negative societal impacts of executable manipulation
+checks.
+
+\item \textbf{Safeguards}\\
+Question: Does the paper describe safeguards that have been put in place for responsible release of
+data or models that have a high risk for misuse (e.g., pre-trained language models, image generators,
+or scraped datasets)?\\
+Answer: [N/A]\\
+Justification: The paper does not release a new pretrained model, high-risk dataset, or other asset
+requiring controlled access. It evaluates existing hosted models and established benchmarks.
+
+\item \textbf{Licenses for existing assets}\\
+Question: Are the creators or original owners of assets (e.g., code, data, models), used in the
+paper, properly credited and are the license and terms of use explicitly mentioned and properly
+respected?\\
+Answer: [Yes]\\
+Justification: The paper cites the original HaluEval and TruthfulQA publications and identifies
+pinned benchmark revisions; the released artifact redistributes both corpora under their original
+licenses, with attribution in LICENSE.
+
+\item \textbf{New assets}\\
+Question: Are new assets introduced in the paper well documented and is the documentation provided
+alongside the assets?\\
+Answer: [N/A]\\
+Justification: The current submission does not release a new dataset, pretrained model, or separately
+distributed software asset. The new experimental prompts and manipulation-check specifications are
+documented directly in the paper and appendices.
+
+\item \textbf{Crowdsourcing and research with human subjects}\\
+Question: For crowdsourcing experiments and research with human subjects, does the paper include the
+full text of instructions given to participants and screenshots, if applicable, as well as details
+about compensation (if any)?\\
+Answer: [N/A]\\
+Justification: The study does not involve crowdsourcing or human subjects.
+
+\item \textbf{Institutional review board (IRB) approvals or equivalent for research with human
+subjects}\\
+Question: Does the paper describe potential risks incurred by study participants, whether such risks
+were disclosed to the subjects, and whether Institutional Review Board (IRB) approvals (or an
+equivalent approval/review based on the requirements of your country or institution) were obtained?\\
+Answer: [N/A]\\
+Justification: The study does not involve crowdsourcing or human subjects, so IRB or equivalent
+human-subjects review is not applicable.
+
+\item \textbf{Declaration of LLM usage}\\
+Question: Does the paper describe the usage of LLMs if it is an important, original, or non-standard
+component of the core methods in this research? Note that if the LLM is used only for writing,
+editing, or formatting purposes and does not impact the core methodology, scientific rigor, or
+originality of the research, declaration is not required.\\
+Answer: [Yes]\\
+Justification: LLMs are a core component of the experiment, while also being a writing and coding
+aid. Section 4.3 identifies the model families, hosted serving environment, decoding parameters, and
+model provenance, while Appendix O reproduces the role prompts and shared output contract used to
+generate the experimental records.
+
+\end{enumerate}

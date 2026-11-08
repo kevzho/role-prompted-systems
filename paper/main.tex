@@ -1,0 +1,74 @@
+\documentclass{article}
+
+\usepackage[preprint,nonatbib]{neurips}
+\usepackage[numbers,sort&compress]{natbib}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+\usepackage{listings}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{url}
+
+\newtheorem{definition}{Definition}
+
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  frame=none,
+  showstringspaces=false,
+  xleftmargin=1em,
+}
+
+\newcommand{\opname}[1]{\textsf{#1}}
+
+\title{Did the Role Fire? Manipulation Checks for\\Role-Prompted Multi-Agent LLM Systems}
+
+\author{%
+  Kevin Zhou \\
+  Hopewell Valley Central High School \\
+  \texttt{zhouk.2009@gmail.com} \\
+  \And
+  Sparsh Roy \\
+  Hopewell Valley Central High School \\
+  Massachusetts Institute of Technology \\
+  \texttt{sparshr@mit.edu} \\
+  \And
+  Maxim Kudryashov \\
+  Hopewell Valley Central High School \\
+  \texttt{maximkud21+research@gmail.com} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/method}
+\input{sections/setup}
+\input{sections/results}
+\input{sections/limitations}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\newpage
+\appendix
+\input{sections/appendix}
+
+\newpage
+\input{sections/checklist}
+
+\end{document}

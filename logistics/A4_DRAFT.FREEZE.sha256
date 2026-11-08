@@ -1,0 +1,6 @@
+1315a6ff7c56a8247505b4ed2828c3dc8ff7ac8c5011731f7a2fdce86635daf6  A4_DRAFT.frozen-2026-10-25T141552Z.md
+# Draft amendment A4 as frozen at 2026-10-25T14:15:52Z, before the A4.6
+# cross-role matrix (cca_synth/analysis_cross_role.py) was first computed.
+# A4 itself is NOT registered; this file fixes only the A4.6 margin (0.20).
+# Verify: shasum -a 256 -c A4_DRAFT.FREEZE.sha256
+# The timestamp is self-recorded, not externally attested.

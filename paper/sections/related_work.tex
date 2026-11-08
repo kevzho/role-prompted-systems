@@ -1,0 +1,74 @@
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Testing role prompting assumptions.}
+Studies show persona assignment is ineffectual at improving model accuracy, whereas \emph{oracle}
+persona assignment is effective, suggesting the key is selection, not adoption
+\citep{zheng2024helpful}. Similarly, studies using expert personas have mixed effects across
+different tasks and outcomes \citep{hu2026expert}. Prompting models with different personalities
+alters behaviour, with performance depending on the composition of the agent group
+\citep{yu2025personality}. For this reason, there is reason for caution about role prompting,
+rather than reasons to ensemble with it \citep{kim2024persona}. Any role prompting improvement
+should be considered in this light.
+
+\paragraph{Multi agent councils.}
+Models are increasingly being ensembled across agents
+\citep{bause2026mixtures,huang2025dynamics,hamidieh2026complementing}. The most direct comparison
+is with \emph{Council Mode} \citep{wu2026council} which also shows reductions in hallucinations on
+the same two datasets as we use. Their method combines three different models from three different
+providers plus a specialised synthesising model; this means their improvement is a joint effect of
+different specialisms, diversity of lineage, and synthesisation capability, which can't disentangle
+each other. By contrast we keep the lineage constant and have no dedicated synthesiser,
+differentiating each arm based solely on the prompt. We also have reason to be pessimistic about
+council mode. The first is that deliberation may be an illusion \citep{wan2026deliberative}. Second
+is that correlated failure limits improvement from combination
+\citep{jamshidi2026cascade,chen2026cofailure}.
+
+\paragraph{Self correction and verification.}
+Self-correcting models have been shown to have questionable improvements, with self-correction
+worsening answers \citep{huang2024selfcorrect}, self-verification failing to identify model
+mistakes, and improvements being an illusion of evaluation
+\citep{chen2026selfcorrection,stechly2024selfverification}. For this reason, we prefer to use
+objective and actionable critiques over self critiques.
+
+\paragraph{Testing for role adherence, closest prior work.}
+Many existing works evaluate whether an LLM ``acts according to its assigned role'' on a prompt;
+e.g.\ to what extent the LLM displays the \emph{persona} on psychological scales through interview
+\citep{wang2024incharacter}; whether an LLM ``sticks to'' the \emph{persona} when completing
+open-ended tasks \citep{shin2025spotting}; whether \emph{persona} parameters affect model
+predictions at all \citep{hu2024persona}; specific checklists of role adherence for
+\emph{role-playing agents} \citep{rosati2026rpacheck}; ``disobey role specification'' as a specific
+failure mode for \emph{multi-agent systems} extracted from execution traces \citep{cemri2025why}.
+
+We do not claim novelty, and there are two prior works sufficiently close to cite:
+\citet{dietrich2026roles} construct role-specific tests of adherence to an advocate role using a
+stance classifier, to ``explicitly test adherence to the respective roles;'' this is as close as we
+can find to what we propose in a multi-agent LLM stack, and is a contemporaneous, non-peer-reviewed
+preprint, and we weight it accordingly. \citet{bieberstein2026empathy} conduct an automatic
+``manipulation check'' on a neutral prompt baseline \emph{before} reporting results in a
+single-agent HCI study, which is identical to the procedure in psychology.
+
+The novelty here does not lie in testing role adherence itself but in its application, in that the
+aforementioned tests a) are not declared in advance; b) lack a baseline or length-unmatched
+baseline; c) test adherence to a persona, not an explicitly-specified action; d) are never
+interpreted as a precondition to interpreting a \textbf{benchmark}.
+
+\paragraph{Architectural novelty, baselines, and provenance.}
+Much prior work explores structured agent architectures \citep{sumers2024cognitive}, including
+functional role agents governed by a routing agent \citep{shang2026theater} and role architectures
+inspired by clinical frameworks \citep{wu2026wisemind} (see also \citet{lee2025emergence} for the
+related research question of how and when agents ``spontaneously'' implement such computations). We
+do not claim novelty on the agent design itself, but only on the quality control mechanism. Our
+baseline uses cost-matched pre-registration, common for routing experiments \citep{ong2025routellm};
+the results we obtain instead use a same-model single-call baseline (\S\ref{sec:arms}). The most
+promising hope for functionally constraining LLMs lies in steering at the activation level
+\citep{bas2025steer}, although such experiments have proved unreliable \citep{braun2026steering}; we
+defer mechanistic intervention to future work. The archetypes we chose were initially inspired by
+prior work on computational theories of mind and information processing-accounts in clinical
+psychology and psychiatry
+\citep{adams2016computational,addicott2021attention,clance1978impostor,frith2003autism,gruber2011bipolar,kapur2003psychosis}:
+all such connections are limited to motivation of a functional role, and our archetypes are entirely
+specified, implemented, and assessed in functional terms, and none of our conclusions apply to any
+clinical group. \emph{These roles are functional AI processing constraints. They are not diagnostic
+models, simulations of lived experience, or claims that mental health conditions confer a single
+cognitive mechanism.}

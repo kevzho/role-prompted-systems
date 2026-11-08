@@ -1,0 +1,121 @@
+\section{Experimental Setup}
+\label{sec:setup}
+
+\subsection{Pre-registration}
+\label{sec:prereg}
+
+We registered hypotheses, effect sizes, arm definitions, decision rules, and per-role predictions
+before data collection. Two amendments were applied predating the data they're related to.
+Specifically, amendment A2 claimed that improvement on the manipulation check was our primary
+outcome, rather than the benchmark gain. A3 acknowledges a pilot which led to the analysis of the
+47-item test split and pre-registered Benjamini--Hochberg control for the six role checks.
+
+The registered decision rule is conjunctive. A role passes only if its paired
+operation-versus-neutral contrast survives FDR control at $q = 0.05$ across the six-role family
+\emph{and} reaches $d \ge 0.40$; a role is recorded as moving a benchmark only above a
+leave-one-out contrast of 0.05. All intervals are 95\% paired bootstrap intervals over 2,000
+item-level resamples. The scoped study is underpowered for the original council-gain hypothesis by
+design --- at $n = 1{,}000$ the detectable effect is $\approx 0.048$ against a SESOI of 0.03 --- so
+that hypothesis is reported as \textbf{not tested}, never as a null. The manipulation check is
+differently placed: at $n = 200$ paired, the minimum detectable effect at 80\% power is
+$\approx 0.20$, so the registered $d \ge 0.40$ threshold sits comfortably above the detection floor.
+
+\subsection{Arms and cost matching}
+\label{sec:arms}
+
+The registered design has four arms: a full-operation council, a persona-label-only council, a
+length-matched neutral council, and a cost-matched single-agent baseline. The council arms differ
+only in the prompt (\S\ref{sec:variants}); model, decoding, output contract, and aggregation are
+identical.
+
+\textbf{The fourth arm was collected, but not as registered.} The registered baseline was
+cost-matched. So, what we ran is the single-agent arm on the same model the councils use with one
+direct call, making it neither cost-matched nor call-matched to the councils. The preregistered
+cost-matched contrast remains uncollected. A council deficit against this baseline is therefore a
+deficit against something that also costs less: a stronger practical claim and a weaker answer to
+the registered question. \S\ref{sec:attribution} states the consequence for the attribution
+baseline.
+
+Two benchmarks are collected, both materialised by script from pinned immutable revisions and
+verified by content hash so the corpus is reproducible byte-for-byte: HaluEval's QA split
+\citep{li2023halueval} at \texttt{207f479c}, expanded to 20,000 binary items, and TruthfulQA's
+generation split \citep{lin2022truthfulqa} at \texttt{741b8276}, 817 items. We use both for
+non-commercial research evaluation, following the terms stated in their licenses. No personal data
+is contained and we redistribute with the original license with attribution, with license
+identifiers and URLs recorded per benchmark in \texttt{data/materialize\_manifest.json}.
+
+\textbf{Accuracy analysis is limited to HaluEval.} Because the TruthfulQA generation split does not
+provide an answer index (grading uses a judge model), the gold answer index is necessarily undefined
+for all TruthfulQA questions. We classified TruthfulQA as free-form in preprocessing but did not
+recognise before collection that the registered accuracy analysis needs a gold answer index, which
+the generation split lacks. Examples from the TruthfulQA benchmark are, however, reflected in
+behavioural metrics shown in \S\ref{sec:results} (e.g., refusal, abstention rates). All accuracy
+metrics are, in turn, limited to HaluEval and reported as such (total examples), everywhere it
+appears. For the benchmark arms, we use 1,000 HaluEval examples per arm (see
+Appendix~\ref{app:splits}).
+
+\subsection{Models}
+\label{sec:models}
+
+For our benchmark arms, we host \texttt{gpt-5.6-terra} in Microsoft Foundry (eastus2 Global
+Standard), and for cross family replication in \S\ref{sec:replication} we host \texttt{grok-4.3} in
+the same. Our pre-registered cost-matched arm uses \texttt{gpt-5.6-luna}, but as we switch Luna in
+the collected single agent arm to Terra (\S\ref{sec:arms}), results do not include Luna. For all
+arms and roles, we use \texttt{temperature=0}, 1,024 output tokens, \texttt{seed=1337},
+\texttt{timeout=120s}. Of all provenance facts, only the following two are asserted (not inferred)
+--- and only these two: (i) We specify the deployment name as the ID in our records. This deployment
+is known to have used model version \texttt{2026-07-09}. The deployment name does not reference this
+version: we thus specify the version in the manifest and do not attempt to infer it from the records
+themselves; (ii) We specify the serving route (vendor, region, deployment mode), not infer it, since
+our collection script accepts a provider argument. All other provenance facts are inferred (prompts
+via hash, simulated/reality from provider attestation, splits by content).
+
+\paragraph{Compute.}
+All model calls were hosted as API calls, without using any GPU cluster nor hardware on the
+provider's side. In collection, we issued 35,700 model calls. This includes three council arms at
+1,500 items each $\times$ 6 different roles, another single agent arm at 1,500 items, and then three
+prompt conditions at 200 items $\times$ 6 roles in each of \texttt{gpt-5.6-terra} and
+\texttt{grok-4.3}. 35,208 (2.2\% absent rate) returned usable records, with recorded usage totalling
+about 8.09M output tokens (\$128.66). Each arm in the council costs six calls per item: around 3,350
+input and 1,428--1,659 output tokens per item (\$0.0239--\$0.0267), with mean per-agent latency at
+3.1--4.5\,s; the single-agent baseline averages 2.44\,s (median 2.23\,s) and \$0.001792 per call.
+Per-run cost, token, and latency breakdowns are in each run's \texttt{evaluation.json} under
+\texttt{cost}. The synthesizer is the only trained component: 81--108 optimizer steps, 34.7--55.3\,s
+wall clock per run on one Apple Silicon laptop (MPS, no CUDA). Every analysis in this paper re-runs
+from the shipped records in under a minute on the same machine, with no API access.
+
+\subsection{Attribution estimator}
+\label{sec:attribution}
+
+\textbf{In this work, we specify the value of the empty coalition.} As specified in our pre-reg, we
+define $v(\emptyset)$ as the direct answer base model evaluated on identical per-sample inputs, with
+records provided by the single-agent arms and joined into our council records. Note that we are able
+to join 1,134/1,500 records per arm (including all 1,000 scorable records): we do not infer missing
+values for 366 TruthfulQA records where the baseline abstained (or returned free-form text with no
+answer index), we simply report these as missing. (Either way, leave-one-out does not consider the
+empty coalition at all.)
+
+For per-role attribution we perform leave-one-out by retraining on each coalition (seven trainings
+total rather than the 64 required for a full Shapley computation, which is computationally
+prohibitive at this scale; using a masking approximation to improve tractability deviates from
+retraining by more than the effect size of interest, see Appendix~\ref{app:attribution-failures}).
+Explicitly, leave-one-out is not a Shapley value and we do not claim it to be: in particular, it is
+not efficient, so per-role contributions do not have to add up to $v(A) - v(\emptyset)$, and it
+attributes all role--council interactions to each role. Writing $v$ in Harsanyi dividend form
+$v(S) = \sum_{\emptyset \ne T \subseteq S} d(T)$, leave-one-out evaluates to
+$v(A) - v(A \setminus \{i\}) = \sum_{T \ni i} d(T)$ while the Shapley value is
+$\sum_{T \ni i} d(T)/|T|$, so the two differ by
+$\sum_{T \ni i,\, |T| \ge 2} \frac{|T|-1}{|T|} d(T)$: the standalone term $d(\{i\})$ cancels and
+leave-one-out charges role $i$ the whole of each interaction rather than its $1/|T|$ share.
+Substitutable roles are negative dividends, so under the pairwise substitutability registered in
+advance this difference is negative and every leave-one-out contrast is biased downward relative to
+the Shapley value. The sign is imported rather than measured --- the seven coalitions evaluated here
+do not identify $d(T)$ for $|T| \ge 2$ (Appendix~\ref{app:third-finding}) --- but the bias runs
+against a positive verdict either way, so a role exceeding the 0.05 leave-one-out (LOO) threshold
+has passed a conservative test.
+
+Provenance is derived rather than asserted. Refusals, truncations, malformed responses, and retries
+are counted and published per role rather than imputed. In the pilot and manipulation-check runs
+reported here, those rates are zero across 1,128 pilot calls and the 3,600 calls; the benchmark arms
+refuse only on TruthfulQA items, entering no accuracy contrast (Appendix~\ref{app:refusal}).
+Appendix~\ref{app:provenance} gives the mechanism.

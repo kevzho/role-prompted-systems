@@ -1,0 +1,129 @@
+@inproceedings{chan2024chateval,
+  author    = {Chan, Chi-Min and Chen, Weize and Su, Yusheng and Yu, Jianxuan and
+               Xue, Wei and Zhang, Shanghang and Fu, Jie and Liu, Zhiyuan},
+  title     = {{ChatEval}: Towards Better {LLM}-based Evaluators through
+               Multi-Agent Debate},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2308.07201},
+  annote    = {verified 2026-09-29 against ICLR 2024 proceedings and dblp. Reports
+               that diverse role prompts are essential; same role description for
+               all agents degrades performance.}
+}
+
+@inproceedings{du2024debate,
+  author    = {Du, Yilun and Li, Shuang and Torralba, Antonio and
+               Tenenbaum, Joshua B. and Mordatch, Igor},
+  title     = {Improving Factuality and Reasoning in Language Models through
+               Multiagent Debate},
+  booktitle = {Proceedings of the 41st International Conference on Machine
+               Learning (ICML)},
+  series    = {PMLR},
+  volume    = {235},
+  pages     = {11733--11763},
+  year      = {2024},
+  url       = {https://proceedings.mlr.press/v235/du24e.html},
+  annote    = {verified 2026-09-29 against PMLR. Multiple model instances debating
+               reduces hallucinations and improves reasoning.}
+}
+
+@inproceedings{liang2024divergent,
+  author    = {Liang, Tian and He, Zhiwei and Jiao, Wenxiang and Wang, Xing and
+               Wang, Yan and Wang, Rui and Yang, Yujiu and Shi, Shuming and
+               Tu, Zhaopeng},
+  title     = {Encouraging Divergent Thinking in Large Language Models through
+               Multi-Agent Debate},
+  booktitle = {Proceedings of the 2024 Conference on Empirical Methods in
+               Natural Language Processing (EMNLP)},
+  year      = {2024},
+  url       = {https://aclanthology.org/2024.emnlp-main.992/},
+  annote    = {verified 2026-09-29 against the ACL Anthology. Assigns opposing
+               "angel"/"devil" debater roles plus a judge.}
+}
+
+@article{hauser2018manipulation,
+  author  = {Hauser, David J. and Ellsworth, Phoebe C. and Gonzalez, Richard},
+  title   = {Are Manipulation Checks Necessary?},
+  journal = {Frontiers in Psychology},
+  volume  = {9},
+  pages   = {998},
+  year    = {2018},
+  doi     = {10.3389/fpsyg.2018.00998},
+  annote    = {verified-crossref 2026-08-16. Argues an administered check can act
+             as an intervention rather than a measure. Our checks are computed
+             post hoc from records already produced, so this critique does not
+             transfer -- state that explicitly rather than citing uncritically.}
+}
+
+@article{ejelov2020manipulation,
+  author  = {Ejel\"{o}v, Emma and Luke, Timothy J.},
+  title   = {``{R}arely safe to assume'': Evaluating the use and interpretation of
+             manipulation checks in experimental social psychology},
+  journal = {Journal of Experimental Social Psychology},
+  volume  = {87},
+  pages   = {103937},
+  year    = {2020},
+  doi     = {10.1016/j.jesp.2019.103937},
+  annote    = {verified-crossref 2026-08-16. Empirical review of 207 experiments;
+             supports "widespread practice" as a documented fact rather than an
+             assertion.}
+}
+
+@inproceedings{cemri2025mast,
+  author    = {Cemri, Mert and Pan, Melissa Z. and Yang, Shuyi and
+               Agrawal, Lakshya A. and Chopra, Bhavya and Tiwari, Rishabh and
+               Keutzer, Kurt and Parameswaran, Aditya and Klein, Dan and
+               Ramchandran, Kannan and Zaharia, Matei and Gonzalez, Joseph E.
+               and Stoica, Ion},
+  title     = {Why Do Multi-Agent {LLM} Systems Fail?},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2025},
+  url       = {https://arxiv.org/abs/2503.13657},
+  annote      = {verified-api 2026-08-15. The MAST taxonomy; "disobey role
+               specification" is a post-hoc trace-annotation failure mode.}
+}
+
+@article{dietrich2026rolesfail,
+  author  = {Dietrich, Juergen},
+  title   = {When Roles Fail: Epistemic Constraints on Advocate Role Fidelity
+             in {LLM}-Based Political Statement Analysis},
+  journal = {arXiv preprint arXiv:2604.27228},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2604.27228},
+  annote    = {verified-api 2026-08-15. NEAREST PREDECESSOR (NOVELTY_SEARCH_QUANT
+             section 5). Single-author preprint, no venue: weight claim language
+             accordingly -- "a preprint reports", not "it is established".}
+}
+
+@inproceedings{zheng2023helpfulassistant,
+  author    = {Zheng, Mingqian and Pei, Jiaxin and Logeswaran, Lajanugen and
+               Lee, Moontae and Jurgens, David},
+  title     = {When ``{A} {H}elpful {A}ssistant'' Is Not Really Helpful: Personas in
+               System Prompts Do Not Improve Performances of Large Language
+               Models},
+  booktitle = {Findings of the Association for Computational Linguistics:
+               EMNLP 2024},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2311.10054},
+  annote      = {verified-full 2026-08-02 against the arXiv abstract page
+               (arXiv:2311.10054, submitted 16 Nov 2023): five authors;
+               comments field states Findings of EMNLP 2024, so the venue is
+               cited. Claim re-checked: 162 roles across 6 interpersonal
+               relationship types and 8 expertise domains; no improvement over
+               a no-persona control. Oracle per-question best-persona
+               aggregation does help, but automatic persona selection is no
+               better than random -- cite both halves.}
+}
+
+@inproceedings{halueval2023,
+  author    = {Li, Junyi and Cheng, Xiaoxue and Zhao, Wayne Xin and
+               Nie, Jian-Yun and Wen, Ji-Rong},
+  title     = {{HaluEval}: A Large-Scale Hallucination Evaluation Benchmark for
+               Large Language Models},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in
+               Natural Language Processing (EMNLP)},
+  year      = {2023},
+  url       = {https://arxiv.org/abs/2305.11747},
+  annote      = {QA split, 10{,}000 items. Pinned revision
+               207f479c555a68b8d2431631a95083b84b2accbe; MIT licence.}
+}

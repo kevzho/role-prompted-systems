@@ -86,7 +86,7 @@ def _forest_axes(ax, report: Dict[str, Any], labels: List[str]) -> List[str]:
     plt.rcParams.update({
         "font.family": "serif",
         "font.serif": ["Times New Roman", "Nimbus Roman", "DejaVu Serif"],
-        "font.size": 9,
+        "font.size": 9.5,
         "axes.linewidth": 0.5,
         "pdf.fonttype": 42,   # embedded TrueType; Type 3 is rejected by NeurIPS
         "ps.fonttype": 42,
@@ -94,12 +94,23 @@ def _forest_axes(ax, report: Dict[str, Any], labels: List[str]) -> List[str]:
 
     roles = sorted(report["roles"], key=lambda r: r["d_primary"], reverse=True)
 
+    # Alternate barely visible row bands so each role remains a readable
+    # category when the two family estimates are vertically separated.
+    for row in range(len(roles)):
+        y = len(roles) - row
+        if row % 2 == 0:
+            ax.axhspan(y - 0.5, y + 0.5, color="#F7F7F7", zorder=0)
+    for boundary in range(1, len(roles)):
+        ax.axhline(boundary + 0.5, color="#DDDDDD", linewidth=0.65, zorder=0)
+
     # Recessive reference lines: zero solid, pass threshold dashed.
     ax.axvline(0.0, color="#666666", linewidth=0.7, zorder=1)
     for x in (-D_THRESHOLD, D_THRESHOLD):
         ax.axvline(x, color="#BBBBBB", linewidth=0.7, linestyle=(0, (4, 3)), zorder=1)
 
-    offset = 0.16
+    # Separate the two families enough that their intervals and caps remain
+    # legible when the panel is printed at workshop-column size.
+    offset = 0.22
     for row, entry in enumerate(roles):
         y = len(roles) - row
         for suffix, colour, marker, sign in (
@@ -110,25 +121,29 @@ def _forest_axes(ax, report: Dict[str, Any], labels: List[str]) -> List[str]:
             lo, hi = _rescale(d, entry[f"diff_{suffix}"],
                               entry[f"lo_{suffix}"], entry[f"hi_{suffix}"])
             yy = y + sign * offset
-            ax.plot([lo, hi], [yy, yy], color=colour, linewidth=1.4,
-                    solid_capstyle="round", zorder=2)
-            ax.plot([d], [yy], marker=marker, color=colour, markersize=4.2,
-                    markeredgecolor="white", markeredgewidth=0.6, zorder=3)
+            ax.errorbar(
+                d, yy, xerr=[[d - lo], [hi - d]], fmt=marker,
+                color=colour, markersize=5.0, markeredgecolor="white",
+                markeredgewidth=0.7, elinewidth=1.8, capsize=2.8,
+                capthick=1.2, solid_capstyle="round", zorder=3,
+            )
 
     ax.set_yticks(range(1, len(roles) + 1))
     # "checker" appears on four of six rows and distinguishes nothing.
-    ax.set_yticklabels([DISPLAY_NAME[r["role"]] for r in reversed(roles)])
+    ax.set_yticklabels([DISPLAY_NAME[r["role"]] for r in reversed(roles)],
+                       fontsize=9.2)
     ax.set_xlabel("effect vs. neutral control (Cohen's $d$)")
     ax.set_ylim(0.4, len(roles) + 0.6)
     ax.spines[["top", "right", "left"]].set_visible(False)
     ax.tick_params(axis="y", length=0)
     ax.set_axisbelow(True)
+    ax.grid(axis="x", color="#E6E6E6", linewidth=0.55, zorder=0)
 
     handles = [
         plt.Line2D([], [], color=PRIMARY_COLOUR, marker="o", markersize=4.2,
-                   linewidth=1.4, markeredgecolor="white", label=labels[0]),
+                   linewidth=1.8, markeredgecolor="white", label=labels[0]),
         plt.Line2D([], [], color=REPLICATION_COLOUR, marker="s", markersize=4.2,
-                   linewidth=1.4, markeredgecolor="white", label=labels[1]),
+                   linewidth=1.8, markeredgecolor="white", label=labels[1]),
     ]
     # Above the axes, not inside them: at "upper left" the key sat on the
     # counter-evidence and consistency rows in the same glyphs as the data.
@@ -343,8 +358,8 @@ def checks_panel(report: Dict[str, Any], decomposition: Dict[str, Any],
         "pdf.fonttype": 42, "ps.fonttype": 42,
     })
     fig, (top, bottom) = plt.subplots(
-        2, 1, figsize=(TEXT_WIDTH_IN, 3.35), layout="constrained",
-        gridspec_kw={"height_ratios": [1.55, 1.0]})
+        2, 1, figsize=(TEXT_WIDTH_IN, 3.50), layout="constrained",
+        gridspec_kw={"height_ratios": [1.70, 0.85]})
     fig.get_layout_engine().set(w_pad=0.0, h_pad=0.01, hspace=0.14, wspace=0.0)
 
     order = _forest_axes(top, report, labels)

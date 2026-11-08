@@ -5,3 +5,33 @@ __pycache__/
 venv/
 # analysis outputs are shipped; regenerated copies are not
 figures/
+# poster build intermediates (poster.pdf itself is tracked)
+poster/*.aux
+poster/*.log
+poster/*.fls
+poster/*.fdb_latexmk
+poster/*.xdv
+poster/*.out
+# not redistributable; copy from the AES template to print with the logo
+poster/assets/aes-mark.pdf
+# extended abstract: build intermediates and the non-redistributable AES mark
+extended_abstract/*.aux
+extended_abstract/*.log
+extended_abstract/*.fls
+extended_abstract/*.fdb_latexmk
+extended_abstract/*.xdv
+extended_abstract/*.out
+extended_abstract/*.bbl
+extended_abstract/*.blg
+extended_abstract/*.brf
+extended_abstract/main.pdf
+extended_abstract/assets/aes-mark.pdf
+# the manuscript's figure is tracked so the paper builds without running Python first
+!paper/figures/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.fls
+paper/*.fdb_latexmk

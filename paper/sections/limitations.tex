@@ -1,0 +1,45 @@
+\section{Limitations and Claims This Paper Does Not Make}
+\label{sec:limitations}
+
+\paragraph{Limitations in scope.}
+We validate our manipulation checks on another pretraining family (\S\ref{sec:replication}).
+However, our benchmark comparisons, leave-one-out analysis, and single call comparison are only
+performed within a single pretraining family with a similar level of capability. Validation on a
+second family only establishes replication, not population-level generalization. We also only
+examine two benchmarks, both in English.
+
+\paragraph{Limitations in measurement.}
+All our arms return the same format; this means our manipulation checks are measuring the relative
+difference rather than the existence of these factors, resulting in lower contrast relative to an
+experiment where the null condition doesn't return anything. The concentration and sourced claim
+manipulation checks were designed as two-factorial but effectively function as a one-factorial
+design since both conditions are saturated; this collapses their corresponding statistics. We only
+filter refusals in TruthfulQA, where there is no individual question contributing to the accuracy
+comparisons (Appendix~\ref{app:refusal}). While the role priming could influence whether the model
+refuses to answer at all, it did not affect that measured benchmark in our experiment.
+
+\paragraph{Limitations in provenance.}
+We directly state, but cannot verify, two pieces of information (\S\ref{sec:models}). First, we
+state the model variant but it cannot be deduced from the serving name. Second, we state the serving
+path but it cannot be deduced from the manifest since our scraper does not record provider. We
+conducted an experiment on a 47-question test dataset before our registered analysis; no out-dated
+correction affected a registered quantity, and we ask the reader to consider any analysis they
+believe affected to be exploratory. Our analysis of failure modes in attribution are only evaluated
+on simulated data in Appendix~\ref{app:attribution-failures} to serve as evidence of existence and
+possible mechanisms rather than rates of failure in public models.
+
+\paragraph{What this does not claim: beating baselines.}
+This scoped experiment isn't powered for that. We also don't claim to have found correspondences
+between LLM capabilities and clinical constructs; this was only inspired by that analogy. We do not
+claim to be the first to do this work; we just note that role checks are rarely done. We don't track
+how often attribution errors occur. We did not test H1 (not powered by design) nor H2 (lost its
+target when we applied the two benchmark simplification and did not choose an alternative contrast
+such as HaluEval); provide cost-matched comparisons of council vs single agent: we recorded a
+same-model single-call arm, 6$\times$ cheaper; to calibrate: we do not propose a calibration
+procedure, Appendix~\ref{app:confidence} is a gap analysis rather than a solution. Finally, we do
+not claim that capability is broken when the constraint that we provided is lifted; this requires
+training tests we didn't run.
+
+\paragraph{Solely for research.}
+Nothing here licenses deployment. The council described in this paper must not be used for medical,
+legal, financial or other consequential decisions on the basis of benchmark accuracy.

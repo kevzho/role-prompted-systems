@@ -1,0 +1,54 @@
+\section{Introduction}
+
+Multi-agent LLM pipelines often give their agents distinct tasks (e.g.\ critic, verifier, or
+devil's advocate), and attribute observed downstream gains to the corresponding information
+processing event. However, the information processing event is often not directly validated as
+having occurred: the downstream metric alone is not sufficient to validate its existence, since
+downstream results are a function of all aspects of the prompt, including the defined
+information processing event. Prior work shows that LLMs better identify errors in others' text
+as compared to their own \citep{chen2026selfcorrection,stechly2024selfverification}, but that
+only justifies adding a second agent, not a particular persona.
+
+In the experimental sciences, it is common to validate whether or not an intervention occurred
+via \emph{manipulation checks}. If one cannot validate that their intervention occurred, then
+there is no reason to believe they have measured the intervention. We introduce the manipulation
+check to the evaluation of multi-agent LLM pipelines. Our goal is only to transfer the tool to
+LLM research, not to assert its primacy: \S\ref{sec:related} names the closest existing work,
+and Appendix~\ref{app:novelty-search} states what our search covered and what it did not.
+
+In our work we observe this channel directly: an empty role label prompt refuses at a
+statistically significant lower rate versus either the entire task or the length-controlled
+version, with no task performed. If a model behaves differently when asked different questions,
+there will be a change in score independent of whether the task was performed; in this case, the
+difference lies on un-scored items, but we've still seen the mechanism in action (if not its
+downstream consequences).
+
+For this, we use six functional roles (each with a unique information processing operation)
+drawn from a proposed council design. While the roles are motivated by a computational theory of
+cognition \citep{lee2025emergence}, they are simply the \emph{subject of our analysis, not our
+point} --- we do not endorse the council design. We find that role prompts mostly do not do what
+they promise: one in six roles passes its manipulation check, one role changes the score
+significantly in the \emph{opposite} direction of their stated function, and three are not
+distinguishable from a length-matched control with no prescribed operation, with one
+non-diagnostic after audit.
+
+\paragraph{Contributions.}
+\textbf{(i) Manipulation Checks for Role Prompting Agents}: an implementable and pre-registered
+role manipulation check (compared against a length-matched neutral control), for six roles, five
+of which were pre-registered with an explicit anti-degeneracy term. Post-collection stress tests
+show that the presence of such a term does not establish its effectiveness: three didn't vary on
+the observed support, and two admit simple degenerate solutions.
+\textbf{(ii) An Analysis of Manipulation-Check-Passing Rates vs.\ Score-Changing Rates}: six
+roles were categorized along both dimensions, by a pre-registered rule (the latter dimension is
+null). Again, the \emph{point} is the check and criteria; the results are irrelevant.
+\textbf{(iii) A Multi-Family Model Analysis}: our manipulation checks analyzed against the same
+items in an entirely separate pretraining family --- shows that while our overall conclusions
+remain the same, \emph{one validated check does not transfer across the two families tested},
+motivating our choice to perform the manipulation check, and \emph{not} simply use a checklist.
+\textbf{(iv) A Pre-Registered, Auditable Experiment}: pre-registered SESOIs; pre-registered
+per-role predicted harms (and benefits); structural safeguards ensuring no fabricated data makes
+it into a results table; a first-class table of exclusions.\footnote{Code, prompts, collected
+records, both benchmark corpora and the pre-registration are available at
+\url{https://github.com/kevzho/role-prompted-systems}. \texttt{REPRODUCE.md} gives
+the exact command for each reported result; all of them run offline against the shipped records,
+with no API key and no network access.}
